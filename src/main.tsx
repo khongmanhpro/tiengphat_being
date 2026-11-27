@@ -14,6 +14,8 @@ import type { Lesson as LessonData, Level } from './data'
 import type { AssessmentWork, ConversationWork, LessonWork } from './progress'
 import { activity, addLessonCards, finishLesson, levelDone, nextLesson, reviewCard, unlocked, useProgress } from './progress'
 import { stopSpeech } from './speech'
+import { routeFromHash, useHashRoute } from './useHashRoute'
+import type { Page } from './useHashRoute'
 
 const nav = [
   ['home', 'Trang chủ', House],
@@ -22,15 +24,24 @@ const nav = [
   ['tutor', 'Gia sư AI', Sparkles],
   ['profile', 'Hồ sơ', UserRound],
 ] as const
-type Page = typeof nav[number][0] | 'lesson' | 'placement' | 'assessment'
 
 function App() {
   const [data, setData, temporaryProgress] = useProgress()
-  const [page, setPage] = useState<Page>('home')
-  const [level, setLevel] = useState<Level>(data.start)
-  const [lessonId, setLessonId] = useState(data.selected)
+  const initialRoute = routeFromHash(window.location.hash, data, { page: 'home', level: data.start, lessonId: data.selected })
+  const [page, setPage] = useState<Page>(initialRoute.page)
+  const [level, setLevel] = useState<Level>(initialRoute.level)
+  const [lessonId, setLessonId] = useState(initialRoute.lessonId)
   const [tutorId, setTutorId] = useState<string>()
   const [learning, setLearning] = useState(false)
+
+  useHashRoute({ page, level, lessonId }, data, next => {
+    stopSpeech()
+    setPage(next.page)
+    setLevel(next.level)
+    setLessonId(next.lessonId)
+    setLearning(['lesson', 'review', 'tutor', 'placement', 'assessment'].includes(next.page))
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  })
 
   useEffect(() => {
     if (!learning || !['lesson', 'review', 'tutor', 'placement', 'assessment'].includes(page)) return
