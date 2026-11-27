@@ -7,6 +7,7 @@ import { curriculum, lessonsById, lessons, lessonsAt, levels } from './index'
 import { conjugations } from './conjugation'
 import { phonemeRules, phonologyByLesson } from './phonology'
 import { questions as placementQuestions } from './placement'
+import { practiceCues, starterPractice } from './starter-practice'
 import voiceSamples from './voice-samples.json'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -126,6 +127,41 @@ describe('placement test questions', () => {
   for (const level of levels) {
     it(`has at least one question for ${level}`, () => {
       expect(placementQuestions.some(question => question.level === level)).toBe(true)
+    })
+  }
+})
+
+describe('guided conversation practice (starter-practice)', () => {
+  it('is not empty', () => expect(starterPractice.length).toBeGreaterThan(0))
+
+  for (const item of starterPractice) {
+    it(`"${item.id}" is a real lesson id`, () => expect(lessonsById[item.id]).toBeDefined())
+  }
+
+  for (const [lessonId, turns] of Object.entries(practiceCues)) {
+    describe(lessonId, () => {
+      const lesson = lessonsById[lessonId]
+
+      it('is a real lesson id', () => expect(lesson).toBeDefined())
+
+      it('has no more cue turns than the lesson has "Linh" dialogue lines', () => {
+        const linhTurns = lesson.dialogue.filter(([speaker]) => speaker === 'Linh').length
+        expect(turns.length).toBeLessThanOrEqual(linhTurns)
+      })
+
+      for (const [at, cues] of turns.entries()) {
+        describe(`turn ${at + 1}`, () => {
+          it('has at least one cue', () => expect(cues.length).toBeGreaterThan(0))
+
+          for (const cue of cues) {
+            it(`"${cue.goal}" has a non-empty hint and at least one pattern`, () => {
+              expect(cue.goal.trim()).not.toBe('')
+              expect(cue.hint.trim()).not.toBe('')
+              expect(cue.patterns.length).toBeGreaterThan(0)
+            })
+          }
+        })
+      }
     })
   }
 })

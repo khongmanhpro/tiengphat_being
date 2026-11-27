@@ -54,7 +54,19 @@ Mỗi câu có `level` (gợi ý điểm bắt đầu), `answers`/`correct`/`exp
 
 Ngưỡng gợi ý điểm bắt đầu: để "qua" một cấp, cần trả lời đúng ít nhất 60% số câu của cấp đó (`Math.ceil(count * 0.6)`), không phải một số cố định — vì mỗi cấp có thể có số câu khác nhau.
 
-## 7. Kiểm tra trước khi commit nội dung mới
+## 7. "Luyện mẫu" (`src/data/starter-practice.ts`)
+
+`practiceCues[lessonId]` là mảng theo **lượt nói của Linh** trong `lesson.dialogue` (mỗi lượt là một chỉ số liên tiếp có `speaker === 'Linh'`) — không phải theo toàn bộ dòng hội thoại. `GuidedConversation.tsx` tự duyệt `lesson.dialogue` để tính các lượt này, nên mảng `practiceCues[lessonId]` không được dài hơn số lượt đó (thừa thì chỉ đơn giản không bao giờ hiển thị; `data-integrity.test.ts` kiểm tra điều này).
+
+Mỗi lượt là một mảng `Cue[]` (1–2 cue là đủ, không cần liệt kê hết mọi khả năng). Mỗi `Cue` ứng với **một mục tiêu giao tiếp riêng biệt**: `patterns` chỉ nên là các cách diễn đạt tương đương của cùng một mục tiêu đó (vì bất kỳ pattern nào khớp cũng tính là đạt — ngữ nghĩa OR); đừng gộp hai mục tiêu khác nhau vào cùng một cue chỉ để tiết kiệm dòng. Patterns so khớp với `normalize(draft)` (chữ thường, dấu nháy cong → thẳng, bỏ dấu câu khác) — viết bằng dấu nháy thẳng `'`, không phải `’`.
+
+Thêm tình huống mới vào `starterPractice` (title/detail tiếng Việt ngắn) là tùy chọn — chỉ cần nếu muốn tình huống đó xuất hiện ở dải chọn nhanh trong "Luyện mẫu"; thiếu nó, tình huống vẫn chọn được qua dropdown đầy đủ các bài.
+
+**Lưu ý khi viết `patterns`:** `\b` (word boundary) của JavaScript chỉ coi `[A-Za-z0-9_]` là "ký tự chữ" — một từ tiếng Pháp bắt đầu hoặc kết thúc bằng chữ có dấu (à, é, ù…) sẽ không bao giờ khớp nếu đặt `\b` ngay sát chữ đó (`/\bà pied\b/` không bao giờ true). Dùng `(?:^|\s)` thay cho `\b` ở đầu, và `(?=\s|$)` thay cho `\b` ở cuối, khi cạnh đó là một chữ có dấu. `\b` vẫn dùng bình thường khi cạnh đó là chữ ASCII (kể cả khi từ có dấu ở giữa, ví dụ `\bnotre père\b` không sao vì biên nằm ở "n" và "e").
+
+Không cần file âm thanh mới trong `public/voice/`: `AudioButton`/`speak()` tự rơi về giọng đọc tổng hợp của trình duyệt (`speechSynthesis`, giọng fr-FR) cho bất kỳ câu nào chưa có trong `voice-samples.json` — ghi âm thật chỉ là nâng cấp chất lượng giọng đọc, không phải điều kiện để tính năng chạy được.
+
+## 8. Kiểm tra trước khi commit nội dung mới
 
 ```sh
 npm run check   # tsc --noEmit
