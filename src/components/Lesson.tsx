@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { BookOpen, Check, ChevronLeft, CircleCheck, Layers3, Lightbulb, Mic, RotateCcw, Square, Trophy, Volume2 } from 'lucide-react'
 import { topicFor } from '../data'
 import { languageLabs } from '../data/language-lab'
+import { conjugations } from '../data/conjugation'
 import type { Lesson as LessonData } from '../data'
 import type { Checkpoint, LessonWork, Outcome } from '../progress'
 import { Exercise, ListeningCheck, SoundChoice } from './LessonActivities'
@@ -55,6 +56,7 @@ export function Lesson({ lesson, initialStep, work, onCheckpoint, onWork, onDraf
   const microphone = useRecognition()
   const [id, title, , objective] = topicFor(lesson)
   const language = languageLabs[id]
+  const verbTables = conjugations[id]
 
   function stopDialogue() {
     playGeneration.current++
@@ -161,6 +163,13 @@ ${inserted}` : inserted)
         <textarea className="input" rows={2} value={work?.grammarNote ?? ''} maxLength={1200} onChange={event => onWork({ grammarNote: event.target.value })} placeholder="Thử viết quy tắc bạn nhận ra" aria-label="Quy tắc bạn rút ra" />
         <button className="button secondary" onClick={() => setShowGrammar(!showGrammar)} aria-expanded={showGrammar}><Lightbulb size={17} />{showGrammar ? 'Ẩn tóm tắt' : 'Xem quy tắc và tóm tắt'}</button>
         {showGrammar && <div className="grammar"><p>{lesson.grammar.rule}</p><table><thead><tr><th>Cấu trúc</th><th>Cách dùng hoặc ví dụ</th></tr></thead><tbody>{lesson.grammar.rows.map(([fr, vi]) => <tr key={fr}><td>{fr}</td><td>{vi}</td></tr>)}</tbody></table></div>}
+        {showGrammar && verbTables && verbTables.map(table => (
+          <div className="grammar" key={`${table.verb}-${table.tense}`}>
+            <p><strong lang="fr">{table.verb}</strong> — {table.tense}</p>
+            <table><thead><tr><th>Chủ ngữ</th><th>Chia động từ</th></tr></thead><tbody>{table.forms.map(([pronoun, form]) => <tr key={pronoun}><td>{pronoun}</td><td lang="fr">{form}</td></tr>)}</tbody></table>
+            {table.note && <p className="muted">{table.note}</p>}
+          </div>
+        ))}
         {showGrammar && language && <LanguageLab content={language} chosen={work?.languageChoice} onChoose={languageChoice => onWork({ languageChoice })} />}
         <Exercise key="translate" type="translate" exercise={lesson.exercises.translate} draft={work?.translation ?? ''} onDraft={translation => onWork({ translation })} previous={checks.translate} onPass={outcome => onCheckpoint('translate', outcome)} />
       </>}

@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { curriculum, lessonsById, lessons, lessonsAt, levels } from './index'
+import { conjugations } from './conjugation'
 import { phonemeRules, phonologyByLesson } from './phonology'
 import voiceSamples from './voice-samples.json'
 
@@ -71,6 +72,25 @@ describe('phonology bank', () => {
     it(`"${lessonId}" is a real lesson id`, () => expect(lessonsById[lessonId]).toBeDefined())
     for (const id of ids) {
       it(`"${lessonId}" -> "${id}" resolves to a real phoneme rule`, () => expect(ruleIds.has(id)).toBe(true))
+    }
+  }
+})
+
+describe('conjugation tables', () => {
+  for (const [lessonId, tables] of Object.entries(conjugations)) {
+    it(`"${lessonId}" is a real lesson id`, () => expect(lessonsById[lessonId]).toBeDefined())
+
+    for (const table of tables) {
+      describe(`${lessonId}: ${table.verb} (${table.tense})`, () => {
+        it('has six non-empty pronoun/form pairs with no duplicate pronoun', () => {
+          expect(table.forms).toHaveLength(6)
+          for (const [pronoun, form] of table.forms) {
+            expect(pronoun.trim()).not.toBe('')
+            expect(form.trim()).not.toBe('')
+          }
+          expect(new Set(table.forms.map(([pronoun]) => pronoun)).size).toBe(6)
+        })
+      })
     }
   }
 })
