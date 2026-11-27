@@ -50,6 +50,22 @@ export const phonemeRules: PhonemeRule[] = [
     tip: 'Khi le, la, je, ce, que… đứng trước một từ bắt đầu bằng nguyên âm hoặc h câm, nguyên âm e/a bị lược bỏ và thay bằng dấu lược (’). L’addition thay cho le addition.',
     examples: ['le + addition → l’addition', 'je + arrive → j’arrive'],
   },
+  {
+    id: 'liaison-nasal-determiner',
+    category: 'liaison',
+    level: 'B1',
+    title: 'Liaison bắt buộc sau mon/un/aucun (nối bằng /n/)',
+    tip: 'Khi mon, ton, son, un, aucun… đứng trước một từ bắt đầu bằng nguyên âm, phụ âm mũi cuối được nối sang thành /n/ — đây là liaison bắt buộc, không thể bỏ qua như một số liaison tùy chọn khác.',
+    examples: ['mon avis → /mɔ̃.na.vi/', 'un atelier → /ɛ̃.na.tə.lje/'],
+  },
+  {
+    id: 'enchainement-consonne-finale',
+    category: 'consonant',
+    level: 'B1',
+    title: 'Enchaînement: phụ âm cuối vốn đã phát âm, lướt liền sang từ sau',
+    tip: 'Enchaînement khác liaison: phụ âm cuối ở đây đã luôn được phát âm (không phải phụ âm câm), chỉ đơn giản lướt liền sang nguyên âm đầu từ sau mà không ngắt nhịp. Dans une heure có cả hai hiện tượng: dans nối sang une bằng liaison (s câm → /z/), còn une nối sang heure bằng enchaînement (n vốn đã phát âm).',
+    examples: ['dans une heure → /dɑ̃.zy.nœʁ/'],
+  },
 ]
 
 /** Additive, optional lookup: lessons not listed here simply have no linked phoneme rules yet. */
@@ -58,4 +74,7 @@ export const phonologyByLesson: Record<string, string[]> = {
   sons: ['vowel-u-vs-ou'],
   heure: ['liaison-s-and-f', 'nasal-an-in-on'],
   cafe: ['elision-le-la-je', 'nasal-an-in-on'],
+  avis: ['liaison-nasal-determiner'],
+  projets: ['liaison-nasal-determiner'],
+  incident: ['enchainement-consonne-finale'],
 }

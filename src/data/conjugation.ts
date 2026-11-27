@@ -50,4 +50,23 @@ export const conjugations: Record<string, ConjugationTable[]> = {
       note: 'Đuôi imparfait đều cho mọi động từ (trừ être): -ais/-ais/-ait/-ions/-iez/-aient, gắn vào gốc hiện tại nous (promen-).',
     },
   ],
+  // "projets" (B1) contrasts futur proche (déjà décidé) với futur simple/antérieur
+  // (dự định hoặc việc sẽ hoàn tất trước một mốc tương lai khác).
+  projets: [
+    {
+      verb: 'avoir', group: 'auxiliary', tense: 'Futur simple (trợ động từ)', level: 'B1',
+      forms: [['je', 'aurai'], ['tu', 'auras'], ['il / elle / on', 'aura'], ['nous', 'aurons'], ['vous', 'aurez'], ['ils / elles', 'auront']],
+      note: 'Trợ động từ cho hầu hết động từ ở futur antérieur, ví dụ: j’aurai réservé.',
+    },
+    {
+      verb: 'confirmer', group: '-er', tense: 'Futur simple', level: 'B1',
+      forms: [['je', 'confirmerai'], ['tu', 'confirmeras'], ['il / elle / on', 'confirmera'], ['nous', 'confirmerons'], ['vous', 'confirmerez'], ['ils / elles', 'confirmeront']],
+      note: 'Động từ -er đều: giữ nguyên động từ nguyên mẫu làm gốc, thêm đuôi futur simple -ai/-as/-a/-ons/-ez/-ont.',
+    },
+    {
+      verb: 'réserver', group: '-er', tense: 'Futur antérieur', level: 'B1',
+      forms: [['j’', 'aurai réservé'], ['tu', 'auras réservé'], ['il / elle / on', 'aura réservé'], ['nous', 'aurons réservé'], ['vous', 'aurez réservé'], ['ils / elles', 'auront réservé']],
+      note: 'Futur antérieur = futur simple của avoir/être + participe passé, chỉ việc sẽ hoàn tất trước một việc tương lai khác: quand j’aurai réservé la salle, je confirmerai la date.',
+    },
+  ],
 }
