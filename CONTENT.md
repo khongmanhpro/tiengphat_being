@@ -48,7 +48,13 @@ Khi thêm rule mới: đặt `category` đúng loại hiện tượng (`nasal`/`
 
 Không dựng hệ thống riêng cho văn phong/tu-vous — `LanguageLab` (đối chiếu hai cách nói) đã đủ hình dạng để biểu diễn một tương phản văn phong. Khi một entry `lab(...)` đối chiếu formal/informal, tu/vous, hoặc thành ngữ/trung tính, truyền `'register'` làm tham số cuối. Việc này giúp sau này có thể lọc riêng các bài tập văn phong xuyên suốt A1–C1 thay vì chỉ có 1 bài (C1 "registre") xử lý chủ đề này.
 
-## 6. Kiểm tra trước khi commit nội dung mới
+## 6. Câu hỏi xếp lớp (`src/data/placement.ts`)
+
+Mỗi câu có `level` (gợi ý điểm bắt đầu), `answers`/`correct`/`explanation` như cũ. Câu hỏi nghe-phân biệt âm thêm trường `audio?: string`: văn bản tiếng Pháp được phát qua `speak()` (component `AudioButton`), độc lập với `prompt` hiển thị — `prompt` có thể hoàn toàn bằng tiếng Việt ("Nghe và chọn từ bạn vừa nghe."), còn `audio` chỉ chứa từ/cụm cần phát. Nguồn nội dung cho các câu này là `phonemeRules`/`minimalPairs`/`examples` trong `phonology.ts` — không tạo cặp âm mới riêng cho bài test, tái dùng ngân hàng đã có để tránh hai nơi dạy khác nhau cho cùng một hiện tượng.
+
+Ngưỡng gợi ý điểm bắt đầu: để "qua" một cấp, cần trả lời đúng ít nhất 60% số câu của cấp đó (`Math.ceil(count * 0.6)`), không phải một số cố định — vì mỗi cấp có thể có số câu khác nhau.
+
+## 7. Kiểm tra trước khi commit nội dung mới
 
 ```sh
 npm run check   # tsc --noEmit

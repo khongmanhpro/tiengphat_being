@@ -8,7 +8,7 @@ import { languageLabs } from '../data/language-lab'
 import { assessmentSteps } from './LevelAssessment'
 import { dayKey, levelDone, missingPrerequisites, streak } from '../progress'
 import type { Progress } from '../progress'
-import { Bar, ScreenTitle, TopicIcon } from './common'
+import { AudioButton, Bar, ScreenTitle, TopicIcon } from './common'
 
 export function Roadmap({ data, level, onLevel, onLesson, onPreview, onPlacement, onAssessment }: {
   data: Progress
@@ -81,20 +81,21 @@ export function Placement({ onBack, onApply }: { onBack: () => void; onApply: (l
   const index = answers.length
   const question = questions[index]
   const score = answers.filter((answer, index) => answer === questions[index].correct).length
+  const countByLevel = (level: Level) => questions.filter(item => item.level === level).length
   let suggested: Level = 'A1'
   for (const [levelIndex, level] of levels.entries()) {
     const correct = questions.filter((item, at) => item.level === level && item.correct === answers[at]).length
-    if (correct < 2) break
+    if (correct < Math.ceil(countByLevel(level) * 0.6)) break
     suggested = levels[levelIndex]
   }
   return <main className="page narrow">
     <button className="text-button back" onClick={onBack}><ChevronLeft size={18} /> Trang chủ</button>
-    <ScreenTitle title="Kiểm tra xếp lớp">15 câu ngắn theo độ khó A1–C1, tập trung vào đọc và ngữ pháp để gợi ý điểm bắt đầu.</ScreenTitle>
+    <ScreenTitle title="Kiểm tra xếp lớp">{questions.length} câu ngắn theo độ khó A1–C1, gồm đọc hiểu, ngữ pháp và nghe-phân biệt âm, để gợi ý điểm bắt đầu.</ScreenTitle>
     {question ? <>
       <div className="lesson-progress"><Bar value={(index + 1) / questions.length * 100} label="Tiến độ kiểm tra" /><p>Câu {index + 1}/{questions.length}</p></div>
-      <section className="card placement-test"><h2>{question.prompt}</h2><div className="quiz-options">{orders[index].map((position, displayIndex) => <button key={position} className={`quiz-option ${selected === position ? 'selected' : ''}`} aria-pressed={selected === position} onClick={() => setSelected(position)}><span>{'ABCD'[displayIndex]}</span>{question.answers[position]}</button>)}</div><button className="button primary" disabled={selected === undefined} onClick={() => { if (selected === undefined) return; setAnswers([...answers, selected]); setSelected(undefined); window.scrollTo(0, 0) }}>{index + 1 === questions.length ? 'Xem kết quả' : 'Câu tiếp theo'}</button></section>
-    </> : <section className="card empty-state"><span className={`level-badge ${suggested.toLowerCase()}`}>{suggested}</span><h2>Gợi ý bắt đầu ở {suggested}</h2><p>Bạn trả lời đúng {score}/{questions.length} câu. Bài kiểm tra tập trung vào đọc hiểu và ngữ pháp.</p><ul>{levels.map(level => <li key={level}>{level}: {questions.filter((item, at) => item.level === level && item.correct === answers[at]).length}/3 câu đúng</li>)}</ul><label className="field">Chọn điểm bắt đầu<select className="input" value={chosenLevel ?? suggested} onChange={event => setChosenLevel(event.target.value as Level)}>{levels.map(level => <option key={level}>{level}</option>)}</select></label><button className="button primary" onClick={() => onApply(chosenLevel ?? suggested, score)}>Bắt đầu ở {chosenLevel ?? suggested}</button><button className="button secondary" aria-expanded={showReview} onClick={() => setShowReview(!showReview)}>{showReview ? 'Ẩn đáp án' : 'Xem đáp án'}</button>
-      {showReview && <ol className="answer-review">{questions.map((item, at) => <li key={item.prompt}><strong>{at + 1}. {item.prompt}</strong><p className={`feedback ${answers[at] === item.correct ? 'good' : 'retry'}`}>{item.answers[item.correct]}. {item.explanation}</p></li>)}</ol>}
+      <section className="card placement-test"><h2>{question.prompt}</h2>{question.audio && <AudioButton text={question.audio} label="Nghe lại" />}<div className="quiz-options">{orders[index].map((position, displayIndex) => <button key={position} className={`quiz-option ${selected === position ? 'selected' : ''}`} aria-pressed={selected === position} onClick={() => setSelected(position)}><span>{'ABCD'[displayIndex]}</span>{question.answers[position]}</button>)}</div><button className="button primary" disabled={selected === undefined} onClick={() => { if (selected === undefined) return; setAnswers([...answers, selected]); setSelected(undefined); window.scrollTo(0, 0) }}>{index + 1 === questions.length ? 'Xem kết quả' : 'Câu tiếp theo'}</button></section>
+    </> : <section className="card empty-state"><span className={`level-badge ${suggested.toLowerCase()}`}>{suggested}</span><h2>Gợi ý bắt đầu ở {suggested}</h2><p>Bạn trả lời đúng {score}/{questions.length} câu. Bài kiểm tra tập trung vào đọc hiểu, ngữ pháp và nghe-phân biệt âm.</p><ul>{levels.map(level => <li key={level}>{level}: {questions.filter((item, at) => item.level === level && item.correct === answers[at]).length}/{countByLevel(level)} câu đúng</li>)}</ul><label className="field">Chọn điểm bắt đầu<select className="input" value={chosenLevel ?? suggested} onChange={event => setChosenLevel(event.target.value as Level)}>{levels.map(level => <option key={level}>{level}</option>)}</select></label><button className="button primary" onClick={() => onApply(chosenLevel ?? suggested, score)}>Bắt đầu ở {chosenLevel ?? suggested}</button><button className="button secondary" aria-expanded={showReview} onClick={() => setShowReview(!showReview)}>{showReview ? 'Ẩn đáp án' : 'Xem đáp án'}</button>
+      {showReview && <ol className="answer-review">{questions.map((item, at) => <li key={at}><strong>{at + 1}. {item.prompt}</strong>{item.audio && <AudioButton text={item.audio} label="Nghe lại" compact />}<p className={`feedback ${answers[at] === item.correct ? 'good' : 'retry'}`}>{item.answers[item.correct]}. {item.explanation}</p></li>)}</ol>}
     </section>}
   </main>
 }

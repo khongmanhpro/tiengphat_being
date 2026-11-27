@@ -3,6 +3,7 @@ import { curriculum, lessonsAt, lessonsById, levels, topicFor } from '../data'
 import type { Lesson, Level } from '../data'
 import { dayKey, dueCards, nextLesson, offsetDay, streak, unlocked } from '../progress'
 import type { Progress } from '../progress'
+import { questions as placementQuestions } from '../data/placement'
 import { stages } from './Lesson'
 
 type Props = { data: Progress; onLesson: (lesson: Lesson) => void; onRoadmap: (level?: Level) => void; onReview: () => void; onTutor: (lesson?: Lesson) => void; onPlacement: () => void; onProfile: () => void }
@@ -66,7 +67,7 @@ export function Dashboard({ data, onLesson, onRoadmap, onReview, onTutor, onPlac
 
       <section className="placement-promo card">
         <span className="tile-icon violet"><GraduationCap size={26} /></span>
-        <div><h2>Chưa rõ trình độ?</h2><p>Làm 15 câu để tìm điểm bắt đầu phù hợp.</p><button className="text-button" onClick={onPlacement}>{data.placement ? 'Làm lại bài xếp lớp' : 'Kiểm tra xếp lớp'} <ChevronRight size={16} /></button></div>
+        <div><h2>Chưa rõ trình độ?</h2><p>Làm {placementQuestions.length} câu để tìm điểm bắt đầu phù hợp.</p><button className="text-button" onClick={onPlacement}>{data.placement ? 'Làm lại bài xếp lớp' : 'Kiểm tra xếp lớp'} <ChevronRight size={16} /></button></div>
       </section>
 
       <section className="practice-home">

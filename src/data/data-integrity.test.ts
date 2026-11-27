@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { curriculum, lessonsById, lessons, lessonsAt, levels } from './index'
 import { conjugations } from './conjugation'
 import { phonemeRules, phonologyByLesson } from './phonology'
+import { questions as placementQuestions } from './placement'
 import voiceSamples from './voice-samples.json'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -92,6 +93,40 @@ describe('conjugation tables', () => {
         })
       })
     }
+  }
+})
+
+describe('placement test questions', () => {
+  it('is not empty', () => expect(placementQuestions.length).toBeGreaterThan(0))
+
+  for (const [at, question] of placementQuestions.entries()) {
+    describe(`question ${at + 1} (${question.level})`, () => {
+      it('has a non-empty prompt and explanation', () => {
+        expect(question.prompt.trim()).not.toBe('')
+        expect(question.explanation.trim()).not.toBe('')
+      })
+
+      it('has at least two non-empty, non-duplicate answers', () => {
+        expect(question.answers.length).toBeGreaterThanOrEqual(2)
+        for (const answer of question.answers) expect(answer.trim()).not.toBe('')
+        expect(new Set(question.answers).size).toBe(question.answers.length)
+      })
+
+      it('has a correct index within range', () => {
+        expect(question.correct).toBeGreaterThanOrEqual(0)
+        expect(question.correct).toBeLessThan(question.answers.length)
+      })
+
+      if (question.audio !== undefined) {
+        it('has non-empty audio text', () => expect(question.audio!.trim()).not.toBe(''))
+      }
+    })
+  }
+
+  for (const level of levels) {
+    it(`has at least one question for ${level}`, () => {
+      expect(placementQuestions.some(question => question.level === level)).toBe(true)
+    })
   }
 })
 
