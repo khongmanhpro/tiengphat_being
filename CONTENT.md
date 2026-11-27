@@ -21,11 +21,13 @@ type Lesson = {
 
 `ipa` luôn ở định dạng `/.../`. Mỗi bài có đúng 2 người nói trong `dialogue` (một vài bài trung gian/điều phối ở C1 có thể có 3 — đây là ngoại lệ có chủ ý, không phải lỗi).
 
-## 2. Cách viết nội dung: chỉ dùng DSL `unit()`
+## 2. Cách viết nội dung: ưu tiên DSL `unit()`, viết trực tiếp khi bài không vừa khuôn
 
-`src/data/lesson-authoring.ts` cung cấp hàm `unit()` — đây là **cách viết duy nhất được hỗ trợ** cho bài mới hoặc bài sửa. DSL tham chiếu các dòng hội thoại theo chỉ số (`line: number`) thay vì lặp lại văn bản, giảm nguy cơ lệch giữa `dialogue`, `grammar.examples`, `exercises.order.answer`, `exercises.dictate.answer`. Xem `src/data/everyday.ts` làm ví dụ.
+`src/data/lesson-authoring.ts` cung cấp hàm `unit()`, dùng cho **23/30 bài** (`everyday.ts`, `intermediate.ts`, `upper.ts`, `expert.ts`). DSL tham chiếu dòng hội thoại theo chỉ số thay vì lặp lại văn bản, nhưng đi kèm giả định cố định: đúng 2 ví dụ ngữ pháp (lấy từ 2 dòng hội thoại), đúng 1 cặp âm tối thiểu, và `opening`/`hint` luôn là nguyên văn dòng hội thoại 0/1.
 
-(Lịch sử: `a1.ts`/`advanced.ts` từng viết object `Lesson` trực tiếp — các file này đã được chuyển sang `unit()` để thống nhất toàn bộ 30 bài.)
+`a1.ts` và `advanced.ts` (8 bài) **cố ý viết object `Lesson` trực tiếp** vì nội dung của chúng không vừa khuôn đó: có bài dùng 3 ví dụ ngữ pháp, có bài dùng 2 cặp âm tối thiểu, và `opening`/`hint` là câu dẫn được biên soạn riêng (không trùng nguyên văn dòng hội thoại — ví dụ `hint` thường là một cụm dang dở gợi ý, không phải câu trả lời đầy đủ). Đây không phải nợ kỹ thuật cần dọn — đừng ép các bài này vào `unit()` chỉ để "thống nhất", việc đó sẽ làm mất ví dụ hoặc cặp âm thật sự có trong nội dung.
+
+Quy tắc chọn cách viết cho bài mới: nếu nội dung của bạn vừa đúng khuôn trên (2 ví dụ/1 cặp âm/opening-hint trùng dòng hội thoại), dùng `unit()`. Nếu cần nhiều ví dụ/cặp âm hơn, hoặc `opening`/`hint` cần viết riêng, viết trực tiếp object `Lesson` như `a1.ts`/`advanced.ts`.
 
 ## 3. Ngân hàng ngữ âm (`src/data/phonology.ts`)
 
