@@ -10,19 +10,21 @@ export type LanguageLab = {
   options: [string, string]
   answer: 0 | 1
   feedback: string
+  /** Set when this contrast is specifically about formality/address (tu/vous, neutral vs idiomatic…). */
+  axis?: 'register'
 }
 
 function lab(
   skill: Skill, rule: string, model: string, compare: string, why: string, transfer: string,
-  options: [string, string], answer: 0 | 1, feedback: string,
+  options: [string, string], answer: 0 | 1, feedback: string, axis?: 'register',
 ): LanguageLab {
-  return { skill, rule, model, compare, why, transfer, options, answer, feedback }
+  return { skill, rule, model, compare, why, transfer, options, answer, feedback, axis }
 }
 
 export const languageLabs: Record<string, LanguageLab> = {
   bonjour: lab('Nói', 'Gặp lần đầu, dùng je m’appelle rồi thêm tên. Đổi phần sau, giữ cả cụm đầu.',
     'Je m’appelle Linh. Et vous ?', 'Tu t’appelles comment ?', 'M’ đi với je, t’ đi với tu. Vous giữ cách nói lịch sự khi mới gặp người lớn hoặc khách hàng.',
-    'Bạn hỏi tên một khách hàng mới.', ['Comment vous appelez-vous ?', 'Comment tu t’appelles ?'], 0, 'Cả hai câu hỏi đều dùng được. Với khách mới, vous hợp hơn.'),
+    'Bạn hỏi tên một khách hàng mới.', ['Comment vous appelez-vous ?', 'Comment tu t’appelles ?'], 0, 'Cả hai câu hỏi đều dùng được. Với khách mới, vous hợp hơn.', 'register'),
   sons: lab('Nghe', 'Khi nghe tên, phân biệt tên chữ cái với âm mà chữ đó tạo ra trong một từ.',
     'Ça s’écrit J-U-L-I-E.', 'Julie se prononce /ʒy.li/.', 'Chữ J có tên /ʒi/. Trong Julie, âm đầu chỉ là /ʒ/. Khi cần chính tả, hãy xin đánh vần.',
     'Bạn nghe tên người kia nhưng chưa biết cách viết.', ['Vous pouvez épeler votre prénom ?', 'Vous pouvez parler plus fort ?'], 0, 'Épeler là nói tên từng chữ cái. Parler plus fort chỉ nhờ nói to hơn.'),
@@ -61,7 +63,7 @@ export const languageLabs: Record<string, LanguageLab> = {
     'Nêu một việc bạn đã xử lý thành công hôm qua.', ['Hier, je traitais des demandes en général.', 'Hier, j’ai résolu une demande urgente.'], 1, 'Câu sau xác định một yêu cầu và cho biết bạn đã giải quyết xong.'),
   courriel: lab('Viết', 'Chọn động từ theo người sẽ làm việc. Pourrions-nous cho đề xuất chung, pourriez-vous cho lời nhờ.',
     'Pourriez-vous confirmer le nouvel horaire ?', 'Pourrions-nous déplacer la réunion à lundi ?', 'Nous bao gồm người viết. Vous giao một việc rõ cho người nhận.',
-    'Bạn nhờ đồng nghiệp xác nhận một lịch đã đề xuất.', ['Pourriez-vous me confirmer ce créneau ?', 'Pourrions-nous prendre notre décision ensemble ?'], 0, 'Lời nhờ trực tiếp cần vous và động từ confirmer.'),
+    'Bạn nhờ đồng nghiệp xác nhận một lịch đã đề xuất.', ['Pourriez-vous me confirmer ce créneau ?', 'Pourrions-nous prendre notre décision ensemble ?'], 0, 'Lời nhờ trực tiếp cần vous và động từ confirmer.', 'register'),
   avis: lab('Nói', 'Nêu việc nên làm bằng on devrait, đưa lựa chọn bằng on pourrait và nói lý do.',
     'On devrait réserver, car il reste peu de places.', 'On pourrait choisir un autre jour.', 'Devrait là lời khuyên, pourrait mở ra lựa chọn. Đừng để người nghe phải đoán bạn muốn họ làm gì.',
     'Bạn muốn đưa một lựa chọn để nhóm cân nhắc.', ['On doit absolument partir ce soir.', 'On pourrait partir demain matin.'], 1, 'Pourrait đưa phương án, còn doit absolument mang sức nặng bắt buộc.'),
@@ -88,7 +90,7 @@ export const languageLabs: Record<string, LanguageLab> = {
     'Bạn yêu cầu nhóm kiểm tra con số trước khi gửi.', ['Il faut que nous vérifiions ce chiffre.', 'Il faut que nous vérifierons ce chiffre.'], 0, 'Sau il faut que dùng vérifiions, không dùng futur simple vérifierons.'),
   culture: lab('Nói', 'Nêu rõ nhóm bạn quan sát để tránh biến trải nghiệm riêng thành quy tắc chung.',
     'Dans mon ancienne équipe, on se tutoyait dès le premier jour.', 'Dans votre équipe, on se tutoie ou on se vouvoie ?', 'Nhắc nhóm cụ thể trước, sau đó hỏi cách dùng thực tế ở nơi mới.',
-    'Bạn mới vào một nhóm và chưa biết nên dùng tu hay vous.', ['Vous êtes français, donc je vais te tutoyer.', 'Dans votre équipe, comment vous adressez-vous les uns aux autres ?'], 1, 'Hỏi về nhóm cụ thể tốt hơn suy rộng theo quốc tịch.'),
+    'Bạn mới vào một nhóm và chưa biết nên dùng tu hay vous.', ['Vous êtes français, donc je vais te tutoyer.', 'Dans votre équipe, comment vous adressez-vous les uns aux autres ?'], 1, 'Hỏi về nhóm cụ thể tốt hơn suy rộng theo quốc tịch.', 'register'),
   critique: lab('Viết', 'Nêu cảm nhận và dẫn một chi tiết cụ thể để người đọc thấy căn cứ.',
     'Le début m’a semblé lent. Le conflit n’apparaît qu’à la fin du premier acte.', 'Je n’ai pas aimé le début.', 'Cả hai đều nêu cảm nhận. Chi tiết thời điểm xung đột xuất hiện làm nhận xét đầu dễ hiểu và kiểm tra hơn.',
     'Bạn muốn giải thích vì sao đoạn mở đầu thiếu nhịp.', ['Les dix premières minutes répètent la même information, ce qui ralentit le début.', 'Le début est mauvais, c’est évident.'], 0, 'Phương án đầu nối cảnh cụ thể với tác động lên nhịp câu chuyện.'),
@@ -97,13 +99,13 @@ export const languageLabs: Record<string, LanguageLab> = {
     'Người nói dùng “les données semblent aller dans ce sens”. Họ đang làm gì?', ['Khẳng định đã chứng minh giả thuyết.', 'Nêu xu hướng phù hợp nhưng chưa khẳng định.'], 1, 'Semblent là dấu hiệu giữ khoảng cách với kết luận chắc chắn.'),
   idiomes: lab('Nghe', 'Nghe cả cụm và tình huống để hiểu thành ngữ. Khi đổi văn phong, giữ ý rồi đổi cách nói.',
     'On va devoir mettre les bouchées doubles.', 'Nous devrons redoubler d’efforts.', 'Hai câu đều nói cần tăng nỗ lực. Câu sau dùng hình thức trung tính hơn khi cập nhật cho khách.',
-    'Bạn viết lại lời “on a du pain sur la planche” cho báo cáo.', ['Il nous reste beaucoup de travail.', 'Il nous reste du pain à préparer.'], 0, 'Thành ngữ nói còn nhiều việc, không nói về việc chuẩn bị bánh mì.'),
+    'Bạn viết lại lời “on a du pain sur la planche” cho báo cáo.', ['Il nous reste beaucoup de travail.', 'Il nous reste du pain à préparer.'], 0, 'Thành ngữ nói còn nhiều việc, không nói về việc chuẩn bị bánh mì.', 'register'),
   essai: lab('Viết', 'Thừa nhận điểm hợp lý của phản biện rồi chỉ ra điều lập luận của bạn vẫn giải thích được.',
     'Certes, le dispositif coûte cher. Il n’en demeure pas moins qu’il réduit les délais.', 'Le dispositif réduit les délais et son coût doit être précisé.', 'Certes đặt một giới hạn thật. Mệnh đề sau bảo vệ lợi ích cụ thể, không phủi bỏ giới hạn.',
     'Bạn thừa nhận chi phí cao nhưng lập luận rằng thời gian xử lý giảm.', ['Le coût est élevé, il n’y a donc rien à discuter.', 'Certes, le coût est élevé. Reste que le délai de traitement a diminué.'], 1, 'Reste que giữ phản biện về chi phí và nối lại với dữ kiện về thời gian.'),
   registre: lab('Viết', 'Chọn đại từ, động từ và mức lịch sự cùng lúc theo người nhận.',
     'Tu peux m’envoyer le doc ?', 'Pourriez-vous me transmettre le document ?', 'Đổi tu sang vous là một phần. Doc và transmettre cũng tạo cảm giác khác nhau.',
-    'Bạn nhờ một đối tác chưa quen gửi tài liệu trong thư trang trọng.', ['Vous pouvez me filer le doc ?', 'Pourriez-vous me transmettre le document ?'], 1, 'Transmettre le document giữ giọng phù hợp với lời nhờ trang trọng. Filer le doc vẫn thân mật.'),
+    'Bạn nhờ một đối tác chưa quen gửi tài liệu trong thư trang trọng.', ['Vous pouvez me filer le doc ?', 'Pourriez-vous me transmettre le document ?'], 1, 'Transmettre le document giữ giọng phù hợp với lời nhờ trang trọng. Filer le doc vẫn thân mật.', 'register'),
   synthese: lab('Đọc', 'Gộp thông tin theo câu hỏi chung, giữ rõ nguồn của từng kết luận và mức chắc chắn.',
     'Les deux sources relèvent un gain de temps. Seule la seconde observe un surcoût.', 'La première source présente plusieurs chiffres. La seconde parle d’un coût.', 'Câu đầu tổng hợp theo chủ đề và chỉ rõ nguồn của ý khác biệt. Câu sau chỉ liệt kê từng nguồn.',
     'Hai nguồn đồng ý về tốc độ, chỉ nguồn B nêu rủi ro tiếp cận.', ['Les deux analyses notent un gain de vitesse, mais la seconde alerte sur l’accès.', 'Les deux analyses concluent que l’accès se détériore.'], 0, 'Ghi nguồn B riêng cho nguy cơ về tiếp cận, tránh gộp quan điểm ngoài bằng chứng.'),

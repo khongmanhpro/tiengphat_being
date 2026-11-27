@@ -3,7 +3,8 @@ import { readFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { curriculum, lessons, lessonsAt, levels } from './index'
+import { curriculum, lessonsById, lessons, lessonsAt, levels } from './index'
+import { phonemeRules, phonologyByLesson } from './phonology'
 import voiceSamples from './voice-samples.json'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -59,6 +60,19 @@ describe('curriculum <-> lesson consistency', () => {
   it('every lesson belongs to the level its id is registered under', () => {
     for (const level of levels) for (const lesson of lessonsAt(level)) expect(lesson.level).toBe(level)
   })
+})
+
+describe('phonology bank', () => {
+  const ruleIds = new Set(phonemeRules.map(rule => rule.id))
+
+  it('has no duplicate rule ids', () => expect(ruleIds.size).toBe(phonemeRules.length))
+
+  for (const [lessonId, ids] of Object.entries(phonologyByLesson)) {
+    it(`"${lessonId}" is a real lesson id`, () => expect(lessonsById[lessonId]).toBeDefined())
+    for (const id of ids) {
+      it(`"${lessonId}" -> "${id}" resolves to a real phoneme rule`, () => expect(ruleIds.has(id)).toBe(true))
+    }
+  }
 })
 
 describe('voice sample audio files', () => {
