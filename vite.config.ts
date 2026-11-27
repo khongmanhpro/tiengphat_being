@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { Readable } from 'node:stream'
 import { defineConfig, loadEnv } from 'vite'
 import type { Connect } from 'vite'
@@ -31,5 +32,6 @@ export default defineConfig(({ mode }) => {
       configureServer(server) { server.middlewares.use(handleTutor) },
       configurePreviewServer(server) { server.middlewares.use(handleTutor) },
     }],
+    test: { environment: 'node' },
   }
 })

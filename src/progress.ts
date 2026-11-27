@@ -48,7 +48,7 @@ export type Progress = {
 }
 
 const key = 'tieng-phap-thuc-chien-v1'
-const initial: Progress = { start: 'A1', selected: 'bonjour', completed: [], steps: {}, work: {}, cards: {}, conversations: {}, assessments: {}, days: {}, speech: { sum: 0, count: 0 }, xp: 0, goal: 10, dark: false, name: '' }
+export const initial: Progress = { start: 'A1', selected: 'bonjour', completed: [], steps: {}, work: {}, cards: {}, conversations: {}, assessments: {}, days: {}, speech: { sum: 0, count: 0 }, xp: 0, goal: 10, dark: false, name: '' }
 
 function parseProgress(saved: string | null): Progress {
   if (!saved) return initial
