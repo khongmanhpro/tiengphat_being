@@ -69,4 +69,18 @@ export const conjugations: Record<string, ConjugationTable[]> = {
       note: 'Futur antérieur = futur simple của avoir/être + participe passé, chỉ việc sẽ hoàn tất trước một việc tương lai khác: quand j’aurai réservé la salle, je confirmerai la date.',
     },
   ],
+  // "subjonctif" (B2) contrasts indicatif (khẳng định) với subjonctif (điều cần thiết/nghi
+  // ngờ), dùng être (bất quy tắc) và vérifier (-er đều) — cả hai đều xuất hiện trong hội thoại.
+  subjonctif: [
+    {
+      verb: 'être', group: 'irregular', tense: 'Présent du subjonctif', level: 'B2',
+      forms: [['que je', 'sois'], ['que tu', 'sois'], ['qu’il / elle / on', 'soit'], ['que nous', 'soyons'], ['que vous', 'soyez'], ['qu’ils / elles', 'soient']],
+      note: 'Mọi mệnh đề subjonctif luôn có que/qu’ đứng trước. Gốc sois-/soy- là bất quy tắc, không liên quan tới hiện tại thường (suis, es, est…).',
+    },
+    {
+      verb: 'vérifier', group: '-er', tense: 'Présent du subjonctif', level: 'B2',
+      forms: [['que je', 'vérifie'], ['que tu', 'vérifies'], ['qu’il / elle / on', 'vérifie'], ['que nous', 'vérifiions'], ['que vous', 'vérifiiez'], ['qu’ils / elles', 'vérifient']],
+      note: 'Động từ đều: gốc lấy từ ils/elles ở hiện tại (vérifi-) + đuôi -e/-es/-e/-ions/-iez/-ent. Với các động từ -ier, que nous vérifiions viết giống hệt imparfait nous vérifiions — chỉ phân biệt được nhờ que đứng trước.',
+    },
+  ],
 }
