@@ -11,6 +11,38 @@ type Provider = { kind: 'openai' | 'gemini'; key: string; model: string }
 
 const response = (value: unknown, status = 200) => Response.json(value, { status, headers: { 'Cache-Control': 'no-store' } })
 
+const MINUTE_MS = 60_000
+const DAY_MS = 86_400_000
+const MINUTE_LIMIT = 8
+const DAY_LIMIT = 60
+
+/**
+ * Best-effort, per-instance request counter keyed by `oai-authenticated-user-id` — it resets
+ * whenever the server process/isolate restarts and isn't shared across instances, which is
+ * fine at the current scale (it still stops a single runaway client or tab loop). Swept
+ * lazily so memory doesn't grow unbounded across many distinct users over a long uptime.
+ */
+const requestLog = new Map<string, number[]>()
+let lastSweep = 0
+
+export function withinRateLimit(userId: string, now = Date.now()): boolean {
+  if (now - lastSweep >= MINUTE_MS) {
+    lastSweep = now
+    for (const [id, timestamps] of requestLog) {
+      const recent = timestamps.filter(time => now - time < DAY_MS)
+      if (recent.length) requestLog.set(id, recent); else requestLog.delete(id)
+    }
+  }
+  const timestamps = (requestLog.get(userId) ?? []).filter(time => now - time < DAY_MS)
+  if (timestamps.filter(time => now - time < MINUTE_MS).length >= MINUTE_LIMIT || timestamps.length >= DAY_LIMIT) {
+    requestLog.set(userId, timestamps)
+    return false
+  }
+  timestamps.push(now)
+  requestLog.set(userId, timestamps)
+  return true
+}
+
 function selectProvider(env: TutorEnvironment): Provider | undefined {
   if (env.TUTOR_OPENAI_API_KEY) return { kind: 'openai', key: env.TUTOR_OPENAI_API_KEY, model: env.TUTOR_OPENAI_MODEL || 'gpt-4.1-mini' }
   if (env.GEMINI_API_KEY) return { kind: 'gemini', key: env.GEMINI_API_KEY, model: env.GEMINI_MODEL || 'gemini-3.6-flash' }
@@ -70,6 +102,8 @@ export async function tutor(request: Request, env: TutorEnvironment, requireSign
   if (origin && new URL(request.url).origin !== origin) return response({ error: 'Hãy gửi yêu cầu từ trong ứng dụng.' }, 403)
   if (!authorized) return response({ error: 'Hãy đăng nhập để sử dụng gia sư AI.' }, 403)
   if (!provider) return response({ error: 'Gia sư AI chưa được bật. Bạn vẫn có thể dùng phần Luyện mẫu.' }, 503)
+  const userId = request.headers.get('oai-authenticated-user-id')
+  if (userId && !withinRateLimit(userId)) return response({ error: 'Bạn đã hỏi gia sư AI khá nhiều trong lúc này. Hãy thử lại sau ít phút.' }, 429)
   if (!request.headers.get('content-type')?.includes('application/json')) return response({ error: 'Yêu cầu phải dùng JSON.' }, 415)
   if (Number(request.headers.get('Content-Length')) > 18000) return response({ error: 'Đoạn hội thoại quá dài.' }, 413)
   const raw = await request.text()

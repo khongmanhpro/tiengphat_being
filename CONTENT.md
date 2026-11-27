@@ -66,7 +66,13 @@ Thêm tình huống mới vào `starterPractice` (title/detail tiếng Việt ng
 
 Không cần file âm thanh mới trong `public/voice/`: `AudioButton`/`speak()` tự rơi về giọng đọc tổng hợp của trình duyệt (`speechSynthesis`, giọng fr-FR) cho bất kỳ câu nào chưa có trong `voice-samples.json` — ghi âm thật chỉ là nâng cấp chất lượng giọng đọc, không phải điều kiện để tính năng chạy được.
 
-## 8. Kiểm tra trước khi commit nội dung mới
+## 8. Rate limit gia sư AI (`server/tutor.ts`)
+
+`withinRateLimit(userId)` giới hạn **8 request/phút** và **60 request/ngày** mỗi `oai-authenticated-user-id`, bằng một `Map` trong bộ nhớ của tiến trình/isolate — tự quét dọn các id đã hết hạn (không gọi lại trong 24h) mỗi phút để bộ nhớ không phình vô hạn. Đây là giới hạn **theo từng instance**, không đồng bộ giữa nhiều instance — đủ dùng ở quy mô hiện tại (chặn một client/tab chạy vòng lặp lỗi), không phải giới hạn phân tán tuyệt đối. Request không có header `oai-authenticated-user-id` (ví dụ khi chạy dev không bật đăng nhập) bỏ qua rate limit vì không có gì để gắn nhãn.
+
+Khi vượt ngưỡng, trả về đúng khuôn lỗi 429 đã dùng cho lỗi 429 từ nhà cung cấp AI (`{ error: string }`, status 429) — phía client (`Tutor.tsx`) không cần sửa gì để xử lý trường hợp này.
+
+## 9. Kiểm tra trước khi commit nội dung mới
 
 ```sh
 npm run check   # tsc --noEmit
