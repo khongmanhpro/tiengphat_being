@@ -66,6 +66,22 @@ export const phonemeRules: PhonemeRule[] = [
     tip: 'Enchaînement khác liaison: phụ âm cuối ở đây đã luôn được phát âm (không phải phụ âm câm), chỉ đơn giản lướt liền sang nguyên âm đầu từ sau mà không ngắt nhịp. Dans une heure có cả hai hiện tượng: dans nối sang une bằng liaison (s câm → /z/), còn une nối sang heure bằng enchaînement (n vốn đã phát âm).',
     examples: ['dans une heure → /dɑ̃.zy.nœʁ/'],
   },
+  {
+    id: 'rhythm-concession-certes-mais',
+    category: 'rhythm',
+    level: 'B2',
+    title: 'Ngữ điệu nhượng bộ ngắn: certes, mais…',
+    tip: 'Certes mở đầu bằng cách thừa nhận một điểm của người đối thoại — giọng hơi lên rồi dừng ngắn ở dấu phẩy. Ngay sau mais, giọng đổi hướng rõ để đưa ra điều người nói thực sự muốn nhấn mạnh. Nghe ra nhịp "lên rồi đổi hướng" này giúp nhận ra người nói sắp phản biện, dù câu chưa kết thúc.',
+    examples: ['Certes, mais la mesure risque de coûter cher à la ville.'],
+  },
+  {
+    id: 'rhythm-concession-il-nen-demeure',
+    category: 'rhythm',
+    level: 'C1',
+    title: 'Ngữ điệu nhượng bộ mở rộng: certes… / il n’en demeure pas moins que…',
+    tip: 'Khi nhượng bộ rồi bảo vệ lại luận điểm qua hai câu, giọng giữ mức trung tính ở mệnh đề nhượng bộ (certes…) rồi hạ xuống chắc chắn hơn ở mệnh đề khẳng định lại (il n’en demeure pas moins que…). Đây là cách triển khai đầy đủ hơn của cùng một kiểu nhượng bộ ngắn gọn certes, mais… đã gặp ở B2.',
+    examples: ['Certes, l’accès au matériel reste inégal. Il n’en demeure pas moins que ce format aide les personnes qui vivent loin des centres de formation.'],
+  },
 ]
 
 /** Additive, optional lookup: lessons not listed here simply have no linked phoneme rules yet. */
@@ -77,4 +93,6 @@ export const phonologyByLesson: Record<string, string[]> = {
   avis: ['liaison-nasal-determiner'],
   projets: ['liaison-nasal-determiner'],
   incident: ['enchainement-consonne-finale'],
+  actualites: ['rhythm-concession-certes-mais'],
+  essai: ['rhythm-concession-il-nen-demeure'],
 }
