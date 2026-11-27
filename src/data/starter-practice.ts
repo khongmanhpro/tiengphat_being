@@ -16,6 +16,18 @@ export const starterPractice = [
   { id: 'incident', title: 'Xử lý sự cố tàu xe', detail: 'Báo sự cố và xin đổi vé' },
   { id: 'projets', title: 'Lên kế hoạch tương lai', detail: 'Nói dự định và điều cần xong trước' },
   { id: 'logement', title: 'Tìm chỗ ở', detail: 'Hỏi chi phí và hẹn xem nhà' },
+  { id: 'actualites', title: 'Thảo luận tin tức', detail: 'Nêu lợi ích, giới hạn và đề xuất kiểm chứng' },
+  { id: 'negociation', title: 'Đàm phán với nhà cung cấp', detail: 'Từ chối giá và chấp nhận có điều kiện' },
+  { id: 'presentation', title: 'Thuyết trình kết quả khảo sát', detail: 'Dẫn dắt và nêu giới hạn của số liệu' },
+  { id: 'subjonctif', title: 'Thống nhất việc cần làm', detail: 'Diễn đạt nghi ngờ và việc cần thiết' },
+  { id: 'culture', title: 'Văn hóa công sở Pháp', detail: 'Giới hạn nhận xét và nói “còn tùy”' },
+  { id: 'critique', title: 'Nhận xét một bộ phim', detail: 'Khen, chê nhẹ nhàng và có dẫn chứng' },
+  { id: 'seminaire', title: 'Tranh luận học thuật', detail: 'Thận trọng hóa một kết luận nghiên cứu' },
+  { id: 'idiomes', title: 'Kể chuyện bằng thành ngữ', detail: 'Dùng và đổi thành ngữ sang lời trung tính' },
+  { id: 'essai', title: 'Bảo vệ luận điểm bài luận', detail: 'Nhượng bộ rồi bảo vệ lại luận điểm' },
+  { id: 'registre', title: 'Đổi văn phong theo đối tượng', detail: 'Nhờ việc thân mật và trang trọng' },
+  { id: 'synthese', title: 'Tổng hợp hai nguồn', detail: 'Nêu điểm chung và điểm khác biệt' },
+  { id: 'mediation', title: 'Điều phối bất đồng', detail: 'Diễn giải lại và đề xuất phương án' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -175,6 +187,114 @@ export const practiceCues: Record<string, Cue[][]> = {
     [
       { goal: 'Hỏi xin đến xem nhà', patterns: [/\bvisiter\b/], hint: 'Est-ce qu’on peut visiter samedi ?' },
       { goal: 'Đề xuất ngày cụ thể', patterns: [/\bsamedi\b/], hint: 'samedi' },
+    ],
+  ],
+  actualites: [
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à condition que" here
+      // follows a comma, so `(?:^|\s)` still matches via the preceding space.
+      { goal: 'Nêu lợi ích kèm điều kiện bằng à condition que', patterns: [/(?:^|\s)à condition que\b/], hint: 'Cela pourrait réduire l’usage de la voiture, à condition que les bus passent assez souvent.' },
+    ],
+    [
+      { goal: 'Đề xuất thử nghiệm trước', patterns: [/\bd'où l'intérêt de\b/], hint: 'D’où l’intérêt de commencer par une expérimentation.' },
+    ],
+  ],
+  negociation: [
+    [
+      { goal: 'Từ chối mức giá', patterns: [/\bnous ne pourrons pas\b/], hint: 'À ce tarif, nous ne pourrons pas donner suite.' },
+    ],
+    [
+      { goal: 'Chấp nhận có điều kiện bằng sous réserve que', patterns: [/\bsous réserve que\b/], hint: 'Cela nous conviendrait, sous réserve que la date soit confirmée par écrit.' },
+    ],
+  ],
+  presentation: [
+    [
+      { goal: 'Báo bước mở đầu bằng commencer par', patterns: [/\bje commencerai par\b/], hint: 'Je commencerai par présenter la méthode.' },
+    ],
+    [
+      { goal: 'Dẫn kết quả khảo sát bằng il ressort de…que', patterns: [/\bil ressort de\b/], hint: 'Il ressort de l’enquête que les délais posent le plus de problèmes.' },
+    ],
+    [
+      { goal: 'Nêu giới hạn và lý do thận trọng', patterns: [/\binterpréter avec prudence\b/], hint: 'Il faut les interpréter avec prudence : seuls cent clients ont répondu.' },
+    ],
+  ],
+  subjonctif: [
+    [
+      { goal: 'Diễn đạt nghi ngờ bằng ne pas penser que + subjonctif', patterns: [/\bje ne pense pas qu'il soit\b/, /\bje ne pense pas que\b/], hint: 'Je ne pense pas qu’il soit prêt.' },
+    ],
+    [
+      { goal: 'Nêu việc cần làm bằng il faut que + subjonctif', patterns: [/\bil faut que\b/], hint: 'Il faut que nous vérifiions les chiffres.' },
+    ],
+  ],
+  culture: [
+    [
+      { goal: 'Giới hạn nhận xét theo một nhóm cụ thể', patterns: [/\bdans mon ancienne équipe\b/], hint: 'Dans mon ancienne équipe, on se saluait avant de commencer.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Nói còn tùy bằng ça dépend de', patterns: [/(?:^|\s)ça dépend\b/], hint: 'Ça dépend du milieu et des personnes.' },
+    ],
+  ],
+  critique: [
+    [
+      { goal: 'Nhấn mạnh điểm thích bằng ce qui…c’est', patterns: [/\bce qui m'a plu\b/], hint: 'Ce qui m’a plu, c’est le jeu des acteurs.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "semblé" ends in é.
+      { goal: 'Nhận xét nhẹ nhàng bằng m’a semblé', patterns: [/\bm'a semblé(?=\s|$)/], hint: 'Le dénouement m’a semblé un peu précipité.' },
+    ],
+  ],
+  seminaire: [
+    [
+      { goal: 'Đề nghị diễn đạt thận trọng hơn bằng il convient de', patterns: [/\bil convient de\b/], hint: 'Il convient de la nuancer, dans la mesure où les participants se sont portés volontaires.' },
+    ],
+    [
+      { goal: 'Nêu một yêu cầu còn phải đáp ứng bằng encore faut-il', patterns: [/\bencore faut-il\b/], hint: 'Encore faut-il distinguer la corrélation observée d’un effet causal.' },
+    ],
+  ],
+  idiomes: [
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "joué" ends in é.
+      { goal: 'Thừa nhận chậm tiến độ nhưng chưa ngã ngũ', patterns: [/\brien n'est joué(?=\s|$)/], hint: 'On a pris du retard, mais rien n’est joué.' },
+    ],
+    [
+      { goal: 'Đề xuất đoàn kết bằng thành ngữ se serrer les coudes', patterns: [/\bse serrer? les coudes\b/], hint: 'On peut s’en sortir si on se serre les coudes.' },
+    ],
+  ],
+  essai: [
+    [
+      // Leading `\b` doesn't work before an accented first letter — "élargit" starts with é.
+      { goal: 'Nêu luận điểm chính', patterns: [/(?:^|\s)élargit l'accès\b/], hint: 'L’enseignement à distance élargit l’accès à la formation.' },
+    ],
+    [
+      { goal: 'Nhượng bộ một giới hạn bằng certes', patterns: [/\bcertes\b/], hint: 'Certes, l’accès au matériel reste inégal.' },
+    ],
+    [
+      { goal: 'Khẳng định lại luận điểm bằng il n’en demeure pas moins que', patterns: [/\bil n'en demeure pas moins que\b/], hint: 'Il n’en demeure pas moins que ce format aide les personnes qui vivent loin des centres de formation.' },
+    ],
+  ],
+  registre: [
+    [
+      { goal: 'Nhờ việc một cách thân mật', patterns: [/\btu peux me passer\b/], hint: 'Tu peux me passer le doc quand tu as deux minutes ?' },
+    ],
+    [
+      { goal: 'Nhờ việc một cách trang trọng', patterns: [/\bpourriez-vous me transmettre\b/], hint: 'Pourriez-vous me transmettre le document quand vous en aurez la possibilité ?' },
+    ],
+  ],
+  synthese: [
+    [
+      { goal: 'Nêu điểm chung bằng toutes deux', patterns: [/\btoutes deux\b/], hint: 'Toutes deux relèvent une baisse du temps de trajet.' },
+    ],
+    [
+      { goal: 'Nêu điểm khác nhau và giữ rõ nguồn bằng tandis que', patterns: [/\btandis que\b/], hint: 'La première souligne un gain d’autonomie, tandis que la seconde insiste sur l’isolement.' },
+    ],
+  ],
+  mediation: [
+    [
+      { goal: 'Diễn giải lại để xác nhận bằng si je vous comprends bien', patterns: [/\bsi je vous comprends bien\b/], hint: 'Si je vous comprends bien, votre priorité est le délai.' },
+    ],
+    [
+      { goal: 'Đề xuất phương án mở bằng pourrions-nous envisager', patterns: [/\bpourrions-nous envisager\b/], hint: 'Pourrions-nous envisager un lancement limité ?' },
     ],
   ],
 }
