@@ -62,6 +62,11 @@ export const starterPractice = [
   { id: 'ville_comparaison', title: 'So sánh hai thành phố', detail: 'So sánh bằng plus/moins/meilleur' },
   { id: 'plainte_a2', title: 'Phàn nàn dịch vụ khách sạn', detail: 'Nêu vấn đề và nói thiếu gì' },
   { id: 'fete', title: 'Lên kế hoạch tổ chức tiệc', detail: 'Thống nhất và phân công việc' },
+  { id: 'remise', title: 'Xin giảm giá', detail: 'Đề nghị lịch sự và thương lượng' },
+  { id: 'trajet', title: 'Sự cố trên đường đi làm', detail: 'Giải thích lý do đến trễ' },
+  { id: 'emprunt', title: 'Mượn đồ hàng xóm', detail: 'Xin mượn lịch sự và hứa trả lại' },
+  { id: 'ecole_enfant', title: 'Việc học của con', detail: 'Điểm mạnh và điểm cần cải thiện' },
+  { id: 'hobby', title: 'Sở thích chi tiết', detail: 'Bắt đầu, lý do và tần suất' },
   { id: 'reclamation', title: 'Phàn nàn về sản phẩm', detail: 'Mô tả vấn đề và đề xuất giải pháp' },
   { id: 'etudes_projet', title: 'Kế hoạch học tiếp', detail: 'Nói dự định và điều kiện để xảy ra' },
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
@@ -687,6 +692,65 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nhận lời giúp đỡ', patterns: [/\bavec plaisir\b/], hint: 'Avec plaisir, ce serait super si tu pouvais.' },
+    ],
+  ],
+  remise: [
+    [
+      { goal: 'Xin giảm giá bằng vous pourriez faire une remise', patterns: [/\bvous pourriez faire une petite remise\b/], hint: 'C’est un peu cher pour moi. Vous pourriez faire une petite remise ?' },
+    ],
+    [
+      { goal: 'Đề xuất điều kiện bằng ce serait possible de', patterns: [/\bce serait possible d'avoir plus\b/], hint: 'Et si je paie en espèces, ce serait possible d’avoir plus ?' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Xác nhận chốt giá bằng ça me convient', patterns: [/(?:^|\s)ça me convient\b/], hint: 'D’accord, ça me convient.' },
+    ],
+  ],
+  trajet: [
+    [
+      { goal: 'Kể sự việc bằng il y a eu', patterns: [/\bil y a eu\b/], hint: 'Désolée, il y a eu un problème sur la ligne, le train s’est arrêté pendant vingt minutes.' },
+    ],
+    [
+      { goal: 'Nói tần suất bằng de temps en temps', patterns: [/\bde temps en temps\b/], hint: 'De temps en temps, surtout aux heures de pointe.' },
+    ],
+    [
+      // Pattern kết thúc bằng "sécurité" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Nói sẽ phòng ngừa bằng une marge de sécurité', patterns: [/\bune marge de sécurité(?=\s|$)/], hint: 'Oui, je vais prévoir une marge de sécurité.' },
+    ],
+  ],
+  emprunt: [
+    [
+      { goal: 'Xin mượn bằng je pourrais vous emprunter', patterns: [/\bje pourrais vous emprunter\b/], hint: 'Bonjour, est-ce que je pourrais vous emprunter une échelle ?' },
+    ],
+    [
+      { goal: 'Nói lý do mượn bằng pour accrocher des rideaux', patterns: [/\bpour accrocher des rideaux\b/], hint: 'Pour accrocher des rideaux, ce ne sera pas long.' },
+    ],
+    [
+      { goal: 'Hứa trả lại bằng je vous la rends', patterns: [/\bje vous la rends\b/], hint: 'Merci beaucoup, je vous la rends demain matin.' },
+    ],
+  ],
+  ecole_enfant: [
+    [
+      { goal: 'Nói khó khăn bằng avoir un peu de mal en', patterns: [/\belle a un peu de mal en mathématiques\b/], hint: 'Plutôt bien, mais elle a un peu de mal en mathématiques.' },
+    ],
+    [
+      { goal: 'Nói điểm mạnh bằng elle adore lire à voix haute', patterns: [/\belle adore lire à voix haute\b/], hint: 'Oui, elle adore lire à voix haute devant les autres.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nhận lời giúp đỡ bằng ça l’aiderait beaucoup', patterns: [/(?:^|\s)ça l'aiderait beaucoup\b/], hint: 'Avec plaisir, ça l’aiderait beaucoup.' },
+    ],
+  ],
+  hobby: [
+    [
+      { goal: 'Nói thời gian bằng depuis environ un an', patterns: [/\bdepuis environ un an\b/], hint: 'Oui, je fais de la poterie depuis environ un an.' },
+    ],
+    [
+      // Pattern kết thúc bằng "accroché" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Nói đã thích ngay bằng j’ai tout de suite accroché', patterns: [/\bj'ai tout de suite accroché(?=\s|$)/], hint: 'Une amie m’a invitée à un atelier, et j’ai tout de suite accroché.' },
+    ],
+    [
+      { goal: 'Nói tần suất bằng selon mon emploi du temps', patterns: [/\bselon mon emploi du temps\b/], hint: 'Deux ou trois fois, selon mon emploi du temps.' },
     ],
   ],
   itineraire: [

@@ -51,6 +51,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['ville_comparaison', 'So sánh hai thành phố', 'map', 'So sánh nơi ở hiện tại với một nơi trước đây'],
     ['plainte_a2', 'Phàn nàn dịch vụ khách sạn', 'bag', 'Nêu vấn đề và nói thiếu gì một cách lịch sự'],
     ['fete', 'Lên kế hoạch tổ chức tiệc', 'coffee', 'Thống nhất địa điểm, số khách và phân công'],
+    ['remise', 'Xin giảm giá', 'bag', 'Đề nghị giảm giá lịch sự và thương lượng'],
+    ['trajet', 'Sự cố trên đường đi làm', 'map', 'Giải thích lý do đến trễ và cam kết cải thiện'],
+    ['emprunt', 'Mượn đồ hàng xóm', 'people', 'Xin mượn đồ lịch sự và hứa trả lại'],
+    ['ecole_enfant', 'Việc học của con', 'book', 'Trao đổi với giáo viên về điểm mạnh, điểm yếu'],
+    ['hobby', 'Sở thích chi tiết', 'heart', 'Kể một sở thích: bắt đầu, lý do và tần suất'],
   ] },
   B1: { name: 'Trung cấp', description: 'Diễn đạt ý kiến, kể trải nghiệm và ứng phó khi có thay đổi.', topics: [
     ['emploi', 'Công việc & phỏng vấn', 'bag', 'Kể về kinh nghiệm và trình bày một điểm mạnh'],
