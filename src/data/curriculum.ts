@@ -29,6 +29,10 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['perdu', 'Báo mất đồ', 'bag', 'Báo mất một món đồ và những gì cần xử lý'],
     ['projet_vacances', 'Dự định nghỉ hè', 'map', 'Kể dự định đi đâu, bao lâu và đã chuẩn bị gì'],
     ['sport', 'Thể thao yêu thích', 'heart', 'Nói về môn thể thao mình chơi, tần suất và từ bao lâu'],
+    ['supermarche', 'Đi siêu thị', 'bag', 'Hỏi khu hàng và giờ đóng cửa'],
+    ['presenter', 'Giới thiệu người khác', 'people', 'Giới thiệu bạn, nghề nghiệp và cách quen nhau'],
+    ['heure_rdv', 'Đổi giờ hẹn', 'clock', 'Đề xuất giờ mới và xác nhận địa điểm'],
+    ['vetements', 'Mua quần áo & hỏi size', 'bag', 'Hỏi thử đồ theo cỡ và màu sắc khác'],
   ] },
   A2: { name: 'Sơ cấp', description: 'Xử lý các tình huống quen thuộc và kể về cuộc sống của bạn.', topics: [
     ['hotel', 'Đặt phòng khách sạn', 'bag', 'Kiểm tra phòng trống và xác nhận lượt đặt'],

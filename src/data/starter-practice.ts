@@ -48,6 +48,10 @@ export const starterPractice = [
   { id: 'perdu', title: 'Báo mất đồ', detail: 'Mô tả bên trong và cách xử lý' },
   { id: 'projet_vacances', title: 'Dự định nghỉ hè', detail: 'Đi đâu, bao lâu và đã chuẩn bị gì' },
   { id: 'sport', title: 'Thể thao yêu thích', detail: 'Tần suất chơi và từ bao lâu' },
+  { id: 'supermarche', title: 'Đi siêu thị', detail: 'Hỏi khu hàng và giờ đóng cửa' },
+  { id: 'presenter', title: 'Giới thiệu người khác', detail: 'Tên, nghề nghiệp và cách quen nhau' },
+  { id: 'heure_rdv', title: 'Đổi giờ hẹn', detail: 'Đề xuất giờ mới và xác nhận địa điểm' },
+  { id: 'vetements', title: 'Mua quần áo & hỏi size', detail: 'Thử đồ theo cỡ và màu sắc khác' },
   { id: 'velo', title: 'Thuê xe đạp', detail: 'Thuê theo thời gian và báo sự cố' },
   { id: 'pharmacie', title: 'Ở hiệu thuốc', detail: 'Mô tả triệu chứng và hỏi liều dùng' },
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
@@ -582,6 +586,51 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói thời gian bắt đầu bằng depuis', patterns: [/\bdepuis l'enfance\b/], hint: 'Depuis l’enfance, en fait.' },
+    ],
+  ],
+  supermarche: [
+    [
+      { goal: 'Hỏi khu hàng bằng le rayon des', patterns: [/\ble rayon des\b/], hint: 'Oui, je cherche le rayon des produits laitiers.' },
+    ],
+    [
+      { goal: 'Hỏi giờ đóng cửa bằng ferment à quelle heure', patterns: [/\bferment à quelle heure\b/], hint: 'Merci. Et les caisses, elles ferment à quelle heure ?' },
+    ],
+    [
+      { goal: 'Nói có đủ thời gian bằng largement le temps', patterns: [/\blargement le temps\b/], hint: 'Parfait, j’ai largement le temps.' },
+    ],
+  ],
+  presenter: [
+    [
+      { goal: 'Giới thiệu bạn bằng je te présente', patterns: [/\bje te présente\b/], hint: 'Oui, je te présente Marc, il est italien.' },
+    ],
+    [
+      // "à" đứng cuối cụm (trước tên thành phố) — \b sau à không khớp vì à không thuộc \w, dùng (?=\s|$).
+      { goal: 'Nói nghề nghiệp và nơi làm việc bằng il travaille à', patterns: [/\bil travaille à(?=\s|$)/], hint: 'Il est architecte, il travaille à Lyon.' },
+    ],
+    [
+      { goal: 'Nói đã quen nhau ở đâu bằng on s’est rencontrés', patterns: [/\bon s'est rencontrés\b/], hint: 'Oui, on s’est rencontrés à l’université.' },
+    ],
+  ],
+  heure_rdv: [
+    [
+      { goal: 'Đề nghị giờ khác bằng je préférerais', patterns: [/\bje préférerais\b/], hint: 'En fait, je préférerais un peu plus tard, si possible.' },
+    ],
+    [
+      { goal: 'Xác nhận giờ mới bằng c’est parfait pour moi', patterns: [/\bc'est parfait pour moi\b/], hint: 'Oui, quinze heures, c’est parfait pour moi.' },
+    ],
+    [
+      { goal: 'Xác nhận địa điểm bằng comme on avait dit', patterns: [/\bcomme on avait dit\b/], hint: 'Oui, devant la gare, comme on avait dit.' },
+    ],
+  ],
+  vetements: [
+    [
+      { goal: 'Nói cỡ muốn thử bằng en taille', patterns: [/\ben taille\b/], hint: 'Oui, je voudrais essayer cette veste, en taille M.' },
+    ],
+    [
+      { goal: 'Hỏi màu khác bằng vous l’avez aussi en', patterns: [/\bvous l'avez aussi en\b/], hint: 'Merci. Est-ce que vous l’avez aussi en bleu ?' },
+    ],
+    [
+      { goal: 'Cảm ơn bằng merci beaucoup', patterns: [/\bmerci beaucoup\b/], hint: 'Super, merci beaucoup.' },
     ],
   ],
   apparence: [
