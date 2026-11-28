@@ -110,6 +110,11 @@ export const starterPractice = [
   { id: 'politique_env', title: 'Tranh luận chính sách môi trường', detail: 'Thừa nhận lo ngại, nêu điều kiện' },
   { id: 'immigration_respect', title: 'Bàn chủ đề nhạy cảm tôn trọng', detail: 'Tôn trọng quan điểm khác biệt' },
   { id: 'publicite', title: 'Phân tích quảng cáo', detail: 'Kỹ thuật thuyết phục và hiệu quả' },
+  { id: 'pitch_projet', title: 'Thuyết trình dự án', detail: 'Lợi ích dự kiến bằng permettrait de, dont' },
+  { id: 'clause_contrat', title: 'Điều khoản hợp đồng', detail: 'Thương lượng bằng celle qui, quitte à' },
+  { id: 'argumentaire_email', title: 'Email lập luận', detail: 'Nhượng bộ rồi phản biện' },
+  { id: 'reunion_desaccord', title: 'Bất đồng lịch sự trong họp', detail: 'Xin phép nêu ý khác' },
+  { id: 'retour_experience', title: 'Báo cáo rút kinh nghiệm', detail: 'Rút kinh nghiệm bằng on aurait pu' },
   { id: 'discours_formel', title: 'Phát biểu trang trọng', detail: 'Mở đầu, cảm ơn và chuyển ý' },
   { id: 'questions_hostiles', title: 'Xử lý câu hỏi gay gắt', detail: 'Thừa nhận rồi bổ sung bình tĩnh' },
   { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
@@ -1156,6 +1161,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Giải thích chủ đích', patterns: [/\bc'est sans doute voulu\b/], hint: 'C’est vrai, mais c’est sans doute voulu pour marquer les esprits.' },
+    ],
+  ],
+  pitch_projet: [
+    [
+      { goal: 'Nói lợi ích bằng permettrait de', patterns: [/\bce projet permettrait de réduire nos coûts logistiques\b/], hint: 'En résumé, ce projet permettrait de réduire nos coûts logistiques de quinze pour cent dès la première année.' },
+    ],
+    [
+      { goal: 'Nêu cơ sở bằng dont les résultats', patterns: [/\bdont les résultats dépassaient nos prévisions initiales\b/], hint: 'Sur un test pilote mené le trimestre dernier, dont les résultats dépassaient nos prévisions initiales.' },
+    ],
+    [
+      { goal: 'Nói thiết kế linh hoạt bằng conçu pour s’adapter', patterns: [/\ble modèle a justement été conçu pour s'adapter à plusieurs scénarios\b/], hint: 'Le modèle a justement été conçu pour s’adapter à plusieurs scénarios, y compris les moins favorables.' },
+    ],
+  ],
+  clause_contrat: [
+    [
+      { goal: 'Nêu điều khoản bằng celle qui stipule', patterns: [/\bcelle qui stipule qu'on ne peut pas résilier avant deux ans\b/], hint: 'Oui, celle qui stipule qu’on ne peut pas résilier avant deux ans me semble trop contraignante.' },
+    ],
+    [
+      { goal: 'Đề xuất thương lượng bằng je préférerais qu’on négocie', patterns: [/\bje préférerais qu'on négocie une clause de sortie anticipée\b/], hint: 'Peut-être, mais je préférerais qu’on négocie une clause de sortie anticipée, quitte à payer une pénalité.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nêu điều kiện bằng à condition que ce soit stipulé', patterns: [/(?:^|\s)ça se négocie à condition que ce soit stipulé noir sur blanc\b/], hint: 'Ça se négocie, à condition que ce soit stipulé noir sur blanc dès le départ.' },
+    ],
+  ],
+  argumentaire_email: [
+    [
+      { goal: 'Nhượng bộ bằng cependant', patterns: [/\bje comprends vos réserves cependant les chiffres parlent plutôt en faveur du changement\b/], hint: 'Je comprends vos réserves, cependant les chiffres parlent plutôt en faveur du changement.' },
+    ],
+    [
+      { goal: 'Dự báo tài chính bằng serait amorti', patterns: [/\bce coût serait amorti en moins d'un an\b/], hint: 'C’est vrai, néanmoins ce coût serait amorti en moins d’un an, d’après nos estimations.' },
+    ],
+    [
+      { goal: 'Phản biện bằng raison de plus pour', patterns: [/\braison de plus pour les accompagner progressivement\b/], hint: 'Raison de plus pour les accompagner progressivement, plutôt que d’imposer le changement du jour au lendemain.' },
+    ],
+  ],
+  reunion_desaccord: [
+    [
+      { goal: 'Xin phép bằng si vous me permettez de', patterns: [/\bsi vous me permettez d'apporter une nuance\b/], hint: 'Pas tout à fait, si vous me permettez d’apporter une nuance.' },
+    ],
+    [
+      { goal: 'Nêu lo ngại bằng la méthode me paraît risquée', patterns: [/\bla méthode me paraît risquée à ce stade\b/], hint: 'Je ne remets pas en cause l’objectif, simplement la méthode me paraît risquée à ce stade.' },
+    ],
+    [
+      { goal: 'Đề xuất bằng je suggérerais qu’on teste', patterns: [/\bje suggérerais qu'on teste d'abord sur un échantillon réduit\b/], hint: 'Je suggérerais qu’on teste d’abord sur un échantillon réduit, histoire de limiter les risques.' },
+    ],
+  ],
+  retour_experience: [
+    [
+      { goal: 'Rút kinh nghiệm bằng on aurait pu mieux anticiper', patterns: [/\bon aurait pu mieux anticiper certains retards\b/], hint: 'Globalement positif, même si on aurait pu mieux anticiper certains retards.' },
+    ],
+    [
+      { goal: 'Nêu bài học bằng il vaut mieux impliquer', patterns: [/\bil vaut mieux impliquer les équipes techniques dès le départ\b/], hint: 'Qu’il vaut mieux impliquer les équipes techniques dès le départ, plutôt que de les consulter trop tard.' },
+    ],
+    [
+      { goal: 'Nói sẽ thay đổi bằng je planifierais une marge de sécurité', patterns: [/\bje planifierais une marge de sécurité plus large\b/], hint: 'Je planifierais une marge de sécurité plus large, quitte à paraître trop prudente.' },
     ],
   ],
   velo: [

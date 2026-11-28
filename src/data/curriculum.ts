@@ -115,6 +115,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['politique_env', 'Tranh luận chính sách môi trường', 'people', 'Thừa nhận lo ngại và nêu điều kiện chấp nhận'],
     ['immigration_respect', 'Bàn chủ đề nhạy cảm tôn trọng', 'people', 'Tôn trọng quan điểm khác và gắn ý kiến với selon moi'],
     ['publicite', 'Phân tích quảng cáo', 'message', 'Nhận diện kỹ thuật thuyết phục và đánh giá hiệu quả'],
+    ['pitch_projet', 'Thuyết trình dự án', 'briefcase', 'Trình bày lợi ích dự kiến bằng permettrait de, dont'],
+    ['clause_contrat', 'Điều khoản hợp đồng', 'book', 'Thương lượng điều khoản bằng celle qui, quitte à'],
+    ['argumentaire_email', 'Email lập luận', 'message', 'Nhượng bộ rồi phản biện bằng cependant, néanmoins'],
+    ['reunion_desaccord', 'Bất đồng lịch sự trong họp', 'people', 'Xin phép nêu ý khác bằng si vous me permettez de'],
+    ['retour_experience', 'Báo cáo rút kinh nghiệm', 'briefcase', 'Rút kinh nghiệm bằng on aurait pu + nguyên mẫu'],
   ] },
   C1: { name: 'Nâng cao', description: 'Xây dựng lập luận chặt chẽ và điều chỉnh giọng điệu theo ngữ cảnh.', topics: [
     ['seminaire', 'Tranh luận học thuật', 'people', 'Chất vấn giả thuyết và diễn đạt mức độ chắc chắn'],
