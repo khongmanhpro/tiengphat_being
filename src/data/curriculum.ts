@@ -125,6 +125,10 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['reseaux_sociaux', 'Ảnh hưởng mạng xã hội', 'message', 'Nêu khả năng bằng risquer de, tout dépend de'],
     ['sondage', 'Trình bày khảo sát', 'book', 'Nhượng bộ bằng encore que + subjonctif'],
     ['gestion_conflit', 'Xử lý xung đột nhóm', 'people', 'Đề xuất bằng quitte à ce que + subjonctif'],
+    ['proposition_budget', 'Bảo vệ đề xuất ngân sách', 'briefcase', 'Nêu ưu tiên bằng je privilégierais'],
+    ['critique_constructive_prof', 'Góp ý khóa học', 'book', 'Hỏi tiếc nuối bằng vous auriez préféré que'],
+    ['lettre_reclamation_produit', 'Khiếu nại sản phẩm', 'bag', 'Mô tả lỗi bằng dont, giải thích bằng dans la mesure où'],
+    ['tendance_marche', 'Xu hướng thị trường', 'briefcase', 'Nhấn mạnh bằng le fait que + subjonctif'],
   ] },
   C1: { name: 'Nâng cao', description: 'Xây dựng lập luận chặt chẽ và điều chỉnh giọng điệu theo ngữ cảnh.', topics: [
     ['seminaire', 'Tranh luận học thuật', 'people', 'Chất vấn giả thuyết và diễn đạt mức độ chắc chắn'],

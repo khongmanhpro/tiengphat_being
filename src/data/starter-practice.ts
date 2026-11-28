@@ -120,6 +120,10 @@ export const starterPractice = [
   { id: 'reseaux_sociaux', title: 'Ảnh hưởng mạng xã hội', detail: 'Nêu khả năng bằng risquer de' },
   { id: 'sondage', title: 'Trình bày khảo sát', detail: 'Nhượng bộ bằng encore que' },
   { id: 'gestion_conflit', title: 'Xử lý xung đột nhóm', detail: 'Đề xuất bằng quitte à ce que' },
+  { id: 'proposition_budget', title: 'Bảo vệ đề xuất ngân sách', detail: 'Nêu ưu tiên bằng je privilégierais' },
+  { id: 'critique_constructive_prof', title: 'Góp ý khóa học', detail: 'Hỏi tiếc nuối bằng vous auriez préféré que' },
+  { id: 'lettre_reclamation_produit', title: 'Khiếu nại sản phẩm', detail: 'Mô tả lỗi bằng dont' },
+  { id: 'tendance_marche', title: 'Xu hướng thị trường', detail: 'Nhấn mạnh bằng le fait que' },
   { id: 'discours_formel', title: 'Phát biểu trang trọng', detail: 'Mở đầu, cảm ơn và chuyển ý' },
   { id: 'questions_hostiles', title: 'Xử lý câu hỏi gay gắt', detail: 'Thừa nhận rồi bổ sung bình tĩnh' },
   { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
@@ -1281,6 +1285,51 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nêu điều kiện bằng pourvu que', patterns: [/\bpourvu qu'elle se tienne dans un cadre neutre sans prendre parti\b/], hint: 'Avec plaisir, pourvu qu’elle se tienne dans un cadre neutre, sans prendre parti.' },
+    ],
+  ],
+  proposition_budget: [
+    [
+      { goal: 'Giải thích biện pháp phòng ngừa bằng il tient compte de', patterns: [/\bil tient compte d'une marge de sécurité que nous n'avions pas l'an dernier\b/], hint: 'Je comprends, mais il tient compte d’une marge de sécurité que nous n’avions pas l’an dernier.' },
+    ],
+    [
+      { goal: 'Giải thích lý do bằng raison pour laquelle', patterns: [/\braison pour laquelle je propose un suivi mensuel\b/], hint: 'Si, raison pour laquelle je propose un suivi mensuel plutôt qu’un bilan unique en fin d’année.' },
+    ],
+    [
+      { goal: 'Nêu ưu tiên bằng je privilégierais', patterns: [/\bje privilégierais la formation plutôt que les déplacements\b/], hint: 'Dans ce cas, je privilégierais la formation plutôt que les déplacements, quitte à revoir le calendrier.' },
+    ],
+  ],
+  critique_constructive_prof: [
+    [
+      { goal: 'Khen và nêu điểm cần cải thiện bằng même si', patterns: [/\bj'ai beaucoup appris même si le rythme m'a parfois semblé trop soutenu\b/], hint: 'Globalement très utile, j’ai beaucoup appris, même si le rythme m’a parfois semblé trop soutenu.' },
+    ],
+    [
+      { goal: 'So sánh mức độ bằng plus...que...', patterns: [/\bqu'on a survolée plus qu'approfondie\b/], hint: 'Oui, notamment sur la grammaire avancée, qu’on a survolée plus qu’approfondie.' },
+    ],
+    [
+      { goal: 'Khen thêm bằng les exercices étaient bien pensés', patterns: [/\bles exercices pratiques étaient vraiment bien pensés\b/], hint: 'Avec plaisir, et sinon, les exercices pratiques étaient vraiment bien pensés.' },
+    ],
+  ],
+  lettre_reclamation_produit: [
+    [
+      { goal: 'Mô tả lỗi bằng dont le moteur', patterns: [/\bdont le moteur s'est arrêté dès la deuxième utilisation\b/], hint: 'Un aspirateur commandé il y a trois semaines, dont le moteur s’est arrêté dès la deuxième utilisation.' },
+    ],
+    [
+      { goal: 'Giải thích lý do bằng dans la mesure où', patterns: [/\bdans la mesure où j'ai perdu confiance dans ce modèle\b/], hint: 'Un remboursement, de préférence, dans la mesure où j’ai perdu confiance dans ce modèle.' },
+    ],
+    [
+      { goal: 'Xác nhận sẽ xử lý bằng dès que', patterns: [/\bje m'en occupe dès que j'aurai imprimé l'étiquette de retour\b/], hint: 'Très bien, je m’en occupe dès que j’aurai imprimé l’étiquette de retour.' },
+    ],
+  ],
+  tendance_marche: [
+    [
+      { goal: 'Giải thích bằng dans la mesure où', patterns: [/\belle s'accompagne d'un changement d'habitude\b/], hint: 'Elle semble durable, dans la mesure où elle s’accompagne d’un changement d’habitude, pas d’un simple effet de mode.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh bằng le fait que', patterns: [/\ble fait que la croissance se maintienne même après la fin des promotions\b/], hint: 'Le fait que la croissance se maintienne même après la fin des promotions est plutôt révélateur.' },
+    ],
+    [
+      // Pattern bắt đầu bằng à và kết thúc bằng "marché" (chữ cuối é không thuộc \w) — dùng cả (?:^|\s) và (?=\s|$).
+      { goal: 'Nêu ngoại lệ bằng à moins que', patterns: [/(?:^|\s)à moins qu'un concurrent majeur n'entre sur ce marché(?=\s|$)/], hint: 'C’est vrai, mais à moins qu’un concurrent majeur n’entre sur ce marché, je ne vois pas ce qui inverserait la tendance.' },
     ],
   ],
   velo: [

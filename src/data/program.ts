@@ -48,7 +48,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Bảo vệ một đề xuất, thừa nhận phản biện và đưa cách xử lý.',
       Viết: 'Viết lập luận có bố cục, sử dụng dữ liệu và đặt giới hạn cho kết luận.',
     },
-    blocks: ['Kiểm tra lập luận và thương lượng', 'Thuyết trình và nêu điều kiện', 'Sắc thái văn hóa và đánh giá', 'Tranh luận và email trang trọng', 'Lựa chọn công việc và số liệu', 'Tình huống đạo đức và góp ý', 'Chính sách làm việc và môi trường', 'Chủ đề nhạy cảm và quảng cáo', 'Thuyết trình dự án và hợp đồng', 'Email lập luận và họp bất đồng', 'Rút kinh nghiệm và phỏng vấn', 'Nhận xét sách và mạng xã hội', 'Khảo sát và xử lý xung đột'],
+    blocks: ['Kiểm tra lập luận và thương lượng', 'Thuyết trình và nêu điều kiện', 'Sắc thái văn hóa và đánh giá', 'Tranh luận và email trang trọng', 'Lựa chọn công việc và số liệu', 'Tình huống đạo đức và góp ý', 'Chính sách làm việc và môi trường', 'Chủ đề nhạy cảm và quảng cáo', 'Thuyết trình dự án và hợp đồng', 'Email lập luận và họp bất đồng', 'Rút kinh nghiệm và phỏng vấn', 'Nhận xét sách và mạng xã hội', 'Khảo sát và xử lý xung đột', 'Ngân sách và góp ý khóa học', 'Khiếu nại sản phẩm và xu hướng thị trường'],
   },
   C1: {
     result: 'Tổng hợp nguồn, nhận ra hàm ý và chọn cách diễn đạt phù hợp trong trao đổi học thuật hoặc nghề nghiệp.',
