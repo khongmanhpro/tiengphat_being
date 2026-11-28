@@ -83,6 +83,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['habitudes_sante', 'Thói quen sức khỏe', 'heart', 'Mô tả ăn uống, giấc ngủ và dự định cải thiện'],
     ['serie_tv', 'Giới thiệu phim/series', 'message', 'Giới thiệu nội dung và góc nhìn kể chuyện'],
     ['cause_effet', 'Giải thích nguyên nhân–kết quả', 'briefcase', 'Phân biệt à cause de và grâce à'],
+    ['probleme_travail', 'Vấn đề công việc', 'briefcase', 'Bày tỏ lo ngại bằng j’ai peur que + subjonctif'],
+    ['difference_culturelle', 'Khác biệt văn hóa', 'people', 'Nêu đối lập bằng alors que, thêm ý bằng ceci dit'],
+    ['transport_corresp', 'Sự cố đổi tuyến phương tiện', 'map', 'Kể sự cố bằng j’ai dû và le temps que'],
+    ['histoire_famille', 'Lịch sử gia đình', 'people', 'Kể quyết định quan trọng bằng même si, grâce à'],
+    ['echange_etudes', 'Kinh nghiệm du học', 'book', 'Kể thay đổi bản thân bằng il fallait, plus...plus...'],
   ] },
   B2: { name: 'Trung cao cấp', description: 'Diễn đạt quan điểm có sắc thái và thuyết phục người nghe.', topics: [
     ['actualites', 'Thảo luận tin tức', 'message', 'Nêu lợi ích, giới hạn và điều kiện của một đề xuất'],

@@ -86,6 +86,11 @@ export const starterPractice = [
   { id: 'habitudes_sante', title: 'Thói quen sức khỏe', detail: 'Ăn uống, giấc ngủ và dự định cải thiện' },
   { id: 'serie_tv', title: 'Giới thiệu phim/series', detail: 'Nội dung và góc nhìn kể chuyện' },
   { id: 'cause_effet', title: 'Giải thích nguyên nhân–kết quả', detail: 'À cause de và grâce à' },
+  { id: 'probleme_travail', title: 'Vấn đề công việc', detail: 'Bày tỏ lo ngại bằng j’ai peur que' },
+  { id: 'difference_culturelle', title: 'Khác biệt văn hóa', detail: 'Nêu đối lập bằng alors que' },
+  { id: 'transport_corresp', title: 'Sự cố đổi tuyến phương tiện', detail: 'Kể sự cố bằng j’ai dû' },
+  { id: 'histoire_famille', title: 'Lịch sử gia đình', detail: 'Kể quyết định bằng même si, grâce à' },
+  { id: 'echange_etudes', title: 'Kinh nghiệm du học', detail: 'Kể thay đổi bằng il fallait, plus...plus...' },
   { id: 'debat_social', title: 'Tranh luận xã hội', detail: 'Phản biện và đề xuất phương án ôn hòa' },
   { id: 'email_formel', title: 'Email phàn nàn trang trọng', detail: 'Mở đầu trang trọng và nêu mong muốn' },
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
@@ -921,6 +926,61 @@ export const practiceCues: Record<string, Cue[][]> = {
     [
       // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
       { goal: 'Nêu nguyên nhân tích cực bằng grâce à', patterns: [/\bgrâce à(?=\s|$)/], hint: 'Grâce à de meilleurs tests en amont, on pourrait l’éviter.' },
+    ],
+  ],
+  probleme_travail: [
+    [
+      { goal: 'Kể khó khăn bằng je n’arrive pas à finir à temps', patterns: [/\bje n'arrive pas à finir ce dossier à temps\b/], hint: 'Pas vraiment, je n’arrive pas à finir ce dossier à temps, et ça commence à peser sur moi.' },
+    ],
+    [
+      { goal: 'Bày tỏ lo ngại bằng j’ai peur que + subjonctif', patterns: [/\bj'ai peur que ça fasse mauvaise impression\b/], hint: 'Pas encore, j’ai peur que ça fasse mauvaise impression.' },
+    ],
+    [
+      { goal: 'Quyết định hành động bằng je vais lui en parler', patterns: [/\bje vais lui en parler demain matin\b/], hint: 'Tu as sans doute raison, je vais lui en parler demain matin.' },
+    ],
+  ],
+  difference_culturelle: [
+    [
+      { goal: 'Mô tả thói quen bằng on est un peu plus souple', patterns: [/\bon est un peu plus souple sur les horaires\b/], hint: 'La ponctualité, en fait. Au Vietnam, on est un peu plus souple sur les horaires.' },
+    ],
+    [
+      { goal: 'Nêu đối lập bằng alors qu’ici', patterns: [/\balors qu'ici ça peut être mal vu\b/], hint: 'Si quelqu’un arrive dix minutes en retard, ce n’est pas un drame, alors qu’ici ça peut être mal vu.' },
+    ],
+    [
+      { goal: 'Thêm ý bằng ceci dit', patterns: [/\bceci dit je trouve que ça a du bon\b/], hint: 'Ceci dit, je trouve que ça a du bon, ça m’a appris à mieux m’organiser.' },
+    ],
+  ],
+  transport_corresp: [
+    [
+      { goal: 'Kể sự việc bằng j’ai dû attendre', patterns: [/\bj'ai dû attendre le train suivant\b/], hint: 'Oui, ma correspondance a été annulée, j’ai dû attendre le train suivant.' },
+    ],
+    [
+      { goal: 'Nêu lý do chưa chắc chắn bằng apparemment', patterns: [/\bun problème technique\b/], hint: 'Un problème technique, apparemment, mais sans plus de détails.' },
+    ],
+    [
+      { goal: 'Giải thích bằng le temps que + subjonctif', patterns: [/\ble temps que j'arrive à l'arrêt\b/], hint: 'J’y ai pensé, mais le temps que j’arrive à l’arrêt, le prochain train était déjà annoncé.' },
+    ],
+  ],
+  histoire_famille: [
+    [
+      { goal: 'Kể sự việc bằng il est rentré plus tard', patterns: [/\bil est rentré plus tard\b/], hint: 'Pas vraiment, mon grand-père a émigré en France dans les années soixante, puis il est rentré plus tard.' },
+    ],
+    [
+      { goal: 'Nhượng bộ bằng même s’il avait', patterns: [/\bmême s'il avait une bonne situation là-bas\b/], hint: 'Il disait que le pays lui manquait trop, même s’il avait une bonne situation là-bas.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh nguyên nhân bằng c’est grâce à...que', patterns: [/\bc'est en partie grâce à cette décision que\b/], hint: 'Oui, et c’est en partie grâce à cette décision que toute notre famille vit ici aujourd’hui.' },
+    ],
+  ],
+  echange_etudes: [
+    [
+      { goal: 'Kể trải nghiệm bằng un semestre au Canada', patterns: [/\bun semestre au canada\b/], hint: 'Oui, un semestre au Canada, ça m’a complètement changée.' },
+    ],
+    [
+      { goal: 'Nói điều cần làm bằng il fallait tout gérer seule', patterns: [/\bil fallait tout gérer seule\b/], hint: 'Je suis devenue beaucoup plus autonome, il fallait tout gérer seule, le logement, les cours, tout.' },
+    ],
+    [
+      { goal: 'Nói sự thay đổi dần bằng plus...plus...', patterns: [/\bplus j'avançais plus je prenais confiance en moi\b/], hint: 'Non, mais plus j’avançais, plus je prenais confiance en moi.' },
     ],
   ],
   feedback_constructif: [
