@@ -61,6 +61,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['registre', 'Trang trọng & thân mật', 'audio', 'Đổi cách diễn đạt theo đối tượng và mục đích'],
     ['synthese', 'Tổng hợp nhiều nguồn', 'bag', 'Tóm lược và đối chiếu quan điểm từ nhiều văn bản'],
     ['mediation', 'Điều phối thảo luận', 'heart', 'Diễn giải bất đồng và gợi mở phương án chung'],
+    ['discours_formel', 'Phát biểu trang trọng', 'message', 'Mở đầu, cảm ơn và chuyển ý trong một bài phát biểu'],
+    ['questions_hostiles', 'Xử lý câu hỏi gay gắt', 'people', 'Thừa nhận câu hỏi rồi bổ sung thông tin bình tĩnh'],
+    ['resume_academique', 'Tóm tắt học thuật', 'book', 'Giới thiệu chủ đề, phương pháp và kết luận nghiên cứu'],
+    ['desaccord_nuance', 'Bất đồng tinh tế', 'briefcase', 'Nghi ngờ lịch sự và mở đầu bất đồng giữ thể diện'],
+    ['rhetorique_debat', 'Kỹ thuật tu từ tranh luận', 'audio', 'Trả lời bằng câu hỏi và nhấn mạnh nhân quả'],
   ] },
 }
 

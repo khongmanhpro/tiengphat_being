@@ -48,6 +48,11 @@ export const starterPractice = [
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
   { id: 'statistiques', title: 'Phân tích số liệu', detail: 'Nêu mức thay đổi và giải thích thận trọng' },
   { id: 'dilemme_ethique', title: 'Tình huống đạo đức', detail: 'Bàn lựa chọn khó xử bằng câu điều kiện' },
+  { id: 'discours_formel', title: 'Phát biểu trang trọng', detail: 'Mở đầu, cảm ơn và chuyển ý' },
+  { id: 'questions_hostiles', title: 'Xử lý câu hỏi gay gắt', detail: 'Thừa nhận rồi bổ sung bình tĩnh' },
+  { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
+  { id: 'desaccord_nuance', title: 'Bất đồng tinh tế', detail: 'Nghi ngờ lịch sự, giữ thể diện' },
+  { id: 'rhetorique_debat', title: 'Kỹ thuật tu từ tranh luận', detail: 'Trả lời bằng câu hỏi, nhấn mạnh nhân quả' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -547,6 +552,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Thừa nhận khó khăn nhưng giữ quan điểm', patterns: [/\bce serait difficile\b/], hint: 'Ce serait difficile, mais je pense que ce serait nécessaire.' },
+    ],
+  ],
+  discours_formel: [
+    [
+      { goal: 'Mở đầu trang trọng bằng c’est un honneur de', patterns: [/\bc'est un honneur de\b/], hint: 'Mesdames et messieurs, c’est un honneur de m’adresser à vous aujourd’hui.' },
+    ],
+    [
+      { goal: 'Cảm ơn trang trọng bằng permettez-moi', patterns: [/\bpermettez-moi\b/], hint: 'Permettez-moi tout d’abord de remercier l’ensemble des équipes.' },
+    ],
+    [
+      { goal: 'Chuyển ý bằng j’en viens à', patterns: [/\bj'en viens\b/], hint: 'J’en viens maintenant au bilan de cette année exceptionnelle.' },
+    ],
+  ],
+  questions_hostiles: [
+    [
+      { goal: 'Thừa nhận câu hỏi bằng question légitime', patterns: [/\bquestion légitime\b/], hint: 'C’est une question légitime, et j’y viens justement.' },
+    ],
+    [
+      { goal: 'Bổ sung bằng laissez-moi', patterns: [/\blaissez-moi\b/], hint: 'Je comprends vos doutes, mais laissez-moi apporter une précision.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
+      { goal: 'Khẳng định sắp trình bày', patterns: [/\bje m'apprête à(?=\s|$)/], hint: 'C’est précisément ce que je m’apprête à vous présenter.' },
+    ],
+  ],
+  resume_academique: [
+    [
+      { goal: 'Giới thiệu chủ đề bằng l’étude porte sur', patterns: [/\bl'étude porte sur\b/], hint: 'L’étude porte sur l’impact du sommeil sur la mémoire à long terme.' },
+    ],
+    [
+      { goal: 'Nêu phương pháp nghiên cứu', patterns: [/\bles auteurs ont suivi\b/], hint: 'Les auteurs ont suivi un échantillon de deux cents participants pendant six mois.' },
+    ],
+    [
+      { goal: 'Nêu kết luận bằng ils concluent que', patterns: [/\bils concluent\b/], hint: 'Ils concluent qu’un sommeil insuffisant nuit significativement à la rétention d’information.' },
+    ],
+  ],
+  desaccord_nuance: [
+    [
+      { goal: 'Nghi ngờ lịch sự bằng je ne suis pas certaine que', patterns: [/\bje ne suis pas certaine\b/], hint: 'Je ne suis pas certaine que ce soit le bon moment, si vous me permettez.' },
+    ],
+    [
+      { goal: 'Mở đầu bất đồng bằng sans vouloir', patterns: [/\bsans vouloir\b/], hint: 'Sans vouloir remettre en cause votre analyse, le marché me semble encore instable.' },
+    ],
+    [
+      { goal: 'Đề xuất nhẹ bằng pourrions-nous', patterns: [/\bpourrions-nous\b/], hint: 'Peut-être pourrions-nous simplement repousser de quelques semaines.' },
+    ],
+  ],
+  rhetorique_debat: [
+    [
+      { goal: 'Trả lời bằng câu hỏi ngược', patterns: [/\bpar une question\b/], hint: 'Permettez-moi de répondre à cela par une question : qui perd réellement à ce changement ?' },
+    ],
+    [
+      { goal: 'Nhấn mạnh nhân quả bằng c’est bien pourquoi', patterns: [/\bc'est bien pourquoi\b/], hint: 'Précisément. Et c’est bien pourquoi des mesures compensatoires sont prévues.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh trọng tâm bằng c’est tout l’enjeu', patterns: [/\bc'est tout l'enjeu\b/], hint: 'C’est tout l’enjeu du débat que nous menons aujourd’hui.' },
     ],
   ],
 }
