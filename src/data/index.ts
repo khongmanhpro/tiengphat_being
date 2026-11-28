@@ -11,13 +11,14 @@ import { a2More2 } from './a2-more2'
 import { b1More } from './b1-more'
 import { b1More2 } from './b1-more2'
 import { b2More } from './b2-more'
+import { b2More2 } from './b2-more2'
 import { c1More } from './c1-more'
 import { curriculum, levels } from './curriculum'
 import type { Lesson, Level } from './curriculum'
 
 export { curriculum, levels }
 export type { Lesson, Level }
-export const lessons = [...a1, ...advanced, ...everyday, ...intermediate, ...upper, ...expert, ...a1More, ...a1More2, ...a2More, ...a2More2, ...b1More, ...b1More2, ...b2More, ...c1More]
+export const lessons = [...a1, ...advanced, ...everyday, ...intermediate, ...upper, ...expert, ...a1More, ...a1More2, ...a2More, ...a2More2, ...b1More, ...b1More2, ...b2More, ...b2More2, ...c1More]
 export const lessonsById = Object.fromEntries(lessons.map(lesson => [lesson.id, lesson]))
 export const topicFor = (lesson: Lesson) => curriculum[lesson.level].topics.find(([id]) => id === lesson.id)!
 export const lessonsAt = (level: Level) => curriculum[level].topics.flatMap(([id]) => lessonsById[id] ? [lessonsById[id]] : [])

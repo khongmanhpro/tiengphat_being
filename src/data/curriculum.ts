@@ -68,6 +68,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['offre_emploi', 'Cân nhắc lời mời làm việc', 'briefcase', 'So sánh lợi/hại và diễn đạt tiếc nuối'],
     ['statistiques', 'Phân tích số liệu', 'book', 'Nêu mức thay đổi và giải thích thận trọng'],
     ['dilemme_ethique', 'Tình huống đạo đức', 'heart', 'Bàn một lựa chọn khó xử bằng câu điều kiện'],
+    ['feedback_constructif', 'Góp ý xây dựng', 'message', 'Khen tổng quát trước rồi góp ý cụ thể bằng conditionnel'],
+    ['teletravail', 'Tranh luận chính sách làm từ xa', 'briefcase', 'Nêu lợi ích/rủi ro và cách giảm rủi ro'],
+    ['politique_env', 'Tranh luận chính sách môi trường', 'people', 'Thừa nhận lo ngại và nêu điều kiện chấp nhận'],
+    ['immigration_respect', 'Bàn chủ đề nhạy cảm tôn trọng', 'people', 'Tôn trọng quan điểm khác và gắn ý kiến với selon moi'],
+    ['publicite', 'Phân tích quảng cáo', 'message', 'Nhận diện kỹ thuật thuyết phục và đánh giá hiệu quả'],
   ] },
   C1: { name: 'Nâng cao', description: 'Xây dựng lập luận chặt chẽ và điều chỉnh giọng điệu theo ngữ cảnh.', topics: [
     ['seminaire', 'Tranh luận học thuật', 'people', 'Chất vấn giả thuyết và diễn đạt mức độ chắc chắn'],

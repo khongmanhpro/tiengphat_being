@@ -63,6 +63,11 @@ export const starterPractice = [
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
   { id: 'statistiques', title: 'Phân tích số liệu', detail: 'Nêu mức thay đổi và giải thích thận trọng' },
   { id: 'dilemme_ethique', title: 'Tình huống đạo đức', detail: 'Bàn lựa chọn khó xử bằng câu điều kiện' },
+  { id: 'feedback_constructif', title: 'Góp ý xây dựng', detail: 'Khen tổng quát rồi góp ý cụ thể' },
+  { id: 'teletravail', title: 'Tranh luận chính sách làm từ xa', detail: 'Lợi ích, rủi ro và cách giảm rủi ro' },
+  { id: 'politique_env', title: 'Tranh luận chính sách môi trường', detail: 'Thừa nhận lo ngại, nêu điều kiện' },
+  { id: 'immigration_respect', title: 'Bàn chủ đề nhạy cảm tôn trọng', detail: 'Tôn trọng quan điểm khác biệt' },
+  { id: 'publicite', title: 'Phân tích quảng cáo', detail: 'Kỹ thuật thuyết phục và hiệu quả' },
   { id: 'discours_formel', title: 'Phát biểu trang trọng', detail: 'Mở đầu, cảm ơn và chuyển ý' },
   { id: 'questions_hostiles', title: 'Xử lý câu hỏi gay gắt', detail: 'Thừa nhận rồi bổ sung bình tĩnh' },
   { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
@@ -564,6 +569,65 @@ export const practiceCues: Record<string, Cue[][]> = {
     [
       // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
       { goal: 'Nêu nguyên nhân tích cực bằng grâce à', patterns: [/\bgrâce à(?=\s|$)/], hint: 'Grâce à de meilleurs tests en amont, on pourrait l’éviter.' },
+    ],
+  ],
+  feedback_constructif: [
+    [
+      { goal: 'Khen tổng quát bằng dans l’ensemble', patterns: [/\bdans l'ensemble\b/], hint: 'Dans l’ensemble, c’est solide. J’aurais juste une remarque sur la conclusion.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented word — "être" ends in e-circumflex.
+      { goal: 'Góp ý nhẹ bằng pourrait être', patterns: [/\bpourrait être(?=\s|$)/], hint: 'Elle pourrait être un peu plus synthétique, à mon avis.' },
+    ],
+    [
+      { goal: 'Khen phần còn lại', patterns: [/\ble reste est vraiment\b/], hint: 'Sinon, le reste est vraiment bien structuré.' },
+    ],
+  ],
+  teletravail: [
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Nêu lợi ích và rủi ro bằng conditionnel', patterns: [/(?:^|\s)ça faciliterait\b/], hint: 'Ça faciliterait la vie de beaucoup de monde, mais il y aurait un risque d’isolement.' },
+    ],
+    [
+      { goal: 'Đề xuất giải pháp bằng en + gérondif', patterns: [/\ben gardant\b/], hint: 'En gardant au moins une journée commune au bureau, par exemple.' },
+    ],
+    [
+      { goal: 'Nêu ngoại lệ cho nhóm cụ thể', patterns: [/\bdevrait rester\b/], hint: 'Pour eux, je pense que la présence au bureau devrait rester plus fréquente au début.' },
+    ],
+  ],
+  politique_env: [
+    [
+      { goal: 'Thừa nhận lo ngại rồi phản biện bằng sans…rien ne', patterns: [/\bsans incitation\b/], hint: 'Je comprends votre inquiétude, mais sans incitation, rien ne changera.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à condition que" starts with à.
+      { goal: 'Chấp nhận có điều kiện', patterns: [/(?:^|\s)à condition que\b/], hint: 'C’est en effet envisageable, à condition que les objectifs restent clairs.' },
+    ],
+    [
+      { goal: 'Đồng tình và nêu lợi ích', patterns: [/\btout à fait\b/], hint: 'Tout à fait, cela faciliterait l’adhésion des entreprises comme la vôtre.' },
+    ],
+  ],
+  immigration_respect: [
+    [
+      { goal: 'Tôn trọng quan điểm khác', patterns: [/\bje respecte ton point de vue\b/], hint: 'Je respecte ton point de vue, même si je ne le partage pas entièrement.' },
+    ],
+    [
+      { goal: 'Giải thích lý do, gắn với selon moi', patterns: [/\bselon moi\b/], hint: 'Parce que les études montrent des effets plutôt positifs sur l’économie, selon moi.' },
+    ],
+    [
+      { goal: 'Đề nghị chia sẻ nguồn', patterns: [/\bje peux te les envoyer\b/], hint: 'Je peux te les envoyer, si ça t’intéresse.' },
+    ],
+  ],
+  publicite: [
+    [
+      { goal: 'Phân tích kỹ thuật bằng jouer sur', patterns: [/\bjoue beaucoup sur\b/], hint: 'Elle joue beaucoup sur l’émotion, plus que sur les caractéristiques du produit.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Đánh giá hiệu quả có điều kiện', patterns: [/(?:^|\s)ça dépend du public\b/], hint: 'Ça dépend du public visé, mais ici, ça me semble bien ciblé.' },
+    ],
+    [
+      { goal: 'Giải thích chủ đích', patterns: [/\bc'est sans doute voulu\b/], hint: 'C’est vrai, mais c’est sans doute voulu pour marquer les esprits.' },
     ],
   ],
   velo: [
