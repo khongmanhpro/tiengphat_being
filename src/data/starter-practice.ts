@@ -38,6 +38,11 @@ export const starterPractice = [
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
   { id: 'restaurant_avis', title: 'Nhận xét món ăn', detail: 'Khen và nêu nhận xét nhẹ nhàng' },
   { id: 'excuse', title: 'Xin lỗi vì đến trễ', detail: 'Xin lỗi và giải thích lý do' },
+  { id: 'reclamation', title: 'Phàn nàn về sản phẩm', detail: 'Mô tả vấn đề và đề xuất giải pháp' },
+  { id: 'etudes_projet', title: 'Kế hoạch học tiếp', detail: 'Nói dự định và điều kiện để xảy ra' },
+  { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
+  { id: 'conseil_ami', title: 'Khuyên bạn bè', detail: 'Đưa lời khuyên nhẹ nhàng' },
+  { id: 'hobby_approfondi', title: 'Kể chi tiết sở thích', detail: 'Kể thời gian và nhấn mạnh chi tiết' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -420,6 +425,66 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Xin lỗi lần nữa bằng encore', patterns: [/\bencore désolée\b/], hint: 'Oui, encore désolée pour l’attente.' },
+    ],
+  ],
+  reclamation: [
+    [
+      { goal: 'Mô tả vấn đề bằng mệnh đề quan hệ qui', patterns: [/\bqui ne correspond pas\b/], hint: 'J’ai reçu un article qui ne correspond pas à ma commande.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "commandé" ends in é.
+      { goal: 'Mô tả sai lệch cụ thể bằng j’ai commandé', patterns: [/\bj'ai commandé(?=\s|$)/], hint: 'J’ai commandé une veste noire, mais j’ai reçu une veste grise.' },
+    ],
+    [
+      { goal: 'Đề xuất giải pháp bằng conditionnel', patterns: [/\bje préférerais\b/], hint: 'Je préférerais un échange, si c’est possible rapidement.' },
+    ],
+    [
+      { goal: 'Cảm ơn và bày tỏ mong muốn', patterns: [/\bj'espère que\b/], hint: 'Merci, j’espère que ça ne se reproduira pas.' },
+    ],
+  ],
+  etudes_projet: [
+    [
+      { goal: 'Nói dự định bằng penser + nguyên mẫu', patterns: [/\bje pense m'inscrire\b/], hint: 'Oui, je pense m’inscrire à un master à l’étranger.' },
+    ],
+    [
+      { goal: 'Nêu điều kiện bằng si + futur simple', patterns: [/\bsi je suis acceptée\b/], hint: 'En commerce international. Si je suis acceptée, je partirai en septembre.' },
+    ],
+    [
+      { goal: 'Thừa nhận lo lắng bằng même si', patterns: [/\bmême si\b/], hint: 'Je crois que oui, même si ça me fait un peu peur.' },
+    ],
+  ],
+  actualite_discussion: [
+    [
+      { goal: 'Nhận xét bằng plutôt', patterns: [/\bplutôt\b/], hint: 'Oui, j’ai trouvé ça plutôt positif pour le quartier.' },
+    ],
+    [
+      { goal: 'Thừa nhận ý kiến trái chiều rồi bảo vệ bằng mais', patterns: [/\bmais ça créera\b/], hint: 'C’est possible, mais ça créera aussi des emplois.' },
+    ],
+    [
+      { goal: 'Nói chưa chắc bằng on verra bien', patterns: [/\bon verra bien\b/], hint: 'Je n’en suis pas sûre, on verra bien.' },
+    ],
+  ],
+  conseil_ami: [
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à ta place" starts with à.
+      { goal: 'Khuyên bằng à ta place', patterns: [/(?:^|\s)à ta place\b/], hint: 'À ta place, j’en parlerais directement avec lui.' },
+    ],
+    [
+      { goal: 'Khuyên bằng tu devrais', patterns: [/\btu devrais\b/], hint: 'Tu devrais au moins essayer, poliment mais clairement.' },
+    ],
+    [
+      { goal: 'Khuyến khích chia sẻ sau này', patterns: [/\bn'hésite pas\b/], hint: 'N’hésite pas à me dire comment ça se passe.' },
+    ],
+  ],
+  hobby_approfondi: [
+    [
+      { goal: 'Nói thời gian bằng depuis', patterns: [/\bdepuis plus de\b/], hint: 'Je fais de la photographie depuis plus de cinq ans.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh chủ thể bằng c’est…qui', patterns: [/\bc'est mon grand-père qui\b/], hint: 'C’est mon grand-père qui m’a offert mon premier appareil.' },
+    ],
+    [
+      { goal: 'Nói sự ưu tiên bằng préférer', patterns: [/\bje préfère\b/], hint: 'Je préfère les paysages, surtout au lever du soleil.' },
     ],
   ],
 }

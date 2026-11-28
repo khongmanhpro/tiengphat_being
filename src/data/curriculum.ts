@@ -35,6 +35,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['incident', 'Du lịch & xử lý sự cố', 'map', 'Giải thích vấn đề và đề xuất giải pháp'],
     ['projets', 'Kế hoạch tương lai', 'clock', 'Trình bày kế hoạch bằng các thì tương lai'],
     ['logement', 'Tìm chỗ ở', 'heart', 'So sánh lựa chọn và nêu điều kiện thuê'],
+    ['reclamation', 'Phàn nàn về sản phẩm', 'bag', 'Mô tả vấn đề và đề xuất giải pháp bằng conditionnel'],
+    ['etudes_projet', 'Kế hoạch học tiếp', 'book', 'Nói dự định học lên cao và điều kiện để nó xảy ra'],
+    ['actualite_discussion', 'Bàn luận tin tức', 'message', 'Nêu ý kiến nhẹ nhàng và thừa nhận lo ngại trái chiều'],
+    ['conseil_ami', 'Khuyên bạn bè', 'people', 'Đưa lời khuyên bằng à ta place và tu devrais'],
+    ['hobby_approfondi', 'Kể chi tiết sở thích', 'heart', 'Kể một sở thích lâu năm và nhấn mạnh chi tiết'],
   ] },
   B2: { name: 'Trung cao cấp', description: 'Diễn đạt quan điểm có sắc thái và thuyết phục người nghe.', topics: [
     ['actualites', 'Thảo luận tin tức', 'message', 'Nêu lợi ích, giới hạn và điều kiện của một đề xuất'],

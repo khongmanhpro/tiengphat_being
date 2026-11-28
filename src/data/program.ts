@@ -38,7 +38,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Trình bày sự việc theo thứ tự, so sánh phương án và giải thích lựa chọn.',
       Viết: 'Viết email liền mạch với mục đích rõ, lý do và đề xuất cụ thể.',
     },
-    blocks: ['Kinh nghiệm và liên lạc công việc', 'Ý kiến và xử lý sự cố', 'Kế hoạch và lựa chọn thực tế'],
+    blocks: ['Kinh nghiệm và liên lạc công việc', 'Ý kiến và xử lý sự cố', 'Kế hoạch và lựa chọn thực tế', 'Phàn nàn và kế hoạch học tập', 'Tin tức và lời khuyên', 'Sở thích và kể chuyện'],
   },
   B2: {
     result: 'Bảo vệ một quan điểm bằng lý do, xử lý ý kiến trái chiều và điều chỉnh phương án.',
