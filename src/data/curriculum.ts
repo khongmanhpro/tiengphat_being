@@ -9,6 +9,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['cafe', 'Gọi món ở quán cà phê', 'coffee', 'Gọi đồ uống, món ăn và xin tính tiền'],
     ['achats', 'Mua sắm & hỏi giá', 'bag', 'Hỏi giá, kích cỡ và thử đồ'],
     ['chemin', 'Hỏi đường', 'map', 'Hỏi và chỉ đường đến một địa điểm'],
+    ['nombres', 'Đếm số và tính tiền', 'bag', 'Hỏi giá theo cân và tính tổng số tiền phải trả'],
+    ['metier', 'Nghề nghiệp', 'briefcase', 'Nói nghề nghiệp và nơi làm việc của mình'],
+    ['meteo', 'Thời tiết', 'map', 'Mô tả thời tiết hiện tại và dự đoán sắp tới'],
+    ['couleurs', 'Màu sắc & mô tả đồ vật', 'bag', 'Mô tả đồ vật bằng màu sắc, kích thước và vị trí'],
+    ['gouts', 'Sở thích ăn uống', 'coffee', 'Nói món ăn/đồ uống yêu thích và so sánh lựa chọn'],
   ] },
   A2: { name: 'Sơ cấp', description: 'Xử lý các tình huống quen thuộc và kể về cuộc sống của bạn.', topics: [
     ['hotel', 'Đặt phòng khách sạn', 'bag', 'Kiểm tra phòng trống và xác nhận lượt đặt'],

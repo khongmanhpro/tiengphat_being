@@ -28,6 +28,11 @@ export const starterPractice = [
   { id: 'registre', title: 'Đổi văn phong theo đối tượng', detail: 'Nhờ việc thân mật và trang trọng' },
   { id: 'synthese', title: 'Tổng hợp hai nguồn', detail: 'Nêu điểm chung và điểm khác biệt' },
   { id: 'mediation', title: 'Điều phối bất đồng', detail: 'Diễn giải lại và đề xuất phương án' },
+  { id: 'nombres', title: 'Mua hàng và tính tiền', detail: 'Hỏi giá, gọi theo cân và tính tổng' },
+  { id: 'metier', title: 'Nói về nghề nghiệp', detail: 'Nói nghề và nơi làm việc' },
+  { id: 'meteo', title: 'Nói về thời tiết', detail: 'Mô tả thời tiết hiện tại và dự đoán' },
+  { id: 'couleurs', title: 'Mô tả đồ vật bằng màu sắc', detail: 'Tìm đồ thất lạc qua màu sắc, vị trí' },
+  { id: 'gouts', title: 'Nói sở thích ăn uống', detail: 'Nói món thích, không thích và so sánh' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -295,6 +300,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Đề xuất phương án mở bằng pourrions-nous envisager', patterns: [/\bpourrions-nous envisager\b/], hint: 'Pourrions-nous envisager un lancement limité ?' },
+    ],
+  ],
+  nombres: [
+    [
+      { goal: 'Gọi mua theo cân bằng je voudrais', patterns: [/\bje voudrais un kilo\b/], hint: 'D’accord, je voudrais un kilo, s’il vous plaît.' },
+    ],
+    [
+      { goal: 'Gọi thêm món khác', patterns: [/\bje prends aussi\b/], hint: 'Je prends aussi un kilo de pommes.' },
+    ],
+    [
+      { goal: 'Đưa tiền bằng voici', patterns: [/\bvoici\b/], hint: 'Voici dix euros.' },
+    ],
+    [
+      { goal: 'Cảm ơn và chào tạm biệt', patterns: [/\bmerci\b/, /\bau revoir\b/], hint: 'Merci, au revoir !' },
+    ],
+  ],
+  metier: [
+    [
+      { goal: 'Nói nghề nghiệp bằng je suis', patterns: [/\bje suis\b/], hint: 'Je suis infirmière. Et vous ?' },
+    ],
+    [
+      { goal: 'Nói nơi làm việc bằng je travaille dans', patterns: [/\bje travaille dans\b/], hint: 'Je travaille dans un hôpital, près de la gare.' },
+    ],
+    [
+      { goal: 'Nói mình thích công việc bằng j’aime', patterns: [/\bj'aime\b/], hint: 'Oui, j’aime beaucoup mon métier.' },
+    ],
+  ],
+  meteo: [
+    [
+      { goal: 'Mô tả thời tiết hiện tại bằng il fait', patterns: [/\bil fait\b/], hint: 'Il fait beau, mais il fait un peu froid.' },
+    ],
+    [
+      { goal: 'Nói việc sẽ làm do thời tiết', patterns: [/\balors\b/, /\bje prends\b/], hint: 'Alors je prends mon parapluie.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "été" ends in é.
+      { goal: 'Nói thời tiết theo mùa bằng en + mùa', patterns: [/\ben hiver\b/, /\ben été(?=\s|$)/], hint: 'Oui, et il neige beaucoup en hiver.' },
+    ],
+  ],
+  couleurs: [
+    [
+      { goal: 'Mô tả vị trí đồ vật bằng il y a', patterns: [/\bil y a\b/], hint: 'Il y a un sac rouge là-bas, à côté de la porte.' },
+    ],
+    [
+      { goal: 'Nhắc lại “cái khác” không lặp danh từ', patterns: [/\bil y en a un autre\b/], hint: 'Il y en a un autre, noir et blanc, sur la chaise.' },
+    ],
+  ],
+  gouts: [
+    [
+      { goal: 'Nói thích và không thích', patterns: [/\bj'aime\b/, /\bje n'aime pas\b/], hint: 'J’aime beaucoup le poisson, mais je n’aime pas la viande rouge.' },
+    ],
+    [
+      { goal: 'So sánh bằng préférer X à Y', patterns: [/\bje préfère\b/], hint: 'Je préfère le thé au café.' },
+    ],
+    [
+      { goal: 'Trả lời mức độ bằng un peu', patterns: [/\bun peu\b/], hint: 'Un peu, mais pas trop épicé.' },
     ],
   ],
 }

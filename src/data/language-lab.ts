@@ -22,6 +22,21 @@ function lab(
 }
 
 export const languageLabs: Record<string, LanguageLab> = {
+  nombres: lab('Nói', 'Phân biệt giá niêm yết (à + giá) và tổng tiền (ça fait + tổng).',
+    'Les tomates sont à deux euros le kilo.', 'Ça fait cinq euros cinquante au total.', 'À + giá cho một đơn vị; ça fait + tổng cho số tiền phải trả toàn bộ.',
+    'Bạn mua hai món, muốn hỏi số tiền phải trả tất cả.', ['Combien ça coûte le kilo ?', 'Ça fait combien au total ?'], 1, 'Ça fait combien au total ? hỏi đúng tổng số tiền cần trả.'),
+  metier: lab('Nói', 'Nói nghề nghiệp không cần mạo từ, nhưng nói nơi làm việc cần mạo từ.',
+    'Je suis infirmière.', 'Je travaille dans un hôpital.', 'Sau je suis + nghề nghiệp, không dùng un/une. Sau travailler dans, cần mạo từ trước nơi chốn.',
+    'Bạn muốn nói mình là giáo viên.', ['Je suis une professeure.', 'Je suis professeure.'], 1, 'Je suis professeure không cần une trước nghề nghiệp.'),
+  meteo: lab('Nghe', 'Il fait cho tình trạng hiện tại, il va cho dự báo sắp xảy ra.',
+    'Il fait beau aujourd’hui.', 'Il va pleuvoir cet après-midi.', 'Il fait + tính từ tả hiện tại. Il va + nguyên mẫu tả việc sắp tới.',
+    'Bạn muốn báo bạn mình trời sắp mưa.', ['Il pleut beaucoup.', 'Il va pleuvoir.'], 1, 'Il va pleuvoir đúng khi báo trước việc sắp xảy ra.'),
+  couleurs: lab('Viết', 'Dùng le mien/la mienne để tránh lặp lại danh từ đã nhắc.',
+    'Le mien est plus petit.', 'Mon sac est plus petit.', 'Le mien thay cho “túi của tôi” khi danh từ đã được nhắc, tránh lặp từ.',
+    'Bạn đã nhắc mon manteau, giờ muốn nói “cái của tôi” mà không lặp từ.', ['Mon manteau est noir.', 'Le mien est noir.'], 1, 'Le mien tránh lặp lại manteau khi đã nhắc ở câu trước.'),
+  gouts: lab('Nói', 'Préférer X à Y thích X hơn Y; ne…pas bao quanh động từ để phủ định sở thích.',
+    'Je préfère le thé au café.', 'Je n’aime pas le café.', 'Préférer X à Y so sánh hai lựa chọn. Je n’aime pas chỉ phủ định đơn giản, không so sánh.',
+    'Bạn muốn nói bạn thích trà hơn là chỉ nói không thích cà phê.', ['Je n’aime pas le café.', 'Je préfère le thé au café.'], 1, 'Préférer X à Y thể hiện rõ sự so sánh, không chỉ phủ định.'),
   bonjour: lab('Nói', 'Gặp lần đầu, dùng je m’appelle rồi thêm tên. Đổi phần sau, giữ cả cụm đầu.',
     'Je m’appelle Linh. Et vous ?', 'Tu t’appelles comment ?', 'M’ đi với je, t’ đi với tu. Vous giữ cách nói lịch sự khi mới gặp người lớn hoặc khách hàng.',
     'Bạn hỏi tên một khách hàng mới.', ['Comment vous appelez-vous ?', 'Comment tu t’appelles ?'], 0, 'Cả hai câu hỏi đều dùng được. Với khách mới, vous hợp hơn.', 'register'),

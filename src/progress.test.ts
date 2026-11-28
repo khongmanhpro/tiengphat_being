@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { lessonsById } from './data'
+import { lessonsAt, lessonsById } from './data'
 import {
   activity, addLessonCards, dayKey, finishLesson, initial, missingPrerequisites,
   nextLesson, offsetDay, reviewCard, streak, unlocked,
@@ -82,7 +82,7 @@ describe('missingPrerequisites / unlocked', () => {
 
   it('requires the whole previous level before unlocking the next one', () => {
     expect(unlocked(initial, hotel)).toBe(false)
-    const a1Done: Progress = { ...initial, completed: ['bonjour', 'sons', 'heure', 'cafe', 'achats', 'chemin'] }
+    const a1Done: Progress = { ...initial, completed: lessonsAt('A1').map(lesson => lesson.id) }
     expect(unlocked(a1Done, hotel)).toBe(true)
   })
 
