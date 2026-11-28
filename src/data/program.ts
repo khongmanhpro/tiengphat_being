@@ -48,7 +48,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Bảo vệ một đề xuất, thừa nhận phản biện và đưa cách xử lý.',
       Viết: 'Viết lập luận có bố cục, sử dụng dữ liệu và đặt giới hạn cho kết luận.',
     },
-    blocks: ['Kiểm tra lập luận và thương lượng', 'Thuyết trình và nêu điều kiện', 'Sắc thái văn hóa và đánh giá'],
+    blocks: ['Kiểm tra lập luận và thương lượng', 'Thuyết trình và nêu điều kiện', 'Sắc thái văn hóa và đánh giá', 'Tranh luận và email trang trọng', 'Lựa chọn công việc và số liệu', 'Tình huống đạo đức'],
   },
   C1: {
     result: 'Tổng hợp nguồn, nhận ra hàm ý và chọn cách diễn đạt phù hợp trong trao đổi học thuật hoặc nghề nghiệp.',

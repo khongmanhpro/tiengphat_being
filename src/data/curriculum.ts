@@ -48,6 +48,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['subjonctif', 'Subjonctif trong đối thoại', 'book', 'Bày tỏ sự cần thiết và thái độ'],
     ['culture', 'Văn hóa Pháp', 'coffee', 'So sánh thói quen và góc nhìn văn hóa'],
     ['critique', 'Đánh giá tác phẩm', 'heart', 'Viết nhận xét có dẫn chứng'],
+    ['debat_social', 'Tranh luận xã hội', 'people', 'Phản biện và đề xuất phương án ôn hòa hơn'],
+    ['email_formel', 'Email phàn nàn trang trọng', 'message', 'Mở đầu trang trọng và nêu mong muốn bằng subjonctif'],
+    ['offre_emploi', 'Cân nhắc lời mời làm việc', 'briefcase', 'So sánh lợi/hại và diễn đạt tiếc nuối'],
+    ['statistiques', 'Phân tích số liệu', 'book', 'Nêu mức thay đổi và giải thích thận trọng'],
+    ['dilemme_ethique', 'Tình huống đạo đức', 'heart', 'Bàn một lựa chọn khó xử bằng câu điều kiện'],
   ] },
   C1: { name: 'Nâng cao', description: 'Xây dựng lập luận chặt chẽ và điều chỉnh giọng điệu theo ngữ cảnh.', topics: [
     ['seminaire', 'Tranh luận học thuật', 'people', 'Chất vấn giả thuyết và diễn đạt mức độ chắc chắn'],

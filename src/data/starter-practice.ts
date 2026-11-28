@@ -43,6 +43,11 @@ export const starterPractice = [
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
   { id: 'conseil_ami', title: 'Khuyên bạn bè', detail: 'Đưa lời khuyên nhẹ nhàng' },
   { id: 'hobby_approfondi', title: 'Kể chi tiết sở thích', detail: 'Kể thời gian và nhấn mạnh chi tiết' },
+  { id: 'debat_social', title: 'Tranh luận xã hội', detail: 'Phản biện và đề xuất phương án ôn hòa' },
+  { id: 'email_formel', title: 'Email phàn nàn trang trọng', detail: 'Mở đầu trang trọng và nêu mong muốn' },
+  { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
+  { id: 'statistiques', title: 'Phân tích số liệu', detail: 'Nêu mức thay đổi và giải thích thận trọng' },
+  { id: 'dilemme_ethique', title: 'Tình huống đạo đức', detail: 'Bàn lựa chọn khó xử bằng câu điều kiện' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -485,6 +490,63 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói sự ưu tiên bằng préférer', patterns: [/\bje préfère\b/], hint: 'Je préfère les paysages, surtout au lever du soleil.' },
+    ],
+  ],
+  debat_social: [
+    [
+      { goal: 'Thừa nhận rồi đề xuất bằng il faudrait', patterns: [/\bil faudrait\b/], hint: 'Je comprends, mais il faudrait quand même réduire la pollution.' },
+    ],
+    [
+      { goal: 'Hỏi ý kiến cởi mở', patterns: [/\bproposerais-tu\b/], hint: 'Quelle alternative proposerais-tu, alors ?' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Đồng tình bằng ça me semble', patterns: [/(?:^|\s)ça me semble\b/], hint: 'Ça me semble plus raisonnable, en effet.' },
+    ],
+  ],
+  email_formel: [
+    [
+      { goal: 'Mở đầu trang trọng bằng je me permets de', patterns: [/\bje me permets de\b/], hint: 'Je me permets de vous signaler un retard important dans la livraison.' },
+    ],
+    [
+      { goal: 'Nêu mong muốn bằng j’aimerais que', patterns: [/\bj'aimerais que\b/], hint: 'J’aimerais que cette situation ne se reproduise plus à l’avenir.' },
+    ],
+    [
+      { goal: 'Cảm ơn trang trọng', patterns: [/\bje vous remercie\b/], hint: 'Je vous remercie de votre compréhension.' },
+    ],
+  ],
+  offre_emploi: [
+    [
+      { goal: 'So sánh lợi/hại bằng mais', patterns: [/\bmais\b/], hint: 'Le salaire est plus élevé, mais le trajet serait beaucoup plus long.' },
+    ],
+    [
+      { goal: 'Diễn đạt tiếc nuối bằng si + plus-que-parfait', patterns: [/\bsi j'avais su\b/], hint: 'Exactement. Si j’avais su, j’aurais négocié le télétravail dès le départ.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Chấp nhận thử bằng ça ne coûte rien', patterns: [/(?:^|\s)ça ne coûte rien\b/], hint: 'C’est vrai, ça ne coûte rien d’essayer.' },
+    ],
+  ],
+  statistiques: [
+    [
+      { goal: 'Nêu mức thay đổi bằng augmenter de + %', patterns: [/\ba augmenté de\b/], hint: 'Il montre que la satisfaction a augmenté de dix pour cent en un an.' },
+    ],
+    [
+      { goal: 'Giải thích thận trọng bằng cela pourrait s’expliquer par', patterns: [/\bcela pourrait s'expliquer par\b/], hint: 'Cela pourrait s’expliquer par le nouveau service client.' },
+    ],
+    [
+      { goal: 'Thừa nhận chưa chắc chắn hoàn toàn', patterns: [/\bpas totalement\b/], hint: 'Pas totalement : d’autres facteurs ont pu jouer aussi.' },
+    ],
+  ],
+  dilemme_ethique: [
+    [
+      { goal: 'Nói sẽ làm gì trước bằng si + imparfait, conditionnel', patterns: [/\bje lui en parlerais\b/], hint: 'Je lui en parlerais d’abord, avant de signaler quoi que ce soit.' },
+    ],
+    [
+      { goal: 'Nêu bước tiếp theo bằng je devrais', patterns: [/\bje devrais\b/], hint: 'Dans ce cas, je devrais sans doute en informer mon responsable.' },
+    ],
+    [
+      { goal: 'Thừa nhận khó khăn nhưng giữ quan điểm', patterns: [/\bce serait difficile\b/], hint: 'Ce serait difficile, mais je pense que ce serait nécessaire.' },
     ],
   ],
 }
