@@ -53,6 +53,11 @@ export const starterPractice = [
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
   { id: 'conseil_ami', title: 'Khuyên bạn bè', detail: 'Đưa lời khuyên nhẹ nhàng' },
   { id: 'hobby_approfondi', title: 'Kể chi tiết sở thích', detail: 'Kể thời gian và nhấn mạnh chi tiết' },
+  { id: 'itineraire', title: 'Lên kế hoạch chuyến đi', detail: 'Nêu điều kiện và phương án dự phòng' },
+  { id: 'environnement', title: 'Tái chế & môi trường', detail: 'Nói khó khăn và mẹo phân loại rác' },
+  { id: 'habitudes_sante', title: 'Thói quen sức khỏe', detail: 'Ăn uống, giấc ngủ và dự định cải thiện' },
+  { id: 'serie_tv', title: 'Giới thiệu phim/series', detail: 'Nội dung và góc nhìn kể chuyện' },
+  { id: 'cause_effet', title: 'Giải thích nguyên nhân–kết quả', detail: 'À cause de và grâce à' },
   { id: 'debat_social', title: 'Tranh luận xã hội', detail: 'Phản biện và đề xuất phương án ôn hòa' },
   { id: 'email_formel', title: 'Email phàn nàn trang trọng', detail: 'Mở đầu trang trọng và nêu mong muốn' },
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
@@ -500,6 +505,65 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nhận lời giúp đỡ', patterns: [/\bavec plaisir\b/], hint: 'Avec plaisir, ce serait super si tu pouvais.' },
+    ],
+  ],
+  itineraire: [
+    [
+      { goal: 'Đề xuất giờ khởi hành bằng préférerais', patterns: [/\bje préférerais\b/], hint: 'Je préférerais partir vendredi soir, pour profiter de deux jours complets.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à condition de" starts with à.
+      { goal: 'Nêu điều kiện bằng à condition de', patterns: [/(?:^|\s)à condition de\b/], hint: 'J’ai trouvé un gîte pas cher, à condition de réserver avant jeudi.' },
+    ],
+    [
+      { goal: 'Đề xuất phương án dự phòng', patterns: [/\bon pourrait visiter\b/], hint: 'Oui, on pourrait visiter le musée local dans ce cas.' },
+    ],
+  ],
+  environnement: [
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "compliqué" ends in é.
+      { goal: 'Thừa nhận khó khăn', patterns: [/\bc'est parfois compliqué(?=\s|$)/], hint: 'J’essaie, mais c’est parfois compliqué de savoir quoi mettre où.' },
+    ],
+    [
+      { goal: 'Nói nhầm lẫn cụ thể', patterns: [/\bje me trompe souvent\b/], hint: 'Oui, mais je me trompe souvent avec les emballages mélangés.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh tầm quan trọng', patterns: [/\bc'est important pour\b/], hint: 'J’espère, parce que c’est important pour l’environnement.' },
+    ],
+  ],
+  habitudes_sante: [
+    [
+      { goal: 'Mô tả thói quen ăn uống', patterns: [/\bje mange souvent\b/], hint: 'Plutôt équilibrée, mais je mange souvent trop vite.' },
+    ],
+    [
+      { goal: 'Mô tả giấc ngủ bằng ce qui', patterns: [/\bce qui n'est\b/], hint: 'Je dors environ six heures, ce qui n’est sans doute pas assez.' },
+    ],
+    [
+      { goal: 'Nêu dự định cải thiện', patterns: [/\bje vais essayer de\b/], hint: 'Je vais essayer de me coucher plus tôt.' },
+    ],
+  ],
+  serie_tv: [
+    [
+      { goal: 'Giới thiệu bằng celle que', patterns: [/\bcelle que je regarde\b/], hint: 'Celle que je regarde en ce moment est vraiment addictive.' },
+    ],
+    [
+      { goal: 'Nêu góc nhìn kể chuyện', patterns: [/\bdu point de vue\b/], hint: 'D’une enquête policière, mais racontée du point de vue du suspect.' },
+    ],
+    [
+      { goal: 'Nêu đặc điểm hấp dẫn', patterns: [/\bcoup de théâtre\b/], hint: 'Trois, et chacune se termine par un vrai coup de théâtre.' },
+    ],
+  ],
+  cause_effet: [
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à cause" starts with à.
+      { goal: 'Nêu nguyên nhân tiêu cực bằng à cause de', patterns: [/(?:^|\s)à cause\b/], hint: 'À cause d’un problème technique, nous avons dû tout retester.' },
+    ],
+    [
+      { goal: 'Nối kết quả bằng du coup', patterns: [/\bdu coup\b/], hint: 'Oui, du coup, nous avons dépassé le budget initial de dix pour cent.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
+      { goal: 'Nêu nguyên nhân tích cực bằng grâce à', patterns: [/\bgrâce à(?=\s|$)/], hint: 'Grâce à de meilleurs tests en amont, on pourrait l’éviter.' },
     ],
   ],
   velo: [
