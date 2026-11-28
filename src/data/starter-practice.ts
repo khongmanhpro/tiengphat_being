@@ -139,6 +139,11 @@ export const starterPractice = [
   { id: 'critique_politique', title: 'Phân tích chính sách công', detail: 'Nhượng bộ bằng quoique, nguy cơ bằng le risque que' },
   { id: 'negociation_internationale', title: 'Đàm phán đa văn hóa', detail: 'Đối chiếu cách tiếp cận bằng en + gérondif' },
   { id: 'ambiguite_langage', title: 'Mơ hồ trong ngôn ngữ pháp lý', detail: 'Nêu nguy cơ bằng se prêter à' },
+  { id: 'ironie_humour', title: 'Mỉa mai & hài hước tinh tế', detail: 'Nhận biết hàm ý bằng ce qui est sous-entendu' },
+  { id: 'redaction_rapport', title: 'Báo cáo chuyên môn', detail: 'Nêu lý do tối thiểu bằng ne serait-ce que' },
+  { id: 'gestion_crise', title: 'Khủng hoảng truyền thông', detail: 'Nêu điều kiện bằng tant que' },
+  { id: 'ethique_ia', title: 'Đạo đức AI/công nghệ', detail: 'Nêu nguyên nhân bằng tant + mệnh đề' },
+  { id: 'style_journalistique', title: 'Phong cách báo chí', detail: 'Cân bằng bằng sans pour autant' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -1681,6 +1686,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Chấp nhận cái giá bằng quitte à', patterns: [/\bce serait plus prudent quitte à retarder un peu la signature\b/], hint: 'Ce serait plus prudent, quitte à retarder un peu la signature.' },
+    ],
+  ],
+  ironie_humour: [
+    [
+      { goal: 'Kể nhầm lẫn bằng prendre au pied de la lettre', patterns: [/\bje prenais tout au pied de la lettre ce qui créait pas mal de malentendus\b/], hint: 'Oui, au début je prenais tout au pied de la lettre, ce qui créait pas mal de malentendus.' },
+    ],
+    [
+      { goal: 'Kể ví dụ bằng disait quelle belle journée', patterns: [/\bdisait quelle belle journée sous la pluie\b/], hint: 'Quelqu’un disait « quelle belle journée » sous la pluie, et je répondais sérieusement que non, justement.' },
+    ],
+    [
+      { goal: 'Giải thích bằng ce qui est sous-entendu', patterns: [/\bj'essaie de guetter ce léger décalage entre ce qui est dit et ce qui est sous-entendu\b/], hint: 'Exactement, depuis, j’essaie de guetter ce léger décalage entre ce qui est dit et ce qui est sous-entendu.' },
+    ],
+  ],
+  redaction_rapport: [
+    [
+      { goal: 'Giải thích cấu trúc bằng avant d’aborder', patterns: [/\bje préfère partir des constats les plus solides avant d'aborder les points plus discutables\b/], hint: 'Je préfère partir des constats les plus solides avant d’aborder les points plus discutables.' },
+    ],
+    [
+      { goal: 'Nêu cách sắp xếp bằng par ordre de priorité', patterns: [/\bje les présenterai par ordre de priorité quitte à regrouper celles qui se recoupent\b/], hint: 'Je les présenterai par ordre de priorité, quitte à regrouper celles qui se recoupent.' },
+    ],
+    [
+      { goal: 'Nêu lý do tối thiểu bằng ne serait-ce que pour', patterns: [/\bne serait-ce que pour anticiper les objections qu'on pourrait nous opposer\b/], hint: 'Absolument, ne serait-ce que pour anticiper les objections qu’on pourrait nous opposer.' },
+    ],
+  ],
+  gestion_crise: [
+    [
+      { goal: 'Đề xuất hành động bằng d’où l’urgence de', patterns: [/\bd'où l'urgence de communiquer rapidement quitte à ne pas avoir toutes les réponses tout de suite\b/], hint: 'D’où l’urgence de communiquer rapidement, quitte à ne pas avoir toutes les réponses tout de suite.' },
+    ],
+    [
+      // Pattern kết thúc bằng "culpabilité" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Nêu lo ngại bằng que le silence soit interprété', patterns: [/\bque le silence soit interprété comme un aveu de culpabilité(?=\s|$)/], hint: 'Si, c’est précisément ce que je redoute : que le silence soit interprété comme un aveu de culpabilité.' },
+    ],
+    [
+      { goal: 'Nêu điều kiện bằng tant que', patterns: [/\btant qu'elle reste honnête sur ce qu'on sait et ce qu'on ignore encore\b/], hint: 'Oui, tant qu’elle reste honnête sur ce qu’on sait et ce qu’on ignore encore.' },
+    ],
+  ],
+  ethique_ia: [
+    [
+      { goal: 'Nêu nguyên nhân bằng tant les usages diffèrent', patterns: [/\bje pencherais plutôt pour une régulation au cas par cas tant les usages diffèrent selon les contextes\b/], hint: 'Je pencherais plutôt pour une régulation au cas par cas, tant les usages diffèrent selon les contextes.' },
+    ],
+    [
+      { goal: 'Nêu ngoại lệ bằng à moins que', patterns: [/\bc'est un vrai risque à moins qu'on n'anticipe les usages détournés dès la phase de conception\b/], hint: 'C’est un vrai risque, à moins qu’on n’anticipe les usages détournés dès la phase de conception.' },
+    ],
+    [
+      { goal: 'Đề xuất giải pháp bằng d’où l’intérêt de', patterns: [/\bd'où l'intérêt d'une régulation qui les y oblige précisément là où la volonté seule ne suffit pas\b/], hint: 'D’où l’intérêt d’une régulation qui les y oblige, précisément là où la volonté seule ne suffit pas.' },
+    ],
+  ],
+  style_journalistique: [
+    [
+      { goal: 'Nêu khuynh hướng bằng avoir tendance à', patterns: [/\bon a tendance à tout nuancer à l'excès\b/], hint: 'C’est le risque quand on vient de la recherche, on a tendance à tout nuancer à l’excès.' },
+    ],
+    [
+      { goal: 'Giải thích cách chỉnh sửa bằng sans pour autant', patterns: [/\bje vais élaguer les formules les plus prudentes sans pour autant trahir la complexité du sujet\b/], hint: 'Entendu, je vais élaguer les formules les plus prudentes, sans pour autant trahir la complexité du sujet.' },
+    ],
+    [
+      { goal: 'Cam kết hành động bằng je m’y attelle', patterns: [/\bje m'y attelle dès maintenant quitte à reformuler entièrement l'introduction\b/], hint: 'Je m’y attelle dès maintenant, quitte à reformuler entièrement l’introduction.' },
     ],
   ],
 }

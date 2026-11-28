@@ -152,6 +152,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['critique_politique', 'Phân tích chính sách công', 'briefcase', 'Nhượng bộ bằng quoique, nêu nguy cơ bằng le risque que'],
     ['negociation_internationale', 'Đàm phán đa văn hóa', 'people', 'Đối chiếu cách tiếp cận bằng en + gérondif'],
     ['ambiguite_langage', 'Mơ hồ trong ngôn ngữ pháp lý', 'book', 'Nêu nguy cơ bằng se prêter à, đề xuất bằng mieux vaudrait'],
+    ['ironie_humour', 'Mỉa mai & hài hước tinh tế', 'message', 'Nhận biết hàm ý bằng ce qui est sous-entendu'],
+    ['redaction_rapport', 'Báo cáo chuyên môn', 'book', 'Nêu lý do tối thiểu bằng ne serait-ce que pour'],
+    ['gestion_crise', 'Khủng hoảng truyền thông', 'message', 'Nêu điều kiện bằng tant que + indicatif'],
+    ['ethique_ia', 'Đạo đức AI/công nghệ', 'briefcase', 'Nêu nguyên nhân bằng tant + mệnh đề'],
+    ['style_journalistique', 'Phong cách báo chí', 'message', 'Cân bằng bằng sans pour autant + nguyên mẫu'],
   ] },
 }
 
