@@ -43,6 +43,11 @@ export const starterPractice = [
   { id: 'anniversaire', title: 'Mời dự sinh nhật', detail: 'Nói giờ và nhận lời giúp đỡ' },
   { id: 'etudes', title: 'Nói về việc học', detail: 'Môn học, thời gian và tần suất' },
   { id: 'animaux', title: 'Thú cưng', detail: 'Giới thiệu tên, ngoại hình, tính cách' },
+  { id: 'quartier', title: 'Mô tả khu phố', detail: 'Không khí, phương tiện và nơi mua sắm' },
+  { id: 'reservation', title: 'Đặt bàn nhà hàng', detail: 'Số người, ngày giờ và xác nhận' },
+  { id: 'perdu', title: 'Báo mất đồ', detail: 'Mô tả bên trong và cách xử lý' },
+  { id: 'projet_vacances', title: 'Dự định nghỉ hè', detail: 'Đi đâu, bao lâu và đã chuẩn bị gì' },
+  { id: 'sport', title: 'Thể thao yêu thích', detail: 'Tần suất chơi và từ bao lâu' },
   { id: 'velo', title: 'Thuê xe đạp', detail: 'Thuê theo thời gian và báo sự cố' },
   { id: 'pharmacie', title: 'Ở hiệu thuốc', detail: 'Mô tả triệu chứng và hỏi liều dùng' },
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
@@ -520,6 +525,63 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói thời gian sở hữu và tính cách', patterns: [/\bil est très calme\b/], hint: 'Depuis deux ans. Il est très calme.' },
+    ],
+  ],
+  quartier: [
+    [
+      { goal: 'Mô tả khu phố bằng pas mal de', patterns: [/\bpas mal de\b/], hint: 'Il est plutôt calme, avec pas mal de petits commerces.' },
+    ],
+    [
+      // Pattern đứng trước à (có dấu) nên dùng (?:^|\s) thay \b, tránh lỗi \b trước chữ có dấu.
+      { goal: 'Nói khoảng cách bằng à + thời gian + à pied', patterns: [/(?:^|\s)à cinq minutes à pied(?=\s|$)/], hint: 'Oui, le métro est à cinq minutes à pied d’ici.' },
+    ],
+    [
+      { goal: 'Nói nơi mua sắm bằng juste au coin de la rue', patterns: [/\bjuste au coin de la rue\b/], hint: 'Il y a un marché le dimanche matin, juste au coin de la rue.' },
+    ],
+  ],
+  reservation: [
+    [
+      { goal: 'Đặt bàn cho số người bằng réserver une table pour', patterns: [/\bréserver une table pour\b/], hint: 'Bonjour, je voudrais réserver une table pour quatre personnes.' },
+    ],
+    [
+      { goal: 'Nói giờ ước chừng bằng vers + giờ', patterns: [/\bvers vingt heures\b/], hint: 'Samedi soir, vers vingt heures si possible.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Xác nhận sự phù hợp bằng ça nous convient', patterns: [/(?:^|\s)ça nous convient\b/], hint: 'C’est parfait, ça nous convient très bien.' },
+    ],
+  ],
+  perdu: [
+    [
+      { goal: 'Báo mất đồ bằng j’ai perdu', patterns: [/\bj'ai perdu\b/], hint: 'J’ai perdu mon portefeuille, probablement dans le bus.' },
+    ],
+    [
+      { goal: 'Liệt kê đồ mất bằng un peu d’argent liquide', patterns: [/\bun peu d'argent liquide\b/], hint: 'Ma carte bancaire, mon permis de conduire et un peu d’argent liquide.' },
+    ],
+    [
+      { goal: 'Nói sẽ xử lý ngay bằng tout de suite', patterns: [/\btout de suite\b/], hint: 'Pas encore, je vais appeler la banque tout de suite.' },
+    ],
+  ],
+  projet_vacances: [
+    [
+      { goal: 'Nói dự định bằng je vais partir', patterns: [/\bje vais partir\b/], hint: 'Oui, je vais partir en Italie avec ma sœur.' },
+    ],
+    [
+      { goal: 'Nói dự định tham quan bằng on va visiter', patterns: [/\bon va visiter\b/], hint: 'Deux semaines. On va visiter Rome et Venise.' },
+    ],
+    [
+      { goal: 'Nói chưa làm nhưng sẽ làm bằng pas encore mais', patterns: [/\bpas encore mais\b/], hint: 'Pas encore, mais on va le faire bientôt.' },
+    ],
+  ],
+  sport: [
+    [
+      { goal: 'Nói tần suất chơi bằng deux fois par semaine', patterns: [/\bdeux fois par semaine\b/], hint: 'Oui, je fais de la natation deux fois par semaine.' },
+    ],
+    [
+      { goal: 'So sánh bằng meilleur pour', patterns: [/\bmeilleur pour\b/], hint: 'Oui, c’est meilleur pour mon dos.' },
+    ],
+    [
+      { goal: 'Nói thời gian bắt đầu bằng depuis', patterns: [/\bdepuis l'enfance\b/], hint: 'Depuis l’enfance, en fait.' },
     ],
   ],
   apparence: [

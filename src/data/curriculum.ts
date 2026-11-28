@@ -24,6 +24,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['anniversaire', 'Mời dự sinh nhật', 'coffee', 'Mời bạn, nói giờ và nhận lời đề nghị giúp đỡ'],
     ['etudes', 'Nói về việc học', 'book', 'Nói môn học, thời gian học và tần suất'],
     ['animaux', 'Thú cưng', 'heart', 'Giới thiệu thú cưng bằng qui s’appelle'],
+    ['quartier', 'Mô tả khu phố', 'map', 'Nói về khu phố mình sống và nơi mua sắm gần đó'],
+    ['reservation', 'Đặt bàn nhà hàng', 'coffee', 'Đặt bàn qua điện thoại: số người, ngày giờ'],
+    ['perdu', 'Báo mất đồ', 'bag', 'Báo mất một món đồ và những gì cần xử lý'],
+    ['projet_vacances', 'Dự định nghỉ hè', 'map', 'Kể dự định đi đâu, bao lâu và đã chuẩn bị gì'],
+    ['sport', 'Thể thao yêu thích', 'heart', 'Nói về môn thể thao mình chơi, tần suất và từ bao lâu'],
   ] },
   A2: { name: 'Sơ cấp', description: 'Xử lý các tình huống quen thuộc và kể về cuộc sống của bạn.', topics: [
     ['hotel', 'Đặt phòng khách sạn', 'bag', 'Kiểm tra phòng trống và xác nhận lượt đặt'],

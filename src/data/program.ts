@@ -18,7 +18,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Chào, nói tên, hỏi một câu về việc đang cần và lịch sự kết thúc.',
       Viết: 'Viết tin nhắn ngắn có thông tin cá nhân, giờ và nơi gặp.',
     },
-    blocks: ['Giới thiệu và đánh vần', 'Giờ hẹn và gọi món', 'Mua sắm và tìm đường', 'Tiền bạc và nghề nghiệp', 'Thời tiết và đồ vật', 'Khẩu vị và phòng ở', 'Điện thoại và cơ thể', 'Xe buýt và lịch tuần', 'Ngân hàng và nhà ở', 'Sinh nhật và việc học', 'Thú cưng'],
+    blocks: ['Giới thiệu và đánh vần', 'Giờ hẹn và gọi món', 'Mua sắm và tìm đường', 'Tiền bạc và nghề nghiệp', 'Thời tiết và đồ vật', 'Khẩu vị và phòng ở', 'Điện thoại và cơ thể', 'Xe buýt và lịch tuần', 'Ngân hàng và nhà ở', 'Sinh nhật và việc học', 'Thú cưng và khu phố', 'Đặt bàn và báo mất đồ', 'Dự định hè và thể thao'],
   },
   A2: {
     result: 'Trao đổi trực tiếp trong việc quen thuộc, kể lại ngắn một việc đã xảy ra và thống nhất phương án.',
