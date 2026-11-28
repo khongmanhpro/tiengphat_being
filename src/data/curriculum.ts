@@ -88,6 +88,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['transport_corresp', 'Sự cố đổi tuyến phương tiện', 'map', 'Kể sự cố bằng j’ai dû và le temps que'],
     ['histoire_famille', 'Lịch sử gia đình', 'people', 'Kể quyết định quan trọng bằng même si, grâce à'],
     ['echange_etudes', 'Kinh nghiệm du học', 'book', 'Kể thay đổi bản thân bằng il fallait, plus...plus...'],
+    ['budget', 'Lập kế hoạch chi tiêu', 'bag', 'Nêu điều kiện bằng à condition que, pourvu que'],
+    ['demande_conge', 'Xin nghỉ phép', 'briefcase', 'Xin nghỉ lịch sự và linh hoạt về thời gian'],
+    ['recommandation', 'Giới thiệu nơi/sản phẩm', 'coffee', 'Giới thiệu và đưa lời khuyên bằng il faudrait...sinon'],
+    ['interview_radio', 'Trả lời phỏng vấn ngắn', 'message', 'Kể kinh nghiệm bằng le fait de, je dirais que'],
+    ['projet_association', 'Đề xuất dự án tình nguyện', 'people', 'Đề xuất bằng j’aimerais que + subjonctif'],
   ] },
   B2: { name: 'Trung cao cấp', description: 'Diễn đạt quan điểm có sắc thái và thuyết phục người nghe.', topics: [
     ['actualites', 'Thảo luận tin tức', 'message', 'Nêu lợi ích, giới hạn và điều kiện của một đề xuất'],

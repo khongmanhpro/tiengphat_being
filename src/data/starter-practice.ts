@@ -91,6 +91,11 @@ export const starterPractice = [
   { id: 'transport_corresp', title: 'Sự cố đổi tuyến phương tiện', detail: 'Kể sự cố bằng j’ai dû' },
   { id: 'histoire_famille', title: 'Lịch sử gia đình', detail: 'Kể quyết định bằng même si, grâce à' },
   { id: 'echange_etudes', title: 'Kinh nghiệm du học', detail: 'Kể thay đổi bằng il fallait, plus...plus...' },
+  { id: 'budget', title: 'Lập kế hoạch chi tiêu', detail: 'Điều kiện bằng à condition que, pourvu que' },
+  { id: 'demande_conge', title: 'Xin nghỉ phép', detail: 'Xin nghỉ lịch sự và linh hoạt thời gian' },
+  { id: 'recommandation', title: 'Giới thiệu nơi/sản phẩm', detail: 'Giới thiệu và đưa lời khuyên' },
+  { id: 'interview_radio', title: 'Trả lời phỏng vấn ngắn', detail: 'Kể kinh nghiệm bằng le fait de' },
+  { id: 'projet_association', title: 'Đề xuất dự án tình nguyện', detail: 'Đề xuất bằng j’aimerais que' },
   { id: 'debat_social', title: 'Tranh luận xã hội', detail: 'Phản biện và đề xuất phương án ôn hòa' },
   { id: 'email_formel', title: 'Email phàn nàn trang trọng', detail: 'Mở đầu trang trọng và nêu mong muốn' },
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
@@ -981,6 +986,64 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói sự thay đổi dần bằng plus...plus...', patterns: [/\bplus j'avançais plus je prenais confiance en moi\b/], hint: 'Non, mais plus j’avançais, plus je prenais confiance en moi.' },
+    ],
+  ],
+  budget: [
+    [
+      { goal: 'Nêu vấn đề bằng on dépensait beaucoup plus que prévu', patterns: [/\bj'ai remarqué qu'on dépensait beaucoup plus que prévu en courses\b/], hint: 'Oui, j’ai remarqué qu’on dépensait beaucoup plus que prévu en courses.' },
+    ],
+    [
+      // Pattern bắt đầu bằng à (có dấu) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nêu điều kiện bằng à condition qu’on s’y tienne', patterns: [/(?:^|\s)à condition qu'on s'y tienne vraiment cette fois\b/], hint: 'Bonne idée, à condition qu’on s’y tienne vraiment cette fois.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Đồng ý với điều kiện bằng pourvu que ce soit simple', patterns: [/(?:^|\s)ça me va pourvu que ce soit simple à utiliser\b/], hint: 'Ça me va, pourvu que ce soit simple à utiliser.' },
+    ],
+  ],
+  demande_conge: [
+    [
+      { goal: 'Xin nghỉ phép lịch sự bằng si c’est possible', patterns: [/\bje voudrais prendre quelques jours de congé le mois prochain si c'est possible\b/], hint: 'Oui, je voudrais prendre quelques jours de congé le mois prochain, si c’est possible.' },
+    ],
+    [
+      { goal: 'Thể hiện linh hoạt bằng pourvu que ce soit avant la fin du mois', patterns: [/\bje peux m'adapter pourvu que ce soit avant la fin du mois\b/], hint: 'Je comprends, je peux m’adapter, pourvu que ce soit avant la fin du mois.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Xác nhận và cảm ơn bằng ça me convient très bien', patterns: [/(?:^|\s)ça me convient très bien\b/], hint: 'Ça me convient très bien, merci de votre compréhension.' },
+    ],
+  ],
+  recommandation: [
+    [
+      { goal: 'Giới thiệu bằng je te recommande vivement', patterns: [/\bje te recommande vivement celui où on est allés le mois dernier\b/], hint: 'Oui, je te recommande vivement celui où on est allés le mois dernier.' },
+    ],
+    [
+      { goal: 'Đánh giá đáng tiền bằng ça vaut largement le prix', patterns: [/\bce n'est pas donné mais ça vaut largement le prix\b/], hint: 'Excellent, et en plus, ce n’est pas donné, mais ça vaut largement le prix.' },
+    ],
+    [
+      { goal: 'Đưa lời khuyên bằng sinon vous risquez', patterns: [/\bsurtout si vous êtes nombreux sinon vous risquez de ne pas avoir de table\b/], hint: 'Oui, surtout si vous êtes nombreux, sinon vous risquez de ne pas avoir de table.' },
+    ],
+  ],
+  interview_radio: [
+    [
+      { goal: 'Nói thời gian học bằng depuis environ deux ans', patterns: [/\bdepuis environ deux ans de façon assez régulière\b/], hint: 'Depuis environ deux ans, de façon assez régulière.' },
+    ],
+    [
+      { goal: 'Nhấn mạnh bằng le fait de pratiquer à l’oral', patterns: [/\ble fait de pratiquer à l'oral dès le début\b/], hint: 'Sans hésiter, le fait de pratiquer à l’oral dès le début, même en faisant des erreurs.' },
+    ],
+    [
+      { goal: 'Đưa lời khuyên bằng je dirais que', patterns: [/\bje dirais qu'il ne faut surtout pas avoir peur de se tromper\b/], hint: 'Je dirais qu’il ne faut surtout pas avoir peur de se tromper.' },
+    ],
+  ],
+  projet_association: [
+    [
+      { goal: 'Đề xuất bằng j’aimerais qu’on organise', patterns: [/\bj'aimerais qu'on organise des cours de français gratuits pour les nouveaux arrivants\b/], hint: 'Oui, j’aimerais qu’on organise des cours de français gratuits pour les nouveaux arrivants.' },
+    ],
+    [
+      { goal: 'Đề xuất cách thực hiện bằng en communiquant sur les réseaux', patterns: [/\ben communiquant sur les réseaux\b/], hint: 'Si on s’y prend assez tôt, je pense que oui, surtout en communiquant sur les réseaux.' },
+    ],
+    [
+      { goal: 'Đề xuất giúp đỡ bằng je connais quelqu’un à la mairie', patterns: [/\bje connais quelqu'un à la mairie qui pourrait nous aider\b/], hint: 'Je m’en occupe, je connais quelqu’un à la mairie qui pourrait nous aider.' },
     ],
   ],
   feedback_constructif: [
