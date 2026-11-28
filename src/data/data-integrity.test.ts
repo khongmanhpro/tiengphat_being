@@ -8,10 +8,18 @@ import { conjugations } from './conjugation'
 import { phonemeRules, phonologyByLesson } from './phonology'
 import { questions as placementQuestions } from './placement'
 import { practiceCues, starterPractice } from './starter-practice'
+import { normalize } from '../speech'
 import voiceSamples from './voice-samples.json'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const ipaPattern = /^\/.+\/$/
+
+/**
+ * Cue goals whose `hint` is deliberately a sub-phrase rather than a full sentence, so its
+ * pattern (which expects surrounding context, e.g. a verb phrase) never matches the hint
+ * alone — not a bug, just not checkable the same way as the rest.
+ */
+const fragmentHintGoals = new Set(['Nêu ít nhất một món'])
 
 describe('lesson content', () => {
   for (const lesson of lessons) {
@@ -159,6 +167,18 @@ describe('guided conversation practice (starter-practice)', () => {
               expect(cue.hint.trim()).not.toBe('')
               expect(cue.patterns.length).toBeGreaterThan(0)
             })
+
+            // A learner who answers with exactly the hint should be recognized. This catches
+            // the recurring class of bug where `\b` sits right next to an accented letter
+            // (JS `\b` only treats [A-Za-z0-9_] as a "word" character) — e.g. `/\bà pied\b/`
+            // or `/\bcommandé\b/` never match, even on an exact, correct answer. Skipped for
+            // hints that are templates rather than full sentences (contain "…").
+            if (!cue.hint.includes('…') && !fragmentHintGoals.has(cue.goal)) {
+              it(`"${cue.goal}" pattern matches its own hint`, () => {
+                const normalized = normalize(cue.hint)
+                expect(cue.patterns.some(pattern => pattern.test(normalized))).toBe(true)
+              })
+            }
           }
         })
       }
