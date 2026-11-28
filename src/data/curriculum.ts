@@ -32,6 +32,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['valise', 'Hành lý thất lạc', 'map', 'Báo mất hành lý và mô tả đặc điểm để tìm lại'],
     ['restaurant_avis', 'Nhận xét món ăn', 'coffee', 'Khen và nêu nhận xét nhẹ về món ăn'],
     ['excuse', 'Xin lỗi vì đến trễ', 'message', 'Xin lỗi, giải thích lý do và trấn an người kia'],
+    ['apparence', 'Mô tả ngoại hình', 'people', 'Mô tả chiều cao, tóc và trang phục để nhận ra ai đó'],
+    ['meteo_passe', 'Kể thời tiết đã qua', 'map', 'Kể thời tiết trong một chuyến đi và so sánh với hiện tại'],
+    ['ville_comparaison', 'So sánh hai thành phố', 'map', 'So sánh nơi ở hiện tại với một nơi trước đây'],
+    ['plainte_a2', 'Phàn nàn dịch vụ khách sạn', 'bag', 'Nêu vấn đề và nói thiếu gì một cách lịch sự'],
+    ['fete', 'Lên kế hoạch tổ chức tiệc', 'coffee', 'Thống nhất địa điểm, số khách và phân công'],
   ] },
   B1: { name: 'Trung cấp', description: 'Diễn đạt ý kiến, kể trải nghiệm và ứng phó khi có thay đổi.', topics: [
     ['emploi', 'Công việc & phỏng vấn', 'bag', 'Kể về kinh nghiệm và trình bày một điểm mạnh'],

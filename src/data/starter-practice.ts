@@ -43,6 +43,11 @@ export const starterPractice = [
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
   { id: 'restaurant_avis', title: 'Nhận xét món ăn', detail: 'Khen và nêu nhận xét nhẹ nhàng' },
   { id: 'excuse', title: 'Xin lỗi vì đến trễ', detail: 'Xin lỗi và giải thích lý do' },
+  { id: 'apparence', title: 'Mô tả ngoại hình', detail: 'Mô tả chiều cao, tóc và trang phục' },
+  { id: 'meteo_passe', title: 'Kể thời tiết đã qua', detail: 'Kể lại và so sánh với hiện tại' },
+  { id: 'ville_comparaison', title: 'So sánh hai thành phố', detail: 'So sánh bằng plus/moins/meilleur' },
+  { id: 'plainte_a2', title: 'Phàn nàn dịch vụ khách sạn', detail: 'Nêu vấn đề và nói thiếu gì' },
+  { id: 'fete', title: 'Lên kế hoạch tổ chức tiệc', detail: 'Thống nhất và phân công việc' },
   { id: 'reclamation', title: 'Phàn nàn về sản phẩm', detail: 'Mô tả vấn đề và đề xuất giải pháp' },
   { id: 'etudes_projet', title: 'Kế hoạch học tiếp', detail: 'Nói dự định và điều kiện để xảy ra' },
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
@@ -439,6 +444,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Chốt lịch hẹn', patterns: [/\bd'accord\b/], hint: 'D’accord, à jeudi alors !' },
+    ],
+  ],
+  apparence: [
+    [
+      { goal: 'Mô tả chiều cao và tóc', patterns: [/\belle est assez grande\b/], hint: 'Elle est assez grande, avec les cheveux longs et bouclés.' },
+    ],
+    [
+      { goal: 'Mô tả trang phục hay mặc', patterns: [/\belle a souvent\b/], hint: 'Elle a souvent un manteau rouge et des lunettes.' },
+    ],
+    [
+      { goal: 'Ước lượng tuổi', patterns: [/\bla trentaine\b/], hint: 'Elle a la trentaine, je dirais.' },
+    ],
+  ],
+  meteo_passe: [
+    [
+      { goal: 'Kể sự kiện thời tiết bằng passé composé', patterns: [/\bil a plu\b/], hint: 'Au début, oui, mais après il a plu presque tous les jours.' },
+    ],
+    [
+      { goal: 'Mô tả bối cảnh bằng imparfait', patterns: [/\bil faisait doux\b/], hint: 'Pas vraiment, il faisait doux, autour de quinze degrés.' },
+    ],
+    [
+      { goal: 'So sánh với hiện tại', patterns: [/\bplus chaud\b/], hint: 'Il fait beaucoup plus chaud qu’à cette époque-là.' },
+    ],
+  ],
+  ville_comparaison: [
+    [
+      { goal: 'So sánh hai nơi', patterns: [/\bplus calme\b/], hint: 'Ici, c’est plus calme, mais là-bas il y avait plus d’activités.' },
+    ],
+    [
+      { goal: 'So sánh kém hơn bằng moins', patterns: [/\bmoins chers\b/], hint: 'Oui, et surtout moins chers qu’avant.' },
+    ],
+    [
+      { goal: 'Khẳng định không hối tiếc', patterns: [/\bje ne regrette pas\b/], hint: 'Non, c’est différent, mais je ne regrette pas du tout.' },
+    ],
+  ],
+  plainte_a2: [
+    [
+      { goal: 'Nêu vấn đề bằng pas très', patterns: [/\bpas très propre\b/], hint: 'En fait, non. La salle de bain n’est pas très propre.' },
+    ],
+    [
+      { goal: 'Nói thiếu gì bằng il manque', patterns: [/\bil manque\b/], hint: 'Merci, et il manque aussi des serviettes.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "réactivité" ends in é.
+      { goal: 'Cảm ơn sự nhanh chóng', patterns: [/\bvotre réactivité(?=\s|$)/], hint: 'Parfait, merci beaucoup pour votre réactivité.' },
+    ],
+  ],
+  fete: [
+    [
+      { goal: 'Đề xuất địa điểm bằng plutôt', patterns: [/\bplutôt chez moi\b/], hint: 'Plutôt chez moi, c’est plus grand.' },
+    ],
+    [
+      { goal: 'Nói số lượng ước chừng', patterns: [/\bune quinzaine\b/], hint: 'Une quinzaine, je pense, pas plus.' },
+    ],
+    [
+      { goal: 'Nhận lời giúp đỡ', patterns: [/\bavec plaisir\b/], hint: 'Avec plaisir, ce serait super si tu pouvais.' },
     ],
   ],
   velo: [
