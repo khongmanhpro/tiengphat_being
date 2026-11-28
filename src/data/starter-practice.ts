@@ -72,6 +72,10 @@ export const starterPractice = [
   { id: 'objet_cadeau', title: 'Chọn quà tặng', detail: 'Gợi ý theo sở thích và ngân sách' },
   { id: 'internet', title: 'Sự cố wifi/máy tính', detail: 'Triệu chứng và điều đã thử' },
   { id: 'coiffeur', title: 'Cắt tóc', detail: 'Kiểu tóc muốn cắt và điều không đổi' },
+  { id: 'demenagement', title: 'Báo chuyển nhà', detail: 'Báo chủ nhà và thống nhất bàn giao' },
+  { id: 'abonnement', title: 'Hủy gói cước', detail: 'Xin hủy dịch vụ và nêu lý do' },
+  { id: 'sante_a2', title: 'Hẹn khám chuyên khoa', detail: 'Đặt lịch hẹn và xác nhận giờ đến' },
+  { id: 'souvenirs_enfance', title: 'Kỷ niệm thời thơ ấu', detail: 'Thói quen tuổi thơ bằng imparfait' },
   { id: 'reclamation', title: 'Phàn nàn về sản phẩm', detail: 'Mô tả vấn đề và đề xuất giải pháp' },
   { id: 'etudes_projet', title: 'Kế hoạch học tiếp', detail: 'Nói dự định và điều kiện để xảy ra' },
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
@@ -813,6 +817,51 @@ export const practiceCues: Record<string, Cue[][]> = {
     [
       // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
       { goal: 'Từ chối nhẹ nhàng bằng ça ira', patterns: [/(?:^|\s)ça ira\b/], hint: 'Non merci, ça ira, je suis pressée aujourd’hui.' },
+    ],
+  ],
+  demenagement: [
+    [
+      { goal: 'Báo trước bằng je voulais vous prévenir à l’avance', patterns: [/\bje voulais vous prévenir à l'avance\b/], hint: 'Oui, je vais déménager à la fin du mois, je voulais vous prévenir à l’avance.' },
+    ],
+    [
+      { goal: 'Hứa bàn giao bằng je vous laisserai les clés', patterns: [/\bje vous laisserai les clés\b/], hint: 'Je vous laisserai les clés le dernier jour.' },
+    ],
+    [
+      { goal: 'Xác nhận linh hoạt bằng n’importe quel samedi', patterns: [/\bn'importe quel samedi me convient\b/], hint: 'Oui, n’importe quel samedi me convient.' },
+    ],
+  ],
+  abonnement: [
+    [
+      { goal: 'Xin hủy bằng je voudrais résilier mon abonnement', patterns: [/\bje voudrais résilier mon abonnement\b/], hint: 'Je voudrais résilier mon abonnement, s’il vous plaît.' },
+    ],
+    [
+      { goal: 'Nêu lý do bằng j’ai trouvé une offre moins chère ailleurs', patterns: [/\bj'ai trouvé une offre moins chère ailleurs\b/], hint: 'J’ai trouvé une offre moins chère ailleurs.' },
+    ],
+    [
+      { goal: 'Xác nhận đã ghi nhận bằng c’est noté merci', patterns: [/\bc'est noté merci\b/], hint: 'D’accord, c’est noté, merci.' },
+    ],
+  ],
+  sante_a2: [
+    [
+      { goal: 'Đặt hẹn bằng je voudrais prendre rendez-vous avec', patterns: [/\bje voudrais prendre rendez-vous avec un dermatologue\b/], hint: 'Bonjour, je voudrais prendre rendez-vous avec un dermatologue.' },
+    ],
+    [
+      { goal: 'Nói lý do bằng mon médecin généraliste m’a conseillé', patterns: [/\bmon médecin généraliste m'a conseillé de venir\b/], hint: 'Non, c’est la première fois, mon médecin généraliste m’a conseillé de venir.' },
+    ],
+    [
+      { goal: 'Xác nhận giờ đến bằng je viendrai un quart d’heure avant', patterns: [/\bje viendrai un quart d'heure avant\b/], hint: 'Très bien, je viendrai un quart d’heure avant.' },
+    ],
+  ],
+  souvenirs_enfance: [
+    [
+      { goal: 'Kể hoàn cảnh bằng on n’avait pas beaucoup d’argent', patterns: [/\bon n'avait pas beaucoup d'argent\b/], hint: 'Très simple. On n’avait pas beaucoup d’argent, mais on était heureux.' },
+    ],
+    [
+      { goal: 'Kể thói quen bằng tous les étés on allait chez mes grands-parents', patterns: [/\btous les étés on allait chez mes grands-parents\b/], hint: 'Dans un petit village, et tous les étés on allait chez mes grands-parents à la campagne.' },
+    ],
+    [
+      // Pattern kết thúc bằng "tombée" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Nói đến khi nào bằng jusqu’à la nuit tombée', patterns: [/\bjusqu'à la nuit tombée(?=\s|$)/], hint: 'Oui, on passait des heures à jouer dehors jusqu’à la nuit tombée.' },
     ],
   ],
   itineraire: [

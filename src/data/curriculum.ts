@@ -61,6 +61,10 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['objet_cadeau', 'Chọn quà tặng', 'bag', 'Nhờ gợi ý quà theo sở thích và ngân sách'],
     ['internet', 'Sự cố wifi/máy tính', 'message', 'Báo sự cố internet và điều đã thử'],
     ['coiffeur', 'Cắt tóc', 'people', 'Mô tả kiểu tóc muốn cắt và điều không đổi'],
+    ['demenagement', 'Báo chuyển nhà', 'bag', 'Báo chủ nhà và thống nhất việc bàn giao'],
+    ['abonnement', 'Hủy gói cước', 'message', 'Xin hủy dịch vụ và nêu lý do'],
+    ['sante_a2', 'Hẹn khám chuyên khoa', 'heart', 'Đặt lịch hẹn và xác nhận giờ đến'],
+    ['souvenirs_enfance', 'Kỷ niệm thời thơ ấu', 'people', 'Kể thói quen tuổi thơ bằng imparfait'],
   ] },
   B1: { name: 'Trung cấp', description: 'Diễn đạt ý kiến, kể trải nghiệm và ứng phó khi có thay đổi.', topics: [
     ['emploi', 'Công việc & phỏng vấn', 'bag', 'Kể về kinh nghiệm và trình bày một điểm mạnh'],
