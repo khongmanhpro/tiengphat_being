@@ -5,7 +5,8 @@ export type Skill = typeof skillNames[number]
 type Band = {
   result: string
   outcomes: Record<Skill, string>
-  blocks: [string, string, string]
+  /** One heading per 2 topics, in `curriculum[level].topics` order (see Roadmap.tsx). */
+  blocks: string[]
 }
 
 export const program: Record<Level, Band> = {
