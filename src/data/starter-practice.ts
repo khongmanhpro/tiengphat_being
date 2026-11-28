@@ -134,6 +134,11 @@ export const starterPractice = [
   { id: 'compromis_donnees', title: 'Đánh đổi chính sách theo số liệu', detail: 'Lợi ích thận trọng và cái giá' },
   { id: 'lettre_recommandation', title: 'Thư tiến cử', detail: 'Nhấn mạnh phẩm chất và ví dụ cụ thể' },
   { id: 'defis_traduction', title: 'Thách thức dịch thuật', detail: 'Đề xuất giải pháp và hạn chế' },
+  { id: 'analyse_litteraire', title: 'Phân tích văn học', detail: 'Diễn giải bằng moins...que..., le fait que' },
+  { id: 'question_philosophique', title: 'Câu hỏi triết học', detail: 'Làm rõ khái niệm bằng ce qu’on entend par' },
+  { id: 'critique_politique', title: 'Phân tích chính sách công', detail: 'Nhượng bộ bằng quoique, nguy cơ bằng le risque que' },
+  { id: 'negociation_internationale', title: 'Đàm phán đa văn hóa', detail: 'Đối chiếu cách tiếp cận bằng en + gérondif' },
+  { id: 'ambiguite_langage', title: 'Mơ hồ trong ngôn ngữ pháp lý', detail: 'Nêu nguy cơ bằng se prêter à' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -1620,6 +1625,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Ưu tiên bằng privilégier X plutôt que Y', patterns: [/\bprivilégier l'effet voulu\b/], hint: 'Là aussi, il faudra privilégier l’effet voulu plutôt que les mots exacts.' },
+    ],
+  ],
+  analyse_litteraire: [
+    [
+      { goal: 'Diễn giải bằng moins...qu’une forme de', patterns: [/\bj'y vois moins un aveu d'impuissance qu'une forme de pudeur délibérée\b/], hint: 'J’y vois moins un aveu d’impuissance qu’une forme de pudeur délibérée.' },
+    ],
+    [
+      { goal: 'Diễn giải sự kiện bằng le fait que + subjonctif passé', patterns: [/\ble fait que l'auteur ait choisi de suspendre le récit\b/], hint: 'Le fait que l’auteur ait choisi de suspendre le récit juste avant la révélation me semble révélateur d’une intention précise.' },
+    ],
+    [
+      { goal: 'Phản biện cách hiểu khác bằng elle me paraît réduire', patterns: [/\belle me paraît réduire un choix stylistique à une simple défaillance\b/], hint: 'C’est une lecture possible, sans doute, mais elle me paraît réduire un choix stylistique à une simple défaillance.' },
+    ],
+  ],
+  question_philosophique: [
+    [
+      // Pattern kết thúc bằng "liberté" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Làm rõ khái niệm bằng ce qu’on entend par', patterns: [/\btout dépend de ce qu'on entend par liberté(?=\s|$)/], hint: 'Tout dépend de ce qu’on entend par liberté : une absence totale de déterminisme me semble illusoire.' },
+    ],
+    [
+      { goal: 'Định nghĩa tự do bằng elle consiste à', patterns: [/\belle consiste à reconnaître ces déterminismes pour mieux s'en distancier\b/], hint: 'Pas tout à fait, je dirais plutôt qu’elle consiste à reconnaître ces déterminismes pour mieux s’en distancier.' },
+    ],
+    [
+      { goal: 'Nêu điều kiện còn thiếu bằng encore faudrait-il', patterns: [/\bencore faudrait-il définir ce qu'on entend exactement par une réponse inconfortable\b/], hint: 'Peut-être, mais encore faudrait-il définir ce qu’on entend exactement par une réponse inconfortable.' },
+    ],
+  ],
+  critique_politique: [
+    [
+      { goal: 'Nhượng bộ bằng quoique', patterns: [/\belle part d'une bonne intention quoiqu'elle semble sous-estimer les effets de bord\b/], hint: 'Sur le papier, elle part d’une bonne intention, quoiqu’elle semble sous-estimer les effets de bord.' },
+    ],
+    [
+      { goal: 'Nêu nguy cơ bằng le risque que', patterns: [/\ble risque que les petites structures\b/], hint: 'Le risque que les petites structures, faute de moyens, ne puissent pas s’y conformer aussi vite que les grandes.' },
+    ],
+    [
+      { goal: 'Chốt vấn đề bằng c’est bien là que le bât blesse', patterns: [/\bc'est bien là que le bât blesse\b/], hint: 'Consulter ne signifie pas toujours tenir compte, c’est bien là que le bât blesse.' },
+    ],
+  ],
+  negociation_internationale: [
+    [
+      { goal: 'Giải thích thói quen văn hóa bằng on apprécie que', patterns: [/\bon apprécie qu'une négociation commence par un peu de conversation informelle\b/], hint: 'Chez nous, on apprécie qu’une négociation commence par un peu de conversation informelle.' },
+    ],
+    [
+      { goal: 'Đối chiếu văn hóa bằng sans que + subjonctif', patterns: [/\bon va généralement plus vite au fait sans que cela soit perçu comme un manque de respect\b/], hint: 'Disons qu’on va généralement plus vite au fait, sans que cela soit perçu comme un manque de respect.' },
+    ],
+    [
+      { goal: 'Giải thích cách tiếp cận bằng en posant des questions', patterns: [/\ben posant des questions plutôt qu'en présumant que l'autre fonctionne comme nous\b/], hint: 'En posant des questions plutôt qu’en présumant que l’autre fonctionne comme nous.' },
+    ],
+  ],
+  ambiguite_langage: [
+    [
+      { goal: 'Nêu nguy cơ bằng se prêter à', patterns: [/\bune formulation aussi ouverte peut se prêter à des interprétations contradictoires\b/], hint: 'C’est bien ce qui m’inquiète : une formulation aussi ouverte peut se prêter à des interprétations contradictoires.' },
+    ],
+    [
+      { goal: 'Đề xuất bằng mieux vaudrait', patterns: [/\bmieux vaudrait clarifier les termes maintenant\b/], hint: 'Certes, mais mieux vaudrait clarifier les termes maintenant plutôt que d’attendre un litige pour le découvrir.' },
+    ],
+    [
+      { goal: 'Chấp nhận cái giá bằng quitte à', patterns: [/\bce serait plus prudent quitte à retarder un peu la signature\b/], hint: 'Ce serait plus prudent, quitte à retarder un peu la signature.' },
     ],
   ],
 }

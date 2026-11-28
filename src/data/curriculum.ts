@@ -147,6 +147,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['compromis_donnees', 'Đánh đổi chính sách theo số liệu', 'book', 'Trình bày lợi ích thận trọng và cái giá phải trả'],
     ['lettre_recommandation', 'Thư tiến cử', 'message', 'Nhấn mạnh phẩm chất và dẫn ví dụ cụ thể'],
     ['defis_traduction', 'Thách thức dịch thuật', 'audio', 'Đề xuất giải pháp và thừa nhận hạn chế'],
+    ['analyse_litteraire', 'Phân tích văn học', 'book', 'Diễn giải bằng moins...que..., le fait que + subjonctif passé'],
+    ['question_philosophique', 'Câu hỏi triết học', 'people', 'Làm rõ khái niệm bằng ce qu’on entend par'],
+    ['critique_politique', 'Phân tích chính sách công', 'briefcase', 'Nhượng bộ bằng quoique, nêu nguy cơ bằng le risque que'],
+    ['negociation_internationale', 'Đàm phán đa văn hóa', 'people', 'Đối chiếu cách tiếp cận bằng en + gérondif'],
+    ['ambiguite_langage', 'Mơ hồ trong ngôn ngữ pháp lý', 'book', 'Nêu nguy cơ bằng se prêter à, đề xuất bằng mieux vaudrait'],
   ] },
 }
 
