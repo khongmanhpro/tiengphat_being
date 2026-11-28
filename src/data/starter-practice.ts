@@ -67,6 +67,11 @@ export const starterPractice = [
   { id: 'emprunt', title: 'Mượn đồ hàng xóm', detail: 'Xin mượn lịch sự và hứa trả lại' },
   { id: 'ecole_enfant', title: 'Việc học của con', detail: 'Điểm mạnh và điểm cần cải thiện' },
   { id: 'hobby', title: 'Sở thích chi tiết', detail: 'Bắt đầu, lý do và tần suất' },
+  { id: 'recette', title: 'Hỏi công thức nấu ăn', detail: 'Các bước theo thứ tự' },
+  { id: 'banque_a2', title: 'Mở tài khoản ngân hàng', detail: 'Loại tài khoản và giấy tờ cần nộp' },
+  { id: 'objet_cadeau', title: 'Chọn quà tặng', detail: 'Gợi ý theo sở thích và ngân sách' },
+  { id: 'internet', title: 'Sự cố wifi/máy tính', detail: 'Triệu chứng và điều đã thử' },
+  { id: 'coiffeur', title: 'Cắt tóc', detail: 'Kiểu tóc muốn cắt và điều không đổi' },
   { id: 'reclamation', title: 'Phàn nàn về sản phẩm', detail: 'Mô tả vấn đề và đề xuất giải pháp' },
   { id: 'etudes_projet', title: 'Kế hoạch học tiếp', detail: 'Nói dự định và điều kiện để xảy ra' },
   { id: 'actualite_discussion', title: 'Bàn luận tin tức', detail: 'Nêu ý kiến và thừa nhận lo ngại' },
@@ -751,6 +756,63 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói tần suất bằng selon mon emploi du temps', patterns: [/\bselon mon emploi du temps\b/], hint: 'Deux ou trois fois, selon mon emploi du temps.' },
+    ],
+  ],
+  recette: [
+    [
+      { goal: 'Xin công thức bằng tu pourrais me donner la recette', patterns: [/\btu pourrais me donner la recette\b/], hint: 'Énormément, tu pourrais me donner la recette ?' },
+    ],
+    [
+      { goal: 'Hỏi bước tiếp theo bằng qu\'est-ce qu\'on ajoute', patterns: [/\bqu'est-ce qu'on ajoute\b/], hint: 'Et après, qu’est-ce qu’on ajoute ?' },
+    ],
+    [
+      { goal: 'Nói sẽ thử làm bằng je vais essayer', patterns: [/\bje vais essayer ce week-end\b/], hint: 'D’accord, je vais essayer ce week-end.' },
+    ],
+  ],
+  banque_a2: [
+    [
+      { goal: 'Nói loại tài khoản bằng un compte courant', patterns: [/\bun compte courant\b/], hint: 'Un compte courant, pour commencer.' },
+    ],
+    [
+      { goal: 'Nói chưa có giấy tờ bằng pas encore de justificatif à mon nom', patterns: [/\bpas encore de justificatif à mon nom\b/], hint: 'J’ai mon passeport, mais pas encore de justificatif à mon nom.' },
+    ],
+    [
+      { goal: 'Hứa mang đến bằng dès que possible', patterns: [/\bje vous l'apporte dès que possible\b/], hint: 'Parfait, je vous l’apporte dès que possible.' },
+    ],
+  ],
+  objet_cadeau: [
+    [
+      { goal: 'Nói sở thích người nhận bằng elle aime beaucoup lire', patterns: [/\belle aime beaucoup lire\b/], hint: 'C’est pour l’anniversaire d’une amie, elle aime beaucoup lire.' },
+    ],
+    [
+      { goal: 'Hỏi gợi ý khác bằng vous auriez quelque chose', patterns: [/\bvous auriez quelque chose\b/], hint: 'Il est joli. Vous auriez quelque chose d’un peu moins cher aussi ?' },
+    ],
+    [
+      { goal: 'Chốt mua bằng je prends les deux', patterns: [/\bje prends les deux\b/], hint: 'Parfait, je prends les deux.' },
+    ],
+  ],
+  internet: [
+    [
+      { goal: 'Báo sự cố bằng ne marche plus depuis ce matin', patterns: [/\bne marche plus depuis ce matin\b/], hint: 'Internet ne marche plus depuis ce matin, la box clignote en orange.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nói chưa khắc phục bằng ça ne change rien', patterns: [/(?:^|\s)ça ne change rien\b/], hint: 'Oui, deux fois, mais ça ne change rien.' },
+    ],
+    [
+      { goal: 'Nhờ báo tin bằng tenez-moi au courant', patterns: [/\btenez-moi au courant\b/], hint: 'Merci, tenez-moi au courant dès que vous savez quelque chose.' },
+    ],
+  ],
+  coiffeur: [
+    [
+      { goal: 'Nói không đổi độ dài bằng sans changer la longueur', patterns: [/\bsans changer la longueur\b/], hint: 'Juste une coupe d’entretien, sans changer la longueur.' },
+    ],
+    [
+      { goal: 'Đồng ý nhẹ nhàng bằng pas trop court sur les côtés', patterns: [/\bpas trop court sur les côtés\b/], hint: 'Oui, pourquoi pas, mais pas trop court sur les côtés.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Từ chối nhẹ nhàng bằng ça ira', patterns: [/(?:^|\s)ça ira\b/], hint: 'Non merci, ça ira, je suis pressée aujourd’hui.' },
     ],
   ],
   itineraire: [

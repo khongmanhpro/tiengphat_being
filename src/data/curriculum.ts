@@ -56,6 +56,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['emprunt', 'Mượn đồ hàng xóm', 'people', 'Xin mượn đồ lịch sự và hứa trả lại'],
     ['ecole_enfant', 'Việc học của con', 'book', 'Trao đổi với giáo viên về điểm mạnh, điểm yếu'],
     ['hobby', 'Sở thích chi tiết', 'heart', 'Kể một sở thích: bắt đầu, lý do và tần suất'],
+    ['recette', 'Hỏi công thức nấu ăn', 'coffee', 'Hỏi công thức và các bước theo thứ tự'],
+    ['banque_a2', 'Mở tài khoản ngân hàng', 'bag', 'Nói loại tài khoản và giấy tờ cần nộp'],
+    ['objet_cadeau', 'Chọn quà tặng', 'bag', 'Nhờ gợi ý quà theo sở thích và ngân sách'],
+    ['internet', 'Sự cố wifi/máy tính', 'message', 'Báo sự cố internet và điều đã thử'],
+    ['coiffeur', 'Cắt tóc', 'people', 'Mô tả kiểu tóc muốn cắt và điều không đổi'],
   ] },
   B1: { name: 'Trung cấp', description: 'Diễn đạt ý kiến, kể trải nghiệm và ứng phó khi có thay đổi.', topics: [
     ['emploi', 'Công việc & phỏng vấn', 'bag', 'Kể về kinh nghiệm và trình bày một điểm mạnh'],
