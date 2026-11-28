@@ -28,7 +28,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Giải thích một nhu cầu, đề xuất phương án và hỏi xác nhận.',
       Viết: 'Viết một tin ngắn có hoàn cảnh, sự việc và lời đề nghị.',
     },
-    blocks: ['Đặt chỗ và nói về người thân', 'Thói quen và nhu cầu', 'Kể lại và lên hẹn'],
+    blocks: ['Đặt chỗ và nói về người thân', 'Thói quen và nhu cầu', 'Kể lại và lên hẹn', 'Thuê đồ và sức khỏe', 'Hành lý và nhận xét món ăn', 'Xin lỗi và giải thích'],
   },
   B1: {
     result: 'Xử lý một thay đổi khi đi lại hoặc làm việc, kể mạch lạc và giải thích ngắn lý do lựa chọn.',

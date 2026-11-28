@@ -22,6 +22,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['medecin', 'Đi khám bệnh', 'heart', 'Diễn tả triệu chứng và hiểu lời dặn'],
     ['passe', 'Kể chuyện quá khứ', 'message', 'Phân biệt passé composé và imparfait'],
     ['invitation', 'Rủ bạn đi chơi', 'coffee', 'Mời, nhận lời và đề xuất thời gian'],
+    ['velo', 'Thuê xe đạp', 'bag', 'Thuê theo thời gian và báo một vấn đề kỹ thuật'],
+    ['pharmacie', 'Ở hiệu thuốc', 'heart', 'Mô tả triệu chứng nhẹ và hiểu lời khuyên dùng thuốc'],
+    ['valise', 'Hành lý thất lạc', 'map', 'Báo mất hành lý và mô tả đặc điểm để tìm lại'],
+    ['restaurant_avis', 'Nhận xét món ăn', 'coffee', 'Khen và nêu nhận xét nhẹ về món ăn'],
+    ['excuse', 'Xin lỗi vì đến trễ', 'message', 'Xin lỗi, giải thích lý do và trấn an người kia'],
   ] },
   B1: { name: 'Trung cấp', description: 'Diễn đạt ý kiến, kể trải nghiệm và ứng phó khi có thay đổi.', topics: [
     ['emploi', 'Công việc & phỏng vấn', 'bag', 'Kể về kinh nghiệm và trình bày một điểm mạnh'],

@@ -33,6 +33,11 @@ export const starterPractice = [
   { id: 'meteo', title: 'Nói về thời tiết', detail: 'Mô tả thời tiết hiện tại và dự đoán' },
   { id: 'couleurs', title: 'Mô tả đồ vật bằng màu sắc', detail: 'Tìm đồ thất lạc qua màu sắc, vị trí' },
   { id: 'gouts', title: 'Nói sở thích ăn uống', detail: 'Nói món thích, không thích và so sánh' },
+  { id: 'velo', title: 'Thuê xe đạp', detail: 'Thuê theo thời gian và báo sự cố' },
+  { id: 'pharmacie', title: 'Ở hiệu thuốc', detail: 'Mô tả triệu chứng và hỏi liều dùng' },
+  { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
+  { id: 'restaurant_avis', title: 'Nhận xét món ăn', detail: 'Khen và nêu nhận xét nhẹ nhàng' },
+  { id: 'excuse', title: 'Xin lỗi vì đến trễ', detail: 'Xin lỗi và giải thích lý do' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -356,6 +361,65 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Trả lời mức độ bằng un peu', patterns: [/\bun peu\b/], hint: 'Un peu, mais pas trop épicé.' },
+    ],
+  ],
+  velo: [
+    [
+      { goal: 'Nói thời gian thuê', patterns: [/\bpour toute la journée\b/], hint: 'Pour toute la journée, s’il vous plaît.' },
+    ],
+    [
+      { goal: 'Xin đồ bảo hộ bằng mettez-moi', patterns: [/\bmettez-moi\b/], hint: 'Oui, mais mettez-moi un casque, je préfère être prudente.' },
+    ],
+    [
+      { goal: 'Báo sự cố kỹ thuật', patterns: [/\ble frein\b/, /\bne marche pas\b/], hint: 'En fait, le frein arrière ne marche pas très bien.' },
+    ],
+    [
+      { goal: 'Cảm ơn', patterns: [/\bmerci\b/], hint: 'Merci, c’est gentil.' },
+    ],
+  ],
+  pharmacie: [
+    [
+      { goal: 'Mô tả triệu chứng bằng avoir mal à + depuis', patterns: [/\bj'ai mal\b/], hint: 'Oui, j’ai mal à la tête depuis ce matin.' },
+    ],
+    [
+      { goal: 'Trả lời chưa làm gì bằng rien pour l’instant', patterns: [/\brien pour l'instant\b/], hint: 'Non, rien pour l’instant.' },
+    ],
+    [
+      { goal: 'Hỏi cách dùng thuốc', patterns: [/\best-ce que je peux\b/], hint: 'Est-ce que je peux le prendre avec du café ?' },
+    ],
+  ],
+  valise: [
+    [
+      { goal: 'Báo hành lý chưa tới', patterns: [/\bn'est pas arrivée\b/], hint: 'Oui, ma valise n’est pas arrivée.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "étiquette" starts with é.
+      { goal: 'Mô tả đặc điểm hành lý', patterns: [/\belle est noire\b/, /(?:^|\s)étiquette\b/], hint: 'Oui, le voici. Elle est noire, avec une étiquette rouge.' },
+    ],
+    [
+      { goal: 'Hỏi thời gian bằng combien de temps', patterns: [/\bcombien de temps\b/], hint: 'Combien de temps ça prend, en général ?' },
+    ],
+  ],
+  restaurant_avis: [
+    [
+      { goal: 'Khen và nhận xét nhẹ bằng trop', patterns: [/\bdélicieux\b/, /\btrop salé\b/], hint: 'Il est délicieux, mais un peu trop salé pour moi.' },
+    ],
+    [
+      { goal: 'Nhận lời mời nếm thử', patterns: [/\bavec plaisir\b/], hint: 'Avec plaisir ! Hmm, c’est excellent.' },
+    ],
+    [
+      { goal: 'Từ chối nhẹ bằng ne…plus', patterns: [/\bje n'ai plus\b/], hint: 'Peut-être, mais je n’ai plus très faim.' },
+    ],
+  ],
+  excuse: [
+    [
+      { goal: 'Xin lỗi và giải thích bằng se tromper de', patterns: [/\bje me suis trompée\b/, /\bdésolée\b/], hint: 'Je suis vraiment désolée, je me suis trompée de route.' },
+    ],
+    [
+      { goal: 'Bổ sung lý do bằng en plus', patterns: [/\ben plus\b/], hint: 'En plus, mon bus est arrivé en retard.' },
+    ],
+    [
+      { goal: 'Xin lỗi lần nữa bằng encore', patterns: [/\bencore désolée\b/], hint: 'Oui, encore désolée pour l’attente.' },
     ],
   ],
 }
