@@ -86,6 +86,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['resume_academique', 'Tóm tắt học thuật', 'book', 'Giới thiệu chủ đề, phương pháp và kết luận nghiên cứu'],
     ['desaccord_nuance', 'Bất đồng tinh tế', 'briefcase', 'Nghi ngờ lịch sự và mở đầu bất đồng giữ thể diện'],
     ['rhetorique_debat', 'Kỹ thuật tu từ tranh luận', 'audio', 'Trả lời bằng câu hỏi và nhấn mạnh nhân quả'],
+    ['conference_style', 'Thuyết trình kiểu TED', 'message', 'Mở đầu bằng câu chuyện và khép kín bài nói'],
+    ['mediation_juridique', 'Điều phối tranh chấp pháp lý', 'briefcase', 'Tìm điểm chung và trấn an về quyền lợi'],
+    ['compromis_donnees', 'Đánh đổi chính sách theo số liệu', 'book', 'Trình bày lợi ích thận trọng và cái giá phải trả'],
+    ['lettre_recommandation', 'Thư tiến cử', 'message', 'Nhấn mạnh phẩm chất và dẫn ví dụ cụ thể'],
+    ['defis_traduction', 'Thách thức dịch thuật', 'audio', 'Đề xuất giải pháp và thừa nhận hạn chế'],
   ] },
 }
 

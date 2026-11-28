@@ -73,6 +73,11 @@ export const starterPractice = [
   { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
   { id: 'desaccord_nuance', title: 'Bất đồng tinh tế', detail: 'Nghi ngờ lịch sự, giữ thể diện' },
   { id: 'rhetorique_debat', title: 'Kỹ thuật tu từ tranh luận', detail: 'Trả lời bằng câu hỏi, nhấn mạnh nhân quả' },
+  { id: 'conference_style', title: 'Thuyết trình kiểu TED', detail: 'Mở đầu và khép kín bài nói' },
+  { id: 'mediation_juridique', title: 'Điều phối tranh chấp pháp lý', detail: 'Tìm điểm chung và trấn an quyền lợi' },
+  { id: 'compromis_donnees', title: 'Đánh đổi chính sách theo số liệu', detail: 'Lợi ích thận trọng và cái giá' },
+  { id: 'lettre_recommandation', title: 'Thư tiến cử', detail: 'Nhấn mạnh phẩm chất và ví dụ cụ thể' },
+  { id: 'defis_traduction', title: 'Thách thức dịch thuật', detail: 'Đề xuất giải pháp và hạn chế' },
 ] as const
 
 export const practiceCues: Record<string, Cue[][]> = {
@@ -860,6 +865,64 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nhấn mạnh trọng tâm bằng c’est tout l’enjeu', patterns: [/\bc'est tout l'enjeu\b/], hint: 'C’est tout l’enjeu du débat que nous menons aujourd’hui.' },
+    ],
+  ],
+  conference_style: [
+    [
+      { goal: 'Mở đầu bằng en partant de', patterns: [/\ben partant d'une\b/], hint: 'En partant d’une anecdote personnelle plutôt que de statistiques.' },
+    ],
+    [
+      { goal: 'Nêu kỹ thuật ngắt quãng', patterns: [/\bje ponctuerai\b/], hint: 'Je ponctuerai le discours de pauses, pour laisser respirer les idées fortes.' },
+    ],
+    [
+      { goal: 'Kết thúc bằng boucler la boucle', patterns: [/\bboucler la boucle\b/], hint: 'Je reviendrai à mon anecdote de départ, pour boucler la boucle.' },
+    ],
+  ],
+  mediation_juridique: [
+    [
+      { goal: 'Đề xuất tìm điểm chung', patterns: [/\bun terrain d'entente\b/], hint: 'Je vous propose plutôt de chercher un terrain d’entente avant d’aller plus loin.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "étape" starts with é.
+      { goal: 'Cam kết làm rõ từng bước', patterns: [/(?:^|\s)étape par étape\b/], hint: 'C’est précisément ce que nous allons clarifier ensemble, étape par étape.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
+      { goal: 'Trấn an bằng n’enlève rien à', patterns: [/\bn'enlève rien à(?=\s|$)/], hint: 'Bien entendu, la médiation n’enlève rien à vos droits.' },
+    ],
+  ],
+  compromis_donnees: [
+    [
+      { goal: 'Nêu số liệu bằng les données suggèrent', patterns: [/\bles données suggèrent\b/], hint: 'Les données suggèrent une baisse de trente pour cent des accidents graves.' },
+    ],
+    [
+      { goal: 'Nêu mức ước chừng bằng de l’ordre de', patterns: [/\bde l'ordre de\b/], hint: 'Une augmentation marginale, de l’ordre de deux minutes en moyenne.' },
+    ],
+    [
+      { goal: 'Củng cố lập luận bằng d’autant que', patterns: [/\bd'autant que\b/], hint: 'D’autant que les bénéfices à long terme dépassent largement ce coût.' },
+    ],
+  ],
+  lettre_recommandation: [
+    [
+      { goal: 'Nhấn mạnh bằng c’est avec plaisir que', patterns: [/\bc'est avec plaisir que\b/], hint: 'C’est avec plaisir que je le fais, tu le mérites amplement.' },
+    ],
+    [
+      // Trailing `\b` doesn't work right after an accented last letter — "capacité" ends in é.
+      { goal: 'Nêu phẩm chất bằng ainsi que', patterns: [/\bainsi que ta capacité(?=\s|$)/], hint: 'Je soulignerai ta rigueur ainsi que ta capacité à travailler en équipe.' },
+    ],
+    [
+      { goal: 'Xác nhận sẽ dùng làm ví dụ', patterns: [/\bl'exemple central\b/], hint: 'Bien sûr, ce sera même l’exemple central de la lettre.' },
+    ],
+  ],
+  defis_traduction: [
+    [
+      { goal: 'Đề xuất bằng mieux vaut', patterns: [/\bmieux vaut\b/], hint: 'Dans ce cas, mieux vaut trouver un équivalent qui garde l’esprit du texte.' },
+    ],
+    [
+      { goal: 'Đề xuất giải pháp bằng d’où l’intérêt de', patterns: [/\bd'où l'intérêt d'ajouter\b/], hint: 'C’est vrai, d’où l’intérêt d’ajouter une note du traducteur, si besoin.' },
+    ],
+    [
+      { goal: 'Ưu tiên bằng privilégier X plutôt que Y', patterns: [/\bprivilégier l'effet voulu\b/], hint: 'Là aussi, il faudra privilégier l’effet voulu plutôt que les mots exacts.' },
     ],
   ],
 }

@@ -58,7 +58,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Tóm lược dù có bất đồng, bảo toàn ý của mỗi bên và chốt điểm có thể thống nhất.',
       Viết: 'Tổng hợp tài liệu theo chủ đề, dẫn nguồn rõ và tách dữ kiện khỏi suy luận.',
     },
-    blocks: ['Sắc thái trong trao đổi', 'Lập luận và điều chỉnh văn phong', 'Tổng hợp và điều phối bất đồng', 'Phát biểu và câu hỏi gay gắt', 'Học thuật và bất đồng tinh tế', 'Kỹ thuật tu từ'],
+    blocks: ['Sắc thái trong trao đổi', 'Lập luận và điều chỉnh văn phong', 'Tổng hợp và điều phối bất đồng', 'Phát biểu và câu hỏi gay gắt', 'Học thuật và bất đồng tinh tế', 'Kỹ thuật tu từ và thuyết trình', 'Pháp lý và số liệu', 'Thư tiến cử và dịch thuật'],
   },
 }
 
