@@ -38,6 +38,11 @@ export const starterPractice = [
   { id: 'corps', title: 'Nói triệu chứng nhẹ', detail: 'Nói đau ở đâu và nhận lời khuyên' },
   { id: 'bus', title: 'Mua vé xe buýt', detail: 'Chọn loại vé và hỏi giờ xe' },
   { id: 'semaine', title: 'Hẹn gặp trong tuần', detail: 'Nói ngày rảnh và chốt giờ' },
+  { id: 'banque', title: 'Ở ngân hàng', detail: 'Đổi tiền và hỏi mở tài khoản' },
+  { id: 'appartement_a1', title: 'Hỏi thuê căn hộ', detail: 'Diện tích, giá thuê và hẹn xem nhà' },
+  { id: 'anniversaire', title: 'Mời dự sinh nhật', detail: 'Nói giờ và nhận lời giúp đỡ' },
+  { id: 'etudes', title: 'Nói về việc học', detail: 'Môn học, thời gian và tần suất' },
+  { id: 'animaux', title: 'Thú cưng', detail: 'Giới thiệu tên, ngoại hình, tính cách' },
   { id: 'velo', title: 'Thuê xe đạp', detail: 'Thuê theo thời gian và báo sự cố' },
   { id: 'pharmacie', title: 'Ở hiệu thuốc', detail: 'Mô tả triệu chứng và hỏi liều dùng' },
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
@@ -459,6 +464,62 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Chốt lịch hẹn', patterns: [/\bd'accord\b/], hint: 'D’accord, à jeudi alors !' },
+    ],
+  ],
+  banque: [
+    [
+      { goal: 'Đổi tiền bằng changer X en Y', patterns: [/\bchanger des dollars en\b/], hint: 'Oui, je voudrais changer des dollars en euros.' },
+    ],
+    [
+      { goal: 'Hỏi mở tài khoản', patterns: [/\bouvrir un compte\b/], hint: 'Cent dollars. Et je voudrais aussi ouvrir un compte.' },
+    ],
+    [
+      { goal: 'Đưa giấy tờ tùy thân', patterns: [/\bvoici mon passeport\b/], hint: 'Voici mon passeport.' },
+    ],
+  ],
+  appartement_a1: [
+    [
+      { goal: 'Hỏi diện tích', patterns: [/\bcombien de mètres carrés\b/], hint: 'Oui, il fait combien de mètres carrés ?' },
+    ],
+    [
+      { goal: 'Hỏi giá thuê', patterns: [/\ble loyer est de combien\b/], hint: 'Le loyer est de combien par mois ?' },
+    ],
+    [
+      { goal: 'Xin hẹn xem nhà', patterns: [/\bje voudrais visiter\b/], hint: 'Parfait, je voudrais visiter cette semaine si possible.' },
+    ],
+  ],
+  anniversaire: [
+    [
+      { goal: 'Mời và hỏi rảnh', patterns: [/\btu es libre\b/], hint: 'Oui, samedi prochain. Tu es libre ?' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à partir de" starts with à.
+      { goal: 'Nói giờ bằng à partir de', patterns: [/(?:^|\s)à partir de\b/], hint: 'À partir de dix-neuf heures, chez moi.' },
+    ],
+    [
+      { goal: 'Nhận lời đề nghị giúp đỡ', patterns: [/\bce serait gentil\b/], hint: 'Si tu veux, ce serait gentil !' },
+    ],
+  ],
+  etudes: [
+    [
+      { goal: 'Nói thời gian học bằng depuis', patterns: [/\bj'étudie le français depuis\b/], hint: 'J’étudie le français depuis six mois.' },
+    ],
+    [
+      { goal: 'Nói khó khăn và sở thích', patterns: [/\bj'aime beaucoup ça\b/], hint: 'Un peu, surtout la grammaire, mais j’aime beaucoup ça.' },
+    ],
+    [
+      { goal: 'Nói tần suất cụ thể', patterns: [/\ble mardi et le jeudi\b/], hint: 'Deux fois, le mardi et le jeudi.' },
+    ],
+  ],
+  animaux: [
+    [
+      { goal: 'Giới thiệu thú cưng bằng qui s’appelle', patterns: [/\bqui s'appelle\b/], hint: 'Oui, j’ai un chat qui s’appelle Mimi.' },
+    ],
+    [
+      { goal: 'Mô tả ngoại hình và thói quen', patterns: [/\bil dort presque\b/], hint: 'Il est noir et blanc, et il dort presque toute la journée.' },
+    ],
+    [
+      { goal: 'Nói thời gian sở hữu và tính cách', patterns: [/\bil est très calme\b/], hint: 'Depuis deux ans. Il est très calme.' },
     ],
   ],
   apparence: [
