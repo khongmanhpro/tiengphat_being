@@ -115,6 +115,11 @@ export const starterPractice = [
   { id: 'argumentaire_email', title: 'Email lập luận', detail: 'Nhượng bộ rồi phản biện' },
   { id: 'reunion_desaccord', title: 'Bất đồng lịch sự trong họp', detail: 'Xin phép nêu ý khác' },
   { id: 'retour_experience', title: 'Báo cáo rút kinh nghiệm', detail: 'Rút kinh nghiệm bằng on aurait pu' },
+  { id: 'recrutement', title: 'Phỏng vấn ứng viên', detail: 'Hỏi tình huống bằng une situation où' },
+  { id: 'critique_livre', title: 'Nhận xét sách', detail: 'Nhận xét bằng la façon dont' },
+  { id: 'reseaux_sociaux', title: 'Ảnh hưởng mạng xã hội', detail: 'Nêu khả năng bằng risquer de' },
+  { id: 'sondage', title: 'Trình bày khảo sát', detail: 'Nhượng bộ bằng encore que' },
+  { id: 'gestion_conflit', title: 'Xử lý xung đột nhóm', detail: 'Đề xuất bằng quitte à ce que' },
   { id: 'discours_formel', title: 'Phát biểu trang trọng', detail: 'Mở đầu, cảm ơn và chuyển ý' },
   { id: 'questions_hostiles', title: 'Xử lý câu hỏi gay gắt', detail: 'Thừa nhận rồi bổ sung bình tĩnh' },
   { id: 'resume_academique', title: 'Tóm tắt học thuật', detail: 'Chủ đề, phương pháp và kết luận' },
@@ -1217,6 +1222,65 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Nói sẽ thay đổi bằng je planifierais une marge de sécurité', patterns: [/\bje planifierais une marge de sécurité plus large\b/], hint: 'Je planifierais une marge de sécurité plus large, quitte à paraître trop prudente.' },
+    ],
+  ],
+  recrutement: [
+    [
+      { goal: 'Hỏi tình huống bằng une situation où', patterns: [/\bparlez-moi d'une situation où vous avez dû gérer un désaccord\b/], hint: 'Parlez-moi d’une situation où vous avez dû gérer un désaccord dans votre équipe.' },
+    ],
+    [
+      // "d'éviter" — ký tự trước é là dấu nháy ('), cũng không thuộc \w, nên bao gồm "d'" trong pattern thay vì dùng \b/(?:^|\s) trước éviter.
+      { goal: 'Nói tránh được gì bằng éviter que', patterns: [/d'éviter que la situation ne dégénère\b/], hint: 'Qu’est-ce qui vous a permis d’éviter que la situation ne dégénère ?' },
+    ],
+    [
+      { goal: 'Kết luận tích cực bằng c’est exactement le genre', patterns: [/\bc'est exactement le genre d'approche qu'on recherche ici\b/], hint: 'C’est exactement le genre d’approche qu’on recherche ici.' },
+    ],
+  ],
+  critique_livre: [
+    [
+      { goal: 'Kể bất ngờ tích cực bằng je m’attendais à être déçue', patterns: [/\bje m'attendais à être déçue mais j'ai été agréablement surprise\b/], hint: 'Oui, et honnêtement, je m’attendais à être déçue, mais j’ai été agréablement surprise.' },
+    ],
+    [
+      { goal: 'Nhận xét bằng la façon dont', patterns: [/\bla façon dont l'auteure aborde la mémoire\b/], hint: 'La façon dont l’auteure aborde la mémoire, sans jamais tomber dans le pathos facile.' },
+    ],
+    [
+      // Pattern kết thúc bằng "ambiguïté" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Tiếc nuối bằng j’aurais aimé que', patterns: [/\bj'aurais aimé qu'elle laisse un peu plus de place à l'ambiguïté(?=\s|$)/], hint: 'Pas entièrement, j’aurais aimé qu’elle laisse un peu plus de place à l’ambiguïté.' },
+    ],
+  ],
+  reseaux_sociaux: [
+    [
+      // Ça bắt đầu bằng ç và déjà kết thúc bằng à (cả hai không thuộc \w) — dùng cả (?:^|\s) và (?=\s|$).
+      { goal: 'Nêu quan sát bằng j’ai l’impression que', patterns: [/(?:^|\s)ça dépend mais j'ai l'impression qu'ils amplifient surtout ce qu'on ressentait déjà(?=\s|$)/], hint: 'Ça dépend, mais j’ai l’impression qu’ils amplifient surtout ce qu’on ressentait déjà.' },
+    ],
+    [
+      { goal: 'Nói khả năng xấu bằng risque de se comparer', patterns: [/\bquelqu'un qui se sentait déjà isolé risque de se comparer davantage\b/], hint: 'Quelqu’un qui se sentait déjà isolé risque de se comparer davantage, alors que quelqu’un d’épanoui en tirera plutôt du positif.' },
+    ],
+    [
+      { goal: 'Tránh kết luận tuyệt đối bằng tout dépend de', patterns: [/\btout dépend de l'usage qu'on en fait\b/], hint: 'Exactement, tout dépend de l’usage qu’on en fait, pas de l’outil lui-même.' },
+    ],
+  ],
+  sondage: [
+    [
+      { goal: 'Tổng kết bằng une majorité se dit satisfaite', patterns: [/\bune majorité se dit satisfaite mais un tiers environ exprime des réserves sur la charge de travail\b/], hint: 'Dans l’ensemble, une majorité se dit satisfaite, mais un tiers environ exprime des réserves sur la charge de travail.' },
+    ],
+    [
+      { goal: 'Nhượng bộ bằng encore que', patterns: [/\bencore que ce chiffre varie sensiblement d'un service à l'autre\b/], hint: 'En effet, encore que ce chiffre varie sensiblement d’un service à l’autre.' },
+    ],
+    [
+      { goal: 'Đề xuất bằng plutôt qu’une lecture globale', patterns: [/\bplutôt qu'une lecture globale qui risquerait de masquer ces écarts\b/], hint: 'C’est ce que je recommanderais, oui, plutôt qu’une lecture globale qui risquerait de masquer ces écarts.' },
+    ],
+  ],
+  gestion_conflit: [
+    [
+      // Pattern kết thúc bằng "côté" (chữ cuối é không thuộc \w) nên \b sau nó không khớp — dùng (?=\s|$).
+      { goal: 'Nêu nỗ lực bằng chacun fait des efforts', patterns: [/\bchacun fait des efforts visibles de son côté(?=\s|$)/], hint: 'Pas totalement, même si chacun fait des efforts visibles de son côté.' },
+    ],
+    [
+      { goal: 'Đề xuất bằng quitte à ce que', patterns: [/\bqu'ils se parlent directement quitte à ce que ce soit inconfortable au début\b/], hint: 'Qu’ils se parlent directement, quitte à ce que ce soit inconfortable au début.' },
+    ],
+    [
+      { goal: 'Nêu điều kiện bằng pourvu que', patterns: [/\bpourvu qu'elle se tienne dans un cadre neutre sans prendre parti\b/], hint: 'Avec plaisir, pourvu qu’elle se tienne dans un cadre neutre, sans prendre parti.' },
     ],
   ],
   velo: [

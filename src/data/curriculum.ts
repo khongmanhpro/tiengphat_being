@@ -120,6 +120,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['argumentaire_email', 'Email lập luận', 'message', 'Nhượng bộ rồi phản biện bằng cependant, néanmoins'],
     ['reunion_desaccord', 'Bất đồng lịch sự trong họp', 'people', 'Xin phép nêu ý khác bằng si vous me permettez de'],
     ['retour_experience', 'Báo cáo rút kinh nghiệm', 'briefcase', 'Rút kinh nghiệm bằng on aurait pu + nguyên mẫu'],
+    ['recrutement', 'Phỏng vấn ứng viên', 'people', 'Hỏi tình huống bằng une situation où'],
+    ['critique_livre', 'Nhận xét sách', 'book', 'Nhận xét bằng la façon dont, j’aurais aimé que'],
+    ['reseaux_sociaux', 'Ảnh hưởng mạng xã hội', 'message', 'Nêu khả năng bằng risquer de, tout dépend de'],
+    ['sondage', 'Trình bày khảo sát', 'book', 'Nhượng bộ bằng encore que + subjonctif'],
+    ['gestion_conflit', 'Xử lý xung đột nhóm', 'people', 'Đề xuất bằng quitte à ce que + subjonctif'],
   ] },
   C1: { name: 'Nâng cao', description: 'Xây dựng lập luận chặt chẽ và điều chỉnh giọng điệu theo ngữ cảnh.', topics: [
     ['seminaire', 'Tranh luận học thuật', 'people', 'Chất vấn giả thuyết và diễn đạt mức độ chắc chắn'],
