@@ -14,6 +14,11 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['meteo', 'Thời tiết', 'map', 'Mô tả thời tiết hiện tại và dự đoán sắp tới'],
     ['couleurs', 'Màu sắc & mô tả đồ vật', 'bag', 'Mô tả đồ vật bằng màu sắc, kích thước và vị trí'],
     ['gouts', 'Sở thích ăn uống', 'coffee', 'Nói món ăn/đồ uống yêu thích và so sánh lựa chọn'],
+    ['chambre', 'Mô tả phòng ở', 'bag', 'Mô tả đồ vật trong phòng và vị trí của chúng'],
+    ['telephone', 'Gọi điện & để lại lời nhắn', 'message', 'Xin nói chuyện với ai đó và để lại lời nhắn'],
+    ['corps', 'Cơ thể & triệu chứng nhẹ', 'heart', 'Nói triệu chứng bằng avoir mal à và nhận lời khuyên'],
+    ['bus', 'Mua vé xe buýt', 'map', 'Mua vé, chọn loại vé và hỏi giờ xe chạy'],
+    ['semaine', 'Ngày trong tuần & hẹn gặp', 'clock', 'Nói ngày rảnh và chốt giờ hẹn cụ thể'],
   ] },
   A2: { name: 'Sơ cấp', description: 'Xử lý các tình huống quen thuộc và kể về cuộc sống của bạn.', topics: [
     ['hotel', 'Đặt phòng khách sạn', 'bag', 'Kiểm tra phòng trống và xác nhận lượt đặt'],

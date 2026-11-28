@@ -33,6 +33,11 @@ export const starterPractice = [
   { id: 'meteo', title: 'Nói về thời tiết', detail: 'Mô tả thời tiết hiện tại và dự đoán' },
   { id: 'couleurs', title: 'Mô tả đồ vật bằng màu sắc', detail: 'Tìm đồ thất lạc qua màu sắc, vị trí' },
   { id: 'gouts', title: 'Nói sở thích ăn uống', detail: 'Nói món thích, không thích và so sánh' },
+  { id: 'chambre', title: 'Mô tả phòng ở', detail: 'Nói có gì trong phòng và vị trí' },
+  { id: 'telephone', title: 'Gọi điện để lại lời nhắn', detail: 'Xin nói chuyện và nhắn lại' },
+  { id: 'corps', title: 'Nói triệu chứng nhẹ', detail: 'Nói đau ở đâu và nhận lời khuyên' },
+  { id: 'bus', title: 'Mua vé xe buýt', detail: 'Chọn loại vé và hỏi giờ xe' },
+  { id: 'semaine', title: 'Hẹn gặp trong tuần', detail: 'Nói ngày rảnh và chốt giờ' },
   { id: 'velo', title: 'Thuê xe đạp', detail: 'Thuê theo thời gian và báo sự cố' },
   { id: 'pharmacie', title: 'Ở hiệu thuốc', detail: 'Mô tả triệu chứng và hỏi liều dùng' },
   { id: 'valise', title: 'Báo mất hành lý', detail: 'Mô tả đặc điểm và hỏi thời gian tìm lại' },
@@ -376,6 +381,64 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Trả lời mức độ bằng un peu', patterns: [/\bun peu\b/], hint: 'Un peu, mais pas trop épicé.' },
+    ],
+  ],
+  chambre: [
+    [
+      { goal: 'Mô tả đặc điểm phòng', patterns: [/\belle est petite\b/], hint: 'Elle est petite, mais très lumineuse.' },
+    ],
+    [
+      { goal: 'Nói có gì bằng il y a', patterns: [/\bil y a\b/], hint: 'Oui, il y a un bureau et une grande fenêtre.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "à côté de" starts with à.
+      { goal: 'Nói vị trí bằng à côté de', patterns: [/(?:^|\s)à côté de\b/], hint: 'Il est juste à côté de la fenêtre.' },
+    ],
+  ],
+  telephone: [
+    [
+      // Trailing `\b` doesn't work right after an accented word — "à" ends this pattern.
+      { goal: 'Xin nói chuyện bằng parler à', patterns: [/\bje voudrais parler à(?=\s|$)/], hint: 'Bonjour, je voudrais parler à Monsieur Petit, s’il vous plaît.' },
+    ],
+    [
+      { goal: 'Để lại lời nhắn bằng lui dire que', patterns: [/\blui dire que\b/], hint: 'Oui, pouvez-vous lui dire que Linh a appelé ?' },
+    ],
+    [
+      { goal: 'Mời gọi lại', patterns: [/\bil peut me rappeler\b/], hint: 'Oui, il peut me rappeler quand il veut.' },
+    ],
+  ],
+  corps: [
+    [
+      { goal: 'Nói triệu chứng bằng avoir mal à', patterns: [/\bj'ai mal au\b/, /\bj'ai mal à\b/], hint: 'Pas vraiment, j’ai mal au dos depuis ce matin.' },
+    ],
+    [
+      { goal: 'Nói thêm triệu chứng khác', patterns: [/\baussi mal\b/], hint: 'Oui, et j’ai aussi mal à la tête.' },
+    ],
+    [
+      { goal: 'Từ chối và nói sẽ nghỉ ngơi', patterns: [/\bje vais juste\b/], hint: 'Non merci, je vais juste dormir.' },
+    ],
+  ],
+  bus: [
+    [
+      { goal: 'Mua vé bằng je voudrais un billet', patterns: [/\bun billet pour\b/], hint: 'Je voudrais un billet pour le centre-ville, s’il vous plaît.' },
+    ],
+    [
+      { goal: 'Chọn loại vé khứ hồi', patterns: [/\baller-retour\b/], hint: 'Aller-retour, c’est moins cher, non ?' },
+    ],
+    [
+      { goal: 'Hỏi bến/ke', patterns: [/\bquel quai\b/], hint: 'Parfait, merci. C’est quel quai ?' },
+    ],
+  ],
+  semaine: [
+    [
+      { goal: 'Nói ngày rảnh bằng je suis libre', patterns: [/\bje suis libre\b/], hint: 'Je suis libre mardi et jeudi.' },
+    ],
+    [
+      // Leading `\b` doesn't work before an accented first letter — "ça" starts with ç.
+      { goal: 'Đề xuất giờ và hỏi xác nhận bằng ça te va', patterns: [/(?:^|\s)ça te va\b/], hint: 'Oui, jeudi après-midi, ça te va ?' },
+    ],
+    [
+      { goal: 'Chốt lịch hẹn', patterns: [/\bd'accord\b/], hint: 'D’accord, à jeudi alors !' },
     ],
   ],
   velo: [
