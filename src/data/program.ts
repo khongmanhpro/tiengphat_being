@@ -38,7 +38,7 @@ export const program: Record<Level, Band> = {
       Nói: 'Trình bày sự việc theo thứ tự, so sánh phương án và giải thích lựa chọn.',
       Viết: 'Viết email liền mạch với mục đích rõ, lý do và đề xuất cụ thể.',
     },
-    blocks: ['Kinh nghiệm và liên lạc công việc', 'Ý kiến và xử lý sự cố', 'Kế hoạch và lựa chọn thực tế', 'Phàn nàn và kế hoạch học tập', 'Tin tức và lời khuyên', 'Sở thích và lên kế hoạch', 'Môi trường và sức khỏe', 'Phim ảnh và nguyên nhân–kết quả', 'Vấn đề công việc và khác biệt văn hóa', 'Sự cố đi lại và lịch sử gia đình', 'Du học và kế hoạch chi tiêu', 'Nghỉ phép và giới thiệu', 'Phỏng vấn và dự án tình nguyện'],
+    blocks: ['Kinh nghiệm và liên lạc công việc', 'Ý kiến và xử lý sự cố', 'Kế hoạch và lựa chọn thực tế', 'Phàn nàn và kế hoạch học tập', 'Tin tức và lời khuyên', 'Sở thích và lên kế hoạch', 'Môi trường và sức khỏe', 'Phim ảnh và nguyên nhân–kết quả', 'Vấn đề công việc và khác biệt văn hóa', 'Sự cố đi lại và lịch sử gia đình', 'Du học và kế hoạch chi tiêu', 'Nghỉ phép và giới thiệu', 'Phỏng vấn và dự án tình nguyện', 'Thất vọng và thương lượng', 'Thư xin việc và định hướng nghề nghiệp'],
   },
   B2: {
     result: 'Bảo vệ một quan điểm bằng lý do, xử lý ý kiến trái chiều và điều chỉnh phương án.',

@@ -96,6 +96,10 @@ export const starterPractice = [
   { id: 'recommandation', title: 'Giới thiệu nơi/sản phẩm', detail: 'Giới thiệu và đưa lời khuyên' },
   { id: 'interview_radio', title: 'Trả lời phỏng vấn ngắn', detail: 'Kể kinh nghiệm bằng le fait de' },
   { id: 'projet_association', title: 'Đề xuất dự án tình nguyện', detail: 'Đề xuất bằng j’aimerais que' },
+  { id: 'deception', title: 'Kể thất vọng', detail: 'Kể mong đợi bằng je m’attendais à' },
+  { id: 'negociation_colloc', title: 'Thương lượng bạn cùng phòng', detail: 'Điều kiện bằng à condition que, du moment que' },
+  { id: 'lettre_motivation', title: 'Thư xin việc ngắn', detail: 'Giải thích phù hợp bằng à la fois...et...' },
+  { id: 'futur_carriere', title: 'Định hướng nghề nghiệp', detail: 'Nói xu hướng bằng je penche vers' },
   { id: 'debat_social', title: 'Tranh luận xã hội', detail: 'Phản biện và đề xuất phương án ôn hòa' },
   { id: 'email_formel', title: 'Email phàn nàn trang trọng', detail: 'Mở đầu trang trọng và nêu mong muốn' },
   { id: 'offre_emploi', title: 'Cân nhắc lời mời làm việc', detail: 'So sánh lợi/hại và tiếc nuối' },
@@ -1044,6 +1048,55 @@ export const practiceCues: Record<string, Cue[][]> = {
     ],
     [
       { goal: 'Đề xuất giúp đỡ bằng je connais quelqu’un à la mairie', patterns: [/\bje connais quelqu'un à la mairie qui pourrait nous aider\b/], hint: 'Je m’en occupe, je connais quelqu’un à la mairie qui pourrait nous aider.' },
+    ],
+  ],
+  deception: [
+    [
+      { goal: 'Kể mong đợi bằng je m’attendais à', patterns: [/\bje m'attendais à autre chose de ce poste\b/], hint: 'Je m’attendais à autre chose de ce poste, honnêtement.' },
+    ],
+    [
+      { goal: 'Kể điều đã hứa bằng on m’avait promis', patterns: [/\bon m'avait promis plus de responsabilités\b/], hint: 'On m’avait promis plus de responsabilités, et finalement je fais toujours les mêmes tâches.' },
+    ],
+    [
+      { goal: 'Nói dự định bằng avant que ça ne devienne', patterns: [/\bje compte bien le faire avant que ça ne devienne un vrai problème\b/], hint: 'Pas encore, mais je compte bien le faire avant que ça ne devienne un vrai problème.' },
+    ],
+  ],
+  negociation_colloc: [
+    [
+      { goal: 'Nêu bất cân bằng bằng j’ai l’impression de', patterns: [/\bj'ai l'impression de faire la vaisselle presque tous les soirs\b/], hint: 'Si, complètement, j’ai l’impression de faire la vaisselle presque tous les soirs.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Đồng ý có điều kiện bằng à condition qu’on respecte', patterns: [/(?:^|\s)ça me va à condition qu'on respecte vraiment le planning cette fois\b/], hint: 'Ça me va, à condition qu’on respecte vraiment le planning cette fois.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Đồng ý miễn là bằng du moment que', patterns: [/(?:^|\s)ça marche du moment que ce n'est pas toujours moi qui passe l'aspirateur\b/], hint: 'Ça marche, du moment que ce n’est pas toujours moi qui passe l’aspirateur.' },
+    ],
+  ],
+  lettre_motivation: [
+    [
+      // Pattern bắt đầu bằng à và kết thúc bằng "activité" (chữ cuối é không thuộc \w) — dùng cả (?:^|\s) và (?=\s|$).
+      { goal: 'Giải thích sự phù hợp bằng à la fois...et...', patterns: [/(?:^|\s)à la fois par ses valeurs et son secteur d'activité(?=\s|$)/], hint: 'Parce que votre entreprise correspond exactement à ce que je recherche, à la fois par ses valeurs et son secteur d’activité.' },
+    ],
+    [
+      { goal: 'Nêu kinh nghiệm cụ thể bằng notamment en gestion de projet', patterns: [/\bnotamment en gestion de projet\b/], hint: 'Mon stage précédent m’a permis de développer des compétences directement utiles ici, notamment en gestion de projet.' },
+    ],
+    [
+      { goal: 'Đặt câu hỏi ngược bằng j’aimerais savoir', patterns: [/\bj'aimerais savoir comment se déroule concrètement une journée type\b/], hint: 'Oui, j’aimerais savoir comment se déroule concrètement une journée type dans votre équipe.' },
+    ],
+  ],
+  futur_carriere: [
+    [
+      { goal: 'Nói xu hướng bằng je penche plutôt vers', patterns: [/\bje penche plutôt vers la gestion de projet\b/], hint: 'Pas encore à cent pour cent, mais je penche plutôt vers la gestion de projet.' },
+    ],
+    [
+      // Ça bắt đầu bằng ç (không thuộc \w) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nói động lực bằng ça me motive beaucoup', patterns: [/(?:^|\s)ça me motive beaucoup\b/], hint: 'Le fait de coordonner plusieurs personnes vers un même objectif, ça me motive beaucoup.' },
+    ],
+    [
+      // Pattern bắt đầu bằng à (có dấu) nên \b đứng trước sẽ không khớp — dùng (?:^|\s).
+      { goal: 'Nêu ngoại lệ bằng à moins que je trouve', patterns: [/(?:^|\s)à moins que je trouve une opportunité intéressante avant\b/], hint: 'Oui, à moins que je trouve une opportunité intéressante avant la fin de mon diplôme.' },
     ],
   ],
   feedback_constructif: [

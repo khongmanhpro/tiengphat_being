@@ -93,6 +93,10 @@ export const curriculum: Record<Level, { name: string; description: string; topi
     ['recommandation', 'Giới thiệu nơi/sản phẩm', 'coffee', 'Giới thiệu và đưa lời khuyên bằng il faudrait...sinon'],
     ['interview_radio', 'Trả lời phỏng vấn ngắn', 'message', 'Kể kinh nghiệm bằng le fait de, je dirais que'],
     ['projet_association', 'Đề xuất dự án tình nguyện', 'people', 'Đề xuất bằng j’aimerais que + subjonctif'],
+    ['deception', 'Kể thất vọng', 'message', 'Kể mong đợi bằng je m’attendais à'],
+    ['negociation_colloc', 'Thương lượng bạn cùng phòng', 'people', 'Nêu điều kiện bằng à condition que, du moment que'],
+    ['lettre_motivation', 'Thư xin việc ngắn', 'briefcase', 'Giải thích phù hợp bằng à la fois...et...'],
+    ['futur_carriere', 'Định hướng nghề nghiệp', 'briefcase', 'Nói xu hướng bằng je penche vers, à moins que'],
   ] },
   B2: { name: 'Trung cao cấp', description: 'Diễn đạt quan điểm có sắc thái và thuyết phục người nghe.', topics: [
     ['actualites', 'Thảo luận tin tức', 'message', 'Nêu lợi ích, giới hạn và điều kiện của một đề xuất'],
